@@ -6,8 +6,14 @@ package MaheshiMekala;
 public class Trial {
 
     public static void main(String[] args) {
+        //only for testing
         System.out.println("Im Maheshi");
         Card c= new Card();
-        c.shuffel();
+        String x[]=c.shuffel();
+        System.out.print("shufl pack in Main=");
+        for (int yy=0; yy<52;yy++){
+
+            System.out.print(x[yy]+",");
+        }
     }
 }
