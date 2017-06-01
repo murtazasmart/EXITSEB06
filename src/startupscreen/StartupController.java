@@ -44,6 +44,7 @@ public class StartupController {
         fadeTransition.setCycleCount(1);
         fadeTransition.setToValue(0);
         fadeTransition.play();
+
         System.out.println("JOIN CLICKED HERE");
     }
 
@@ -75,12 +76,12 @@ public class StartupController {
 
     public void btnMouseEntered(MouseEvent mouseEvent) {
         Button btn = (Button) mouseEvent.getSource();
-        menuButtonAnimations.btnMouseEntered(btn);
+        menuButtonAnimations.btnMouseEnteredFade(btn);
 
     }
 
     public void btnMouseExited(MouseEvent mouseEvent) {
         Button btn = (Button) mouseEvent.getSource();
-        menuButtonAnimations.btnMouseExited(btn);
+        menuButtonAnimations.btnMouseExitedFade(btn);
     }
 }
