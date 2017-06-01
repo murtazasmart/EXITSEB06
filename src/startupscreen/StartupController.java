@@ -1,5 +1,6 @@
 package startupscreen;
 
+import Animations.MenuButtonAnimations;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
@@ -27,6 +28,13 @@ import java.util.Optional;
  * Created by Bhagya Rathnayake on 5/29/2017.
  */
 public class StartupController {
+    private MenuButtonAnimations menuButtonAnimations;
+
+    public StartupController()
+    {
+        menuButtonAnimations= new MenuButtonAnimations();
+    }
+
 
     @FXML
     Button btnJoin,btnQuit;
@@ -67,20 +75,12 @@ public class StartupController {
 
     public void btnMouseEntered(MouseEvent mouseEvent) {
         Button btn = (Button) mouseEvent.getSource();
-        FadeTransition enterTransition = new FadeTransition(Duration.millis(50), btn);
-        enterTransition.setInterpolator(Interpolator.EASE_IN);
-        enterTransition.setFromValue(0.5);
-        enterTransition.setToValue(1.0);
-        enterTransition.play();
+        menuButtonAnimations.btnMouseEntered(btn);
 
     }
 
     public void btnMouseExited(MouseEvent mouseEvent) {
         Button btn = (Button) mouseEvent.getSource();
-        FadeTransition leaveTransition = new FadeTransition(Duration.millis(50), btn);
-        leaveTransition.setInterpolator(Interpolator.EASE_OUT);
-        leaveTransition.setFromValue(1.0);
-        leaveTransition.setToValue(0.5);
-        leaveTransition.play();
+        menuButtonAnimations.btnMouseExited(btn);
     }
 }
