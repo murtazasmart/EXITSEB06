@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <AnchorPane prefHeight="180.0" prefWidth="770.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="252.0" fitWidth="738.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Backgrounds/join2.png" />
+               </image></ImageView>
+            <TextField layoutX="97.0" layoutY="134.0" prefHeight="37.0" prefWidth="528.0" />
+            <Button layoutX="642.0" layoutY="137.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="65.0" text="Search" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="425.0" prefWidth="806.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="437.0" fitWidth="738.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Backgrounds/join.jpg" />
+               </image></ImageView>
+            <ScrollPane layoutX="97.0" layoutY="-6.0" prefHeight="328.0" prefWidth="569.0">
+               <content>
+                  <TableView prefHeight="456.0" prefWidth="549.0">
+                    <columns>
+                      <TableColumn prefWidth="101.0" text="GROUP ID" />
+                      <TableColumn prefWidth="319.0" text="NAME" />
+                        <TableColumn prefWidth="128.0" text="NO OF PLAYERS" />
+                    </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
