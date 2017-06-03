@@ -1,43 +1,35 @@
 package startupscreen;
 
 import Animations.MenuButtonAnimations;
+import Controllers.MediaControllers.MediaPlayerController;
+import UIButtonActions.GeneralButtonActions;
 import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.transform.Translate;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
-import java.util.Optional;
 
 /**
  * Created by Bhagya Rathnayake on 5/29/2017.
  */
 public class StartupController {
     private MenuButtonAnimations menuButtonAnimations;
-
+    private MediaPlayerController mediaPlayerController;
+    private GeneralButtonActions generalButtonActions;
     public StartupController()
     {
         menuButtonAnimations= new MenuButtonAnimations();
+        mediaPlayerController= new MediaPlayerController();
+        generalButtonActions= new GeneralButtonActions();
     }
 
 
     @FXML
     Button btnJoin,btnQuit;
+    @FXML
+    ImageView btnVolume;
 
     public void btnJoinClicked(ActionEvent actionEvent){
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(500),btnJoin);
@@ -49,17 +41,7 @@ public class StartupController {
     }
 
     public void btnQuitClicked(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Warning!");
-        alert.setHeaderText("You are about to exit. Any Unsaved changes will be lost");
-        alert.setContentText("Are you sure you want to exit?");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            Stage stage = (Stage) btnQuit.getScene().getWindow();
-            stage.close();
-        } else {
-
-        }
+        generalButtonActions.btnQuitClicked(btnQuit);
     }
 
     public void btnSettingsClicked(ActionEvent actionEvent) {
@@ -83,5 +65,10 @@ public class StartupController {
     public void btnMouseExited(MouseEvent mouseEvent) {
         Button btn = (Button) mouseEvent.getSource();
         menuButtonAnimations.btnMouseExitedFade(btn);
+    }
+
+    public void btnVolumeClicked(ActionEvent actionEvent) {
+        mediaPlayerController.btnVolumeClicked(btnVolume);
+
     }
 }

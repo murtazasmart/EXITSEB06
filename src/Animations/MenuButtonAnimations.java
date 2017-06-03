@@ -5,6 +5,7 @@ import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.util.Duration;
 
@@ -14,6 +15,7 @@ import javafx.util.Duration;
 public class MenuButtonAnimations {
 
     public void btnMouseEnteredFade(Button btn){
+        btn.setCursor(Cursor.HAND);
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(50),btn);
         fadeTransition.setInterpolator(Interpolator.EASE_IN);
         fadeTransition.setFromValue(0.5);
