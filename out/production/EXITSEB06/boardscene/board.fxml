@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1529.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardscene.BoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1529.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardscene.BoardController">
    <top>
       <Pane prefHeight="69.0" prefWidth="1181.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER" />
    </top>
@@ -29,32 +29,53 @@
                            </image></ImageView>
                      </graphic>
                      <tooltip>
-                        <Tooltip text="Settings" textAlignment="CENTER">
+                        <Tooltip text="SETTINGS" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font></Tooltip>
                      </tooltip></Button>
-                  <Button mnemonicParsing="false" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: BLACK;">
+                  <Button mnemonicParsing="false" onMouseClicked="#btnHelpClicked" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: BLACK;">
                      <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="75.0" fitWidth="90.0" onMouseClicked="#btnHelpClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/Icons/ButtonIcons/help.png" />
                            </image></ImageView>
-                     </graphic></Button>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="HELP">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip></Button>
                   <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: BLACK;">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/Icons/ButtonIcons/info.png" />
                            </image></ImageView>
-                     </graphic></Button>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="About">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip></Button>
                   <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#btnQuitClicked" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: BLACK;">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/Icons/ButtonIcons/error.png" />
                            </image></ImageView>
-                     </graphic></Button>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="QUIT">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip></Button>
                </children>
             </VBox>
             <VBox alignment="BOTTOM_CENTER" layoutX="7.0" layoutY="332.0" prefHeight="200.0" prefWidth="100.0">
@@ -67,6 +88,13 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <tooltip>
+                        <Tooltip text="HOME">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
                   </Button>
                </children>
             </VBox>

@@ -2,6 +2,7 @@ package startupscreen;
 
 import Animations.MenuButtonAnimations;
 import Controllers.MediaControllers.MediaPlayerController;
+import Game.Multiplayer.ClientSide;
 import UIButtonActions.GeneralButtonActions;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -23,6 +24,8 @@ public class StartupController {
         menuButtonAnimations= new MenuButtonAnimations();
         mediaPlayerController= new MediaPlayerController();
         generalButtonActions= new GeneralButtonActions();
+        ClientSide obj = new ClientSide();
+        obj.method1();
     }
 
 

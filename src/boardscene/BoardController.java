@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
+
 /**
  * Created by Bhagya Rathnayake on 6/2/2017.
  */
@@ -63,5 +65,10 @@ public class BoardController {
         ImageView crdView= (ImageView) mouseEvent.getSource();
         cardAnimations.cardRotateOnClick(crdView);
         crdView.setImage(new Image("Images/Cards/Spades/joker.png"));
+    }
+
+    public void btnHelpClicked(MouseEvent mouseEvent) throws IOException {
+        Button btnHelp = (Button)mouseEvent.getSource();
+        generalButtonActions.btnHelpClicked(btnHelp);
     }
 }
