@@ -1,5 +1,8 @@
 package sample;
 
+import Game.Multiplayer.ClientSide;
+import Murtaza.Client;
+import Murtaza.Server;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +25,10 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1470, 1000));
         primaryStage.setMaximized(true);
         primaryStage.show();
+//        Client obj = new Client();
+//        obj.joinGame();
+//        ClientSide obj = new ClientSide();
+//        obj.method1();
 try{
 
 

@@ -3,10 +3,16 @@ package boardscene;
 import Animations.CardAnimations;
 import Animations.MenuButtonAnimations;
 import UIButtonActions.GeneralButtonActions;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import startupscreen.StartupController;
 
 import java.io.IOException;
 
@@ -69,6 +75,15 @@ public class BoardController {
 
     public void btnHelpClicked(MouseEvent mouseEvent) throws IOException {
         Button btnHelp = (Button)mouseEvent.getSource();
-        generalButtonActions.btnHelpClicked(btnHelp);
+
+        StartupController obj = new StartupController();
+        try{
+            generalButtonActions.btnHelpClicked(btnHelp);
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
     }
 }

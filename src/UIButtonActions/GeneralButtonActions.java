@@ -1,5 +1,6 @@
 package UIButtonActions;
 
+import helpscene.HelpController;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -18,6 +19,13 @@ import java.util.ResourceBundle;
  * Created by Bhagya Rathnayake on 6/2/2017.
  */
 public class GeneralButtonActions{
+    private Stage stage;
+    private  HelpController helpController;
+    public GeneralButtonActions()
+    {
+      helpController = new HelpController();
+    }
+
 
     public void btnQuitClicked(Button btnQuit)
     {
@@ -35,12 +43,15 @@ public class GeneralButtonActions{
     }
 
     public void btnHelpClicked(Button btnHelp) throws IOException {
-        System.out.println("HELP ACCESSED");
-        Parent root = FXMLLoader.load(getClass().getResource("../helpscene/help.fxml"));
-        Stage stage = (Stage) btnHelp.getScene().getWindow();
-        Scene newscene = new Scene(root);
-        stage.setScene(newscene);
-        stage.show();
+        try{
+            stage = (Stage) btnHelp.getScene().getWindow();
+            helpController.start(stage);
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
     }
 
     public void btnInfoClicked()
