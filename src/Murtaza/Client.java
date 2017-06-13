@@ -40,13 +40,14 @@ public class Client {
             System.out.println("streams?");
             //Scanner scan = new Scanner(System.in);
             System.out.println("do u wanna join or create game(c/j)");
-            if(scan.next().equalsIgnoreCase("c")){
+            String res = scan.next();
+            if(res.equalsIgnoreCase("c")){
                 Game game = new Game();
                 game.gameName = "garena";
                 sendObjectToServer.writeObject(game);
                 sendObjectToServer.flush();
             }
-            else if(scan.next().equalsIgnoreCase("j")){
+            else if(res.equalsIgnoreCase("j")){
                 ClientThread ct = new ClientThread();
                 ct.gameName="garena";
                 sendObjectToServer.writeObject(ct);
@@ -54,6 +55,10 @@ public class Client {
             }
             Message message = (Message)receiveObjectFromServer.readObject();
             System.out.println(message.getText());
+            while(true){
+                message = (Message)receiveObjectFromServer.readObject();
+                System.out.println(message.getText());
+            }
 
             /*
             writeToServer = new PrintWriter(clientSocket.getOutputStream(), true);

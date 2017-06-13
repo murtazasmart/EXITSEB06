@@ -1,5 +1,7 @@
 package Murtaza;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
 import java.util.Scanner;
@@ -41,18 +43,49 @@ public class Game  extends Thread implements Serializable{
 
     }
 
-    public void addPlayer(ClientThread clientThread, Socket clientSocket){
+    public void addPlayer(ClientThread clientThread, Socket clientSocket, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream){
         for(int i = 0; i < maxClientsCount; i++){
             if(clientThreadThreads[i]==null){
                 //ClientThread object is sent to update the
                 clientThread.clientSocket = clientSocket;
+                clientThread.receiveObjectFromClient = objectInputStream;
+                clientThread.sendObjectToClient = objectOutputStream;
                 //Thread t = new Thread clientThread();
                 (clientThreadThreads[i] = clientThread).start();
                 players[i] = new Player(clientThread);
                 noOfPlayers++;
                 System.out.println("here1");
+                clientThreadThreads[i].sendObjectToClient(new Message("uve been added"));
                 break;
             }
+        }
+        //informAllPlayers("player added");
+        for(int i = 0; i < noOfPlayers ; i++){
+            clientThreadThreads[i].sendObjectToClient(new Message("player added"));
+        }
+    }
+
+    public void addPlayer(Socket clientSocket, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream) {
+        for(int i = 0; i < maxClientsCount; i++){
+            if(clientThreadThreads[i]==null){
+                ClientThread clientThread = new ClientThread();
+                clientThread.clientSocket = clientSocket;
+                clientThread.receiveObjectFromClient = objectInputStream;
+                clientThread.sendObjectToClient = objectOutputStream;
+                //Thread t = new Thread clientThread();
+                (clientThreadThreads[i] = clientThread).start();
+                players[i] = new Player(clientThread);
+                noOfPlayers++;
+                System.out.println("game created and client added");
+                break;
+            }
+        }
+        informAllPlayers("Game created");
+    }
+
+    public void informAllPlayers(String messageToBeBroadcast){
+        for(int i = 0; i < noOfPlayers ; i++){
+            clientThreadThreads[i].sendObjectToClient(new Message(messageToBeBroadcast));
         }
     }
 
@@ -93,5 +126,6 @@ public class Game  extends Thread implements Serializable{
     public void endGame(){
 
     }
+
 
 }
