@@ -46,6 +46,7 @@ public class ClientThread extends Thread implements Serializable{
 
     public boolean sendObjectToClient(Message message){
         try {
+            sendObjectToClient.reset();
             sendObjectToClient.writeObject(message);
             sendObjectToClient.flush();
             return true;

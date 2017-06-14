@@ -72,6 +72,9 @@ public class Server extends Thread{
                     for(int i = 0; i < maxGamesCount; i++){
                         if(activeGames[i].gameName.equalsIgnoreCase(serverClientThread.gameName)){
                             activeGames[i].addPlayer(serverClientThread, clientSocket, receiveObjectFromClient, sendObjectToClient);
+                            if(activeGames[i].maxClientsCount == activeGames[i].noOfPlayers)
+                                activeGames[i].start();
+                            System.out.println("max clients: "+activeGames[i].maxClientsCount+" noOfPlayers is: "+activeGames[i].noOfPlayers);
                             break;
                         }
                     }
@@ -104,7 +107,7 @@ public class Server extends Thread{
         for(int i = 0; i < maxGamesCount; i++){
             if(activeGames[i]==null){
                 //Thread t = new Thread client();
-                gameObject = new Game(gameObject.gameName, i);
+                gameObject = new Game(gameObject.gameName, i, gameObject.maxClientsCount);
                 //Store game details in DB
                 //GameID will be same as active array val
                 //CANNOT START GAME UNTIL EVERYONE IS OKAY

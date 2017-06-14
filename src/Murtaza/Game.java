@@ -27,9 +27,10 @@ public class Game  extends Thread implements Serializable{
         maxClientsCount = 10;
     }
 
-    public Game(String gameName, int gameID) {
+    public Game(String gameName, int gameID, int maxClientsCount) {
         this.gameName = gameName;
         this.gameID = gameID;
+        this.maxClientsCount = maxClientsCount;
         clientThreadThreads = new ClientThread[maxClientsCount];
         players = new Player[maxClientsCount];
         scan = new Scanner(System.in);
@@ -111,10 +112,11 @@ public class Game  extends Thread implements Serializable{
             clientThreadThreads[i].sendObjectToClient(message);
         }
         for(int i =0; i < noOfPlayers;i++){
-            ClientThread ct;
+            //ClientThread ct;
+            Player player;
             object = clientThreadThreads[i].readObjectFromClient();
-            ct = (ClientThread)object;
-            totalScore = totalScore + ct.score;
+            player = (Player) object;
+            totalScore = totalScore + player.score;
         }
         message.setText("total score is "+totalScore);
         for(int i =0; i < noOfPlayers;i++){

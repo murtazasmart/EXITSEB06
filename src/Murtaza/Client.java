@@ -43,19 +43,39 @@ public class Client {
             String res = scan.next();
             if(res.equalsIgnoreCase("c")){
                 Game game = new Game();
-                game.gameName = "garena";
+                System.out.println("Enter game name");
+                game.gameName = scan.next();
+                System.out.println("Enter number of players");
+                game.maxClientsCount = scan.nextInt();
+                //game.gameName = "garena";
                 sendObjectToServer.writeObject(game);
                 sendObjectToServer.flush();
             }
             else if(res.equalsIgnoreCase("j")){
                 ClientThread ct = new ClientThread();
-                ct.gameName="garena";
+                System.out.println("Enter game name");
+                ct.gameName = scan.next();
+                //ct.gameName="garena";
                 sendObjectToServer.writeObject(ct);
                 sendObjectToServer.flush();
             }
             Message message = (Message)receiveObjectFromServer.readObject();
             System.out.println(message.getText());
             while(true){
+                message = (Message)receiveObjectFromServer.readObject();
+                System.out.println(message.getText());
+                if(message.getText().equalsIgnoreCase("Game is starting"))
+                    break;
+            }
+            System.out.println("ive broken out!!");
+            while(true){
+                message = (Message)receiveObjectFromServer.readObject();
+                System.out.println(message.getText());
+                Player player = new Player();
+                player.score = scan.nextInt();
+                sendObjectToServer.reset();
+                sendObjectToServer.writeObject(player);
+                sendObjectToServer.flush();
                 message = (Message)receiveObjectFromServer.readObject();
                 System.out.println(message.getText());
             }

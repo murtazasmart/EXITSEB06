@@ -8,7 +8,8 @@ import java.net.Socket;
  */
 public class Player implements Serializable{
     String username;
-    String score;
+    int score;
+    String[][] otherPlayerCards;
 
     public Player() {
     }
@@ -26,11 +27,11 @@ public class Player implements Serializable{
         this.username = username;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 }
