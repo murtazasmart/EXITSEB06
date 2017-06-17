@@ -129,5 +129,9 @@ public class Game  extends Thread implements Serializable{
 
     }
 
+    public void checkPlayersDisconnected(){
+        //check if disconnected, if so clean up
+    }
+
 
 }

@@ -19,6 +19,7 @@ public class ClientThread extends Thread implements Serializable{
     int score, gameID;
     String gameName;
     Object object;
+    boolean isDisconnected;
 
     public ClientThread(Socket clientSocket) {
         this.clientSocket = clientSocket;
