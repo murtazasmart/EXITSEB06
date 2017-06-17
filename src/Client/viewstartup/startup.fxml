@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="1179.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.viewstartup.StartupController">
+   <bottom>
+      <HBox prefHeight="80.0" prefWidth="1184.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="btnJoin" fx:id="btnJoin" mnemonicParsing="false" onAction="#btnJoinClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="158.0" prefWidth="379.0" style="-fx-background-color: BLACK;" text="JOIN" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="25.0" left="55.0" right="25.0" top="25.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="93.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/ButtonIcons/add-3.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button id="btnHost" fx:id="btnHost" mnemonicParsing="false" onAction="#btnHostClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="158.0" prefWidth="379.0" style="-fx-background-color: BLACK;" text="HOST" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="25.0" left="55.0" right="25.0" top="25.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/ButtonIcons/users-1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox prefHeight="435.0" prefWidth="0.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#btnSettingsClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="74.0" prefWidth="105.0" style="-fx-background-color: Black;">
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/ButtonIcons/settings-1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#btnHelpClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="73.0" prefWidth="112.0" style="-fx-background-color: Black;">
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/ButtonIcons/help.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#btnInfoClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: Black;">
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/ButtonIcons/info.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnQuit" mnemonicParsing="false" onAction="#btnQuitClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: Black;">
+               <graphic>
+                  <ImageView id="btnQuit" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/ButtonIcons/error.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children></VBox>
+   </left>
+   <center>
+
+         <ImageView fitHeight="224.0" fitWidth="410.0" layoutX="259.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.75; -fx-scale-y: 1.5;">
+            <image>
+               <Image url="@../Images/Backgrounds/test1.png" />
+            </image></ImageView>
+
+   </center>
+   <top>
+      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#btnVolumeClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="71.0" prefWidth="90.0" style="-fx-background-color: BLACK;">
+               <graphic>
+                  <ImageView fx:id="btnVolume" fitHeight="59.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/ButtonIcons/speaker-2.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

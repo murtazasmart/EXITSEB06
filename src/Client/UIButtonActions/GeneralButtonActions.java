@@ -1,6 +1,6 @@
 package Client.UIButtonActions;
 
-import Client.helpscene.HelpController;
+import Client.viewhelp.HelpController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;

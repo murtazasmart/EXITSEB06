@@ -1,14 +1,18 @@
 package Client.Animations;
 
-import javafx.animation.Interpolator;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
+import javafx.geometry.Bounds;
 import javafx.scene.Cursor;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
+
+import java.util.List;
 
 /**
  * Created by Bhagya Rathnayake on 6/2/2017.
@@ -63,6 +67,38 @@ public class CardAnimations {
         rotateTransition.setCycleCount(1);
         rotateTransition.play();
         
+    }
+
+    public void cardPackShuffle(ImageView[] arr)
+    {
+
+        for(int i=0;i<arr.length;i++)
+        {
+            RotateTransition rotateTransition = new RotateTransition(Duration.millis(500),arr[i]);
+            rotateTransition.setAxis(Rotate.Y_AXIS);
+            rotateTransition.setFromAngle(0);
+            rotateTransition.setToAngle(360);
+            rotateTransition.setInterpolator(Interpolator.LINEAR);
+            rotateTransition.setCycleCount(1);
+            rotateTransition.play();
+        }
+    }
+
+    public void cardDistribute(ImageView image,Double toX,Double toY)
+    {
+        System.out.println(toX);
+        Path path = new Path();
+
+        //Creating 1st line
+        LineTo line1 = new LineTo(image.getLayoutX(),image.getLayoutY());
+        path.getElements().add(new MoveTo(toX,toY));
+        path.getElements().addAll(line1);
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.millis(1000));
+        pathTransition.setNode(image);
+        pathTransition.setPath(path);
+        pathTransition.setCycleCount(1);
+        pathTransition.play();
     }
 
 
