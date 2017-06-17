@@ -10,7 +10,7 @@ public class Refree {
     String [] cardpackc;
     String[][] playerCarray;
 
-    public int StartGame(){
+    public int StartGame(int playesrscout){
         System.out.println("Game Started");
         cardpackc =c.Shuffel();
         System.out.println("cards=");
