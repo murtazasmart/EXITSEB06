@@ -1,7 +1,7 @@
 package Client.MaheshiMekala;
 
 /**
- * Created by asus i3 on 5/28/2017.
+ * Created by MekalaRashmika on 5/28/2017.
  */
 public class Card {
 
