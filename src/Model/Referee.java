@@ -6,7 +6,9 @@ package Model;
  */
 public class Referee {
 
-    Card c= new Card();
+    //Each Referee has to be assigned to each game
+
+    Card c = new Card();
     String [] cardpackc;
 
     public int StartGame(){
@@ -29,6 +31,8 @@ public class Referee {
         String[][] playerCarray = new String [playerscount][5];
 
         if (playerscount*5<=52) {
+
+            //j is player id and i is noOf cards each player has and its value
 
             for (int i=0;i<5;i++) {
 
