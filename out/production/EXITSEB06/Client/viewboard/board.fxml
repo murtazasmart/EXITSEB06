@@ -113,7 +113,7 @@
          <children>
             <ImageView fitHeight="670.0" fitWidth="1378.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/Backgrounds/themes/Sunset.jpg" />
+                  <Image url="@../Images/Backgrounds/Board.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
@@ -123,7 +123,7 @@
                </effect>
             </ImageView>
             <AnchorPane layoutX="451.0" layoutY="238.0" />
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="462.0" layoutY="491.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="160.0" fitWidth="120.0" layoutX="511.0" layoutY="97.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Cards/Diamonds/D1.png" />
                </image>
@@ -133,7 +133,7 @@
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="511.0" layoutY="491.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitWidth="120.0" layoutX="603.0" layoutY="98.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Cards/Diamonds/D2.png" />
                </image>
@@ -143,42 +143,7 @@
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
             </ImageView>
-            <ImageView id="opo_1_cd_2" fx:id="opo_1_cd_2" fitHeight="166.0" fitWidth="125.0" layoutX="572.0" layoutY="1.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="opo_1_cd_1" fitHeight="166.0" fitWidth="125.0" layoutX="526.0" layoutY="1.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="1025.0" layoutY="1.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="977.0" layoutY="1.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="1024.0" layoutY="251.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="980.0" layoutY="251.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="132.0" layoutY="260.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="82.0" layoutY="260.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="194.0" layoutY="277.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 32;">
                <image>
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
@@ -188,37 +153,27 @@
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="133.0" layoutY="1.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="166.0" fitWidth="125.0" layoutX="79.0" layoutY="1.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="82.0" layoutY="165.0" prefHeight="33.0" prefWidth="157.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="34.0" layoutY="268.0" prefHeight="14.0" prefWidth="96.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="82.0" layoutY="424.0" prefHeight="33.0" prefWidth="157.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="166.0" layoutY="409.0" prefHeight="13.0" prefWidth="98.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="526.0" layoutY="165.0" prefHeight="33.0" prefWidth="157.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="781.0" layoutY="482.0" prefHeight="11.0" prefWidth="111.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="977.0" layoutY="165.0" prefHeight="33.0" prefWidth="157.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="1031.0" layoutY="267.0" prefHeight="33.0" prefWidth="157.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="993.0" layoutY="415.0" prefHeight="33.0" prefWidth="157.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="927.0" layoutY="424.0" prefHeight="33.0" prefWidth="157.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
@@ -243,7 +198,32 @@
                   </Button>
                </children>
             </HBox>
-            <ImageView fx:id="opo_c_cd_1" fitHeight="166.0" fitWidth="125.0" layoutX="621.0" layoutY="275.0" onMouseClicked="#cardRotateWhenClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="47.0" layoutY="133.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 50;">
+               <image>
+                  <Image url="@../Images/Cards/Spades/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="368.0" layoutY="352.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 10;">
+               <image>
+                  <Image url="@../Images/Cards/Spades/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="545.0" layoutY="379.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
+               <image>
+                  <Image url="@../Images/Cards/Spades/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="734.0" layoutY="357.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -10;">
+               <image>
+                  <Image url="@../Images/Cards/Spades/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="908.0" layoutY="277.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -30;">
+               <image>
+                  <Image url="@../Images/Cards/Spades/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="1050.0" layoutY="133.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -50;">
                <image>
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
