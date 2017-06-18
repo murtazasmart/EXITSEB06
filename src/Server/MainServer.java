@@ -9,6 +9,6 @@ public class MainServer {
     public static void main(String[] args) {
         //only for testing
         Server server = new Server();
-        server.start();
+        server.run();
     }
 }

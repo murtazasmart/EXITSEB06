@@ -1,11 +1,20 @@
 package Server;
 
+import Client.viewhost.HostController;
 import Model.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +22,7 @@ import java.util.logging.Logger;
 /**
  * Created by MA_Laptop on 6/18/2017.
  */
-public class Server extends Thread{
+public class Server extends Application{
 
     ServerSocket serverSocket;
     Socket clientSocket;
@@ -31,7 +40,6 @@ public class Server extends Thread{
     Game[] activeGames;
 
 
-    @Override
     public void run() {
         //Creates ports and add clients if needed
         startServer();
@@ -40,7 +48,9 @@ public class Server extends Thread{
     }
 
     public void startServer(){
+
         try {
+            launch();
             System.out.println("Enter IP address of Host:");
             scan = new Scanner(System.in);
             serverIPAddress = InetAddress.getByName(scan.nextLine());
@@ -143,5 +153,18 @@ public class Server extends Thread{
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Client/viewhost/host.fxml"));
+        primaryStage.setTitle("EXIT-POKER");
+        primaryStage.setScene(new Scene(root, 1470, 1000));
+        primaryStage.setMaximized(true);
+        primaryStage.show();
+    }
+
+    public void iveBeenClicked(){
+        System.out.println("Here clcikeed");
     }
 }

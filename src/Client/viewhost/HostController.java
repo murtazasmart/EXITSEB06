@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 /**
  * Created by Bhagya Rathnayake on 6/17/2017.
  */
-public class HostController extends Application {
+public class HostController extends Application{
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("host.fxml"));
@@ -17,5 +18,9 @@ public class HostController extends Application {
         primaryStage.setScene(new Scene(root, 1470, 1000));
         primaryStage.setMaximized(true);
         primaryStage.show();
+    }
+
+    public void iveBeenClicked(){
+        System.out.println("Here clcikeed");
     }
 }
