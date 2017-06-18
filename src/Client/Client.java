@@ -1,4 +1,6 @@
-package Client.Murtaza;
+package Client;
+
+import Model.*;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -7,7 +9,7 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 /**
- * Created by MA_Laptop on 6/3/2017.
+ * Created by MA_Laptop on 6/18/2017.
  */
 public class Client {
 
@@ -42,9 +44,9 @@ public class Client {
             if(res.equalsIgnoreCase("c")){
                 Game game = new Game();
                 System.out.println("Enter game name");
-                game.gameName = scan.next();
+                game.setGameName(scan.next());
                 System.out.println("Enter number of players");
-                game.maxClientsCount = scan.nextInt();
+                game.setMaxClientsCount(scan.nextInt());
                 //game.gameName = "garena";
                 sendObjectToServer.writeObject(game);
                 sendObjectToServer.flush();
@@ -52,7 +54,7 @@ public class Client {
             else if(res.equalsIgnoreCase("j")){
                 ClientThread ct = new ClientThread();
                 System.out.println("Enter game name");
-                ct.gameName = scan.next();
+                ct.setGameName(scan.next());
                 //ct.gameName="garena";
                 sendObjectToServer.writeObject(ct);
                 sendObjectToServer.flush();
@@ -70,7 +72,7 @@ public class Client {
                 message = (Message)receiveObjectFromServer.readObject();
                 System.out.println(message.getText());
                 Player player = new Player();
-                player.score = scan.nextInt();
+                player.setScore(scan.nextInt());
                 sendObjectToServer.reset();
                 sendObjectToServer.writeObject(player);
                 sendObjectToServer.flush();

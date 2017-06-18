@@ -1,4 +1,6 @@
-package Client.Murtaza;
+package Model;
+
+import Murtaza.*;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -7,9 +9,9 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * Created by MA_Laptop on 5/28/2017.
+ * Created by MA_Laptop on 6/18/2017.
  */
-public class Game  extends Thread implements Serializable{
+public class Game  extends Thread implements Serializable {
     int scoreTick;
     boolean isStarted = false;
     String gameName;
@@ -134,4 +136,110 @@ public class Game  extends Thread implements Serializable{
     }
 
 
+    //GETTERS AND SETTERS
+
+
+    public int getScoreTick() {
+        return scoreTick;
+    }
+
+    public void setScoreTick(int scoreTick) {
+        this.scoreTick = scoreTick;
+    }
+
+    public boolean isStarted() {
+        return isStarted;
+    }
+
+    public void setStarted(boolean started) {
+        isStarted = started;
+    }
+
+    public String getGameName() {
+        return gameName;
+    }
+
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
+    }
+
+    public int getGameID() {
+        return gameID;
+    }
+
+    public void setGameID(int gameID) {
+        this.gameID = gameID;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
+    }
+
+    public ClientThread[] getClientThreadThreads() {
+        return clientThreadThreads;
+    }
+
+    public void setClientThreadThreads(ClientThread[] clientThreadThreads) {
+        this.clientThreadThreads = clientThreadThreads;
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
+    }
+
+    public int getMaxClientsCount() {
+        return maxClientsCount;
+    }
+
+    public void setMaxClientsCount(int maxClientsCount) {
+        this.maxClientsCount = maxClientsCount;
+    }
+
+    public boolean isStart() {
+        return isStart;
+    }
+
+    public void setStart(boolean start) {
+        isStart = start;
+    }
+
+    public Scanner getScan() {
+        return scan;
+    }
+
+    public void setScan(Scanner scan) {
+        this.scan = scan;
+    }
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
+
+    public int getNoOfPlayers() {
+        return noOfPlayers;
+    }
+
+    public void setNoOfPlayers(int noOfPlayers) {
+        this.noOfPlayers = noOfPlayers;
+    }
+
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
+    }
 }

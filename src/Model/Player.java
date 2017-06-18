@@ -1,11 +1,11 @@
-package Client.Murtaza;
+package Model;
 
 import java.io.Serializable;
 
 /**
- * Created by MA_Laptop on 6/3/2017.
+ * Created by MA_Laptop on 6/18/2017.
  */
-public class Player implements Serializable{
+public class Player implements Serializable {
     String username;
     int score;
     String[][] otherPlayerCards;

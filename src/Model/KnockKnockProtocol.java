@@ -1,11 +1,11 @@
-package Client.Murtaza;
+package Model;
 
 import java.io.Serializable;
 
 /**
- * Created by MA_Laptop on 5/28/2017.
+ * Created by MA_Laptop on 6/18/2017.
  */
-class KnockKnockProtocol implements Serializable {
+public class KnockKnockProtocol implements Serializable {
     String text;
 
     public String getText() {
@@ -28,3 +28,4 @@ class KnockKnockProtocol implements Serializable {
     }
 
 }
+

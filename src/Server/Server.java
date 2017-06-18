@@ -1,14 +1,17 @@
-package Client.Murtaza;
+package Server;
+
+import Model.*;
 
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
-import java.util.logging.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * Created by MA_Laptop on 5/28/2017.
+ * Created by MA_Laptop on 6/18/2017.
  */
 public class Server extends Thread{
 
@@ -70,11 +73,11 @@ public class Server extends Thread{
                     System.out.println("got client thread");
                     ClientThread serverClientThread = (ClientThread)receivedObject;
                     for(int i = 0; i < maxGamesCount; i++){
-                        if(activeGames[i].gameName.equalsIgnoreCase(serverClientThread.gameName)){
+                        if(activeGames[i].getGameName().equalsIgnoreCase(serverClientThread.getGameName())){
                             activeGames[i].addPlayer(serverClientThread, clientSocket, receiveObjectFromClient, sendObjectToClient);
-                            if(activeGames[i].maxClientsCount == activeGames[i].noOfPlayers)
+                            if(activeGames[i].getMaxClientsCount() == activeGames[i].getNoOfPlayers())
                                 activeGames[i].start();
-                            System.out.println("max clients: "+activeGames[i].maxClientsCount+" noOfPlayers is: "+activeGames[i].noOfPlayers);
+                            System.out.println("max clients: "+activeGames[i].getMaxClientsCount()+" noOfPlayers is: "+activeGames[i].getNoOfPlayers());
                             break;
                         }
                     }
@@ -84,7 +87,7 @@ public class Server extends Thread{
                     Game game = (Game)receivedObject;
                     createGame(game);
                     for(int i = 0; i < maxGamesCount; i++){
-                        if(activeGames[i].gameName.equals(game.gameName)){
+                        if(activeGames[i].getGameName().equals(game.getGameName())){
                             activeGames[i].addPlayer(clientSocket, receiveObjectFromClient, sendObjectToClient);
 
                         }
@@ -107,7 +110,7 @@ public class Server extends Thread{
         for(int i = 0; i < maxGamesCount; i++){
             if(activeGames[i]==null){
                 //Thread t = new Thread client();
-                gameObject = new Game(gameObject.gameName, i, gameObject.maxClientsCount);
+                gameObject = new Game(gameObject.getGameName(), i, gameObject.getMaxClientsCount());
                 //Store game details in DB
                 //GameID will be same as active array val
                 //CANNOT START GAME UNTIL EVERYONE IS OKAY
