@@ -26,7 +26,7 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <TextField id="hostIPAddress" layoutX="695.0" layoutY="253.0" prefHeight="47.0" prefWidth="360.0" />
+            <TextField id="hostIPAddress" fx:id="hostIPAddress" layoutX="695.0" layoutY="253.0" prefHeight="47.0" prefWidth="360.0" />
             <Label alignment="CENTER" layoutX="696.0" layoutY="312.0" prefHeight="49.0" prefWidth="361.0" text="ENTER YOUR PORT" textFill="#fcf3f3">
                <font>
                   <Font size="18.0" />

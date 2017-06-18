@@ -1,20 +1,22 @@
 package Server;
 
-import Client.viewhost.HostController;
-import Model.*;
+import Model.ClientThread;
+import Model.Game;
+import Model.KnockKnockProtocol;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.apache.commons.validator.routines.InetAddressValidator;
 
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -155,6 +157,10 @@ public class Server extends Application{
 
     }
 
+    //VIEW CODE
+    @FXML
+    TextField hostIPAddress;
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Client/viewhost/host.fxml"));
@@ -164,7 +170,12 @@ public class Server extends Application{
         primaryStage.show();
     }
 
-    public void iveBeenClicked(){
+    public void iveBeenClicked(ActionEvent actionEvent){
         System.out.println("Here clcikeed");
+        InetAddressValidator inetAddressValidator =
+                InetAddressValidator.getInstance();
+
+        System.out.println(hostIPAddress.getText() + "  " + inetAddressValidator.isValid(hostIPAddress.getText()));
+
     }
 }
