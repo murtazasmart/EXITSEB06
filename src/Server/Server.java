@@ -1,5 +1,7 @@
 package Server;
 
+import Client.viewboard.BoardController;
+import Client.viewjoin.JoinController;
 import Model.ClientThread;
 import Model.Game;
 import Model.KnockKnockProtocol;
@@ -170,12 +172,15 @@ public class Server extends Application{
         primaryStage.show();
     }
 
-    public void iveBeenClicked(ActionEvent actionEvent){
+    public void iveBeenClicked(ActionEvent actionEvent) throws Exception {
         System.out.println("Here clcikeed");
         InetAddressValidator inetAddressValidator =
                 InetAddressValidator.getInstance();
 
         System.out.println(hostIPAddress.getText() + "  " + inetAddressValidator.isValid(hostIPAddress.getText()));
+        Stage stage = (Stage) hostIPAddress.getScene().getWindow();
+        JoinController joinController = new JoinController();
+        joinController.start(stage);
 
     }
 }

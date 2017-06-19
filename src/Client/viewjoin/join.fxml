@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -11,54 +11,45 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="414.0" prefWidth="1949.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="515.0" fitWidth="2381.0" layoutX="-224.0" layoutY="-43.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="319.0" fitWidth="1346.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.6666717529296875" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.3333282470703125">
                <image>
                   <Image url="@../Images/Backgrounds/JOIN1.png" />
                </image></ImageView>
-            <TextField layoutX="621.0" layoutY="189.0" prefHeight="37.0" prefWidth="583.0" />
-            <Button layoutX="1203.0" layoutY="170.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="161.0" style="-fx-background-color: image;" textFill="#030303">
-               <graphic>
-                  <ImageView fitHeight="126.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/Icons/BUTTONS/SEARCH.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <effect>
-                  <Glow level="0.53" />
-               </effect></Button>
          </children>
       </AnchorPane>
    </top>
    <center>
-
-
-            <ImageView fitHeight="1244.0" fitWidth="2089.0" layoutX="-145.0" layoutY="-84.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Backgrounds/join.jpg" />
-               </image>
+      <HBox prefHeight="100.0" prefWidth="1228.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField prefWidth="1000.0">
+               <HBox.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </HBox.margin>
+            </TextField>
+            <JFXButton style="-fx-background-color: red;" text="Join">
+               <HBox.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </HBox.margin>
+            </JFXButton>
+            <Button mnemonicParsing="false" prefHeight="72.0" prefWidth="161.0" style="-fx-background-color: image;" textFill="#030303">
                <effect>
-                  <Glow />
-               </effect>
-            </ImageView>
-            <ScrollPane layoutX="355.0" layoutY="-84.0" prefHeight="626.0" prefWidth="1029.0">
-               <content>
-                  <TableView prefHeight="769.0" prefWidth="1009.0" style="-fx-background-color: #424242; -fx-border-color: Black; -fx-background-insets: 0, 0 0 1 0;">
-                    <columns>
-                      <TableColumn prefWidth="101.0" text="GROUP ID" />
-                      <TableColumn maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="750.0" text="NAME" />
-                        <TableColumn prefWidth="153.0" text="NO OF PLAYERS" />
-                    </columns>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" />
-                     </padding>
-                  </TableView>
-               </content>
-            </ScrollPane>
+                  <Glow level="0.53" />
+               </effect></Button>
+         </children>
+      </HBox>
    </center>
+   <bottom>
+      <TableView prefHeight="142.0" prefWidth="1992.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="200.0" text="Game Name" />
+          <TableColumn prefWidth="200.0" text="No of players" />
+        </columns>
+      </TableView>
+   </bottom>
 </BorderPane>

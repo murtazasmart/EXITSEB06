@@ -5,7 +5,10 @@ import Client.Animations.MenuButtonAnimations;
 import Client.UIButtonActions.GeneralButtonActions;
 import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -43,7 +46,11 @@ public class BoardController extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
+        primaryStage.setTitle("EXIT-POKER");
+        primaryStage.setScene(new Scene(root, 1470, 1000));
+        primaryStage.setMaximized(true);
+        primaryStage.show();
     }
 
     public void methid1()
