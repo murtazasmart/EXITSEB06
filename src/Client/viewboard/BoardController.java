@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -43,7 +44,8 @@ public class BoardController extends Application{
     @FXML
     ImageView opo_1_cd_1,opo_1_cd_2,opo_c_cd_1,crd_pc_1,crd_pc_2,crd_pc_3;
     @FXML
-    Button btnHome;
+    Button btnHome,btnShuffle;
+    @FXML ImageView crd_p1,crd_p2,crd_p3;
 
     public BoardController()
     {
@@ -52,23 +54,15 @@ public class BoardController extends Application{
         generalButtonActions= new GeneralButtonActions();
         startupController= new StartupController();
         boardPopupController = new BoardPopupController();
-
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
         primaryStage.setTitle("EXIT-POKER");
-        primaryStage.setScene(new Scene(root, 1470, 1000));
+        primaryStage.setScene(new Scene(root));
         primaryStage.setMaximized(true);
         primaryStage.show();
-    }
-
-    public void methid1()
-    {
-        Bounds boundsInScene = opo_c_cd_1.localToScene(opo_1_cd_1.getBoundsInLocal());
-        System.out.println(boundsInScene.getMaxX()+" "+boundsInScene.getMaxY());
-        opo_1_cd_1.setY(5);
     }
 
     public void cardMouseEntered(MouseEvent mouseEvent) {
@@ -132,24 +126,42 @@ public class BoardController extends Application{
     }
 
     public void btnHomeClicked(ActionEvent actionEvent) throws Exception {
-//        stage = (Stage) btnHome.getScene().getWindow();
-//        startupController.start(stage);
+        stage = (Stage) btnHome.getScene().getWindow();
+        startupController.start(stage);
+    }
 
+
+    public void cardRevealWhenClicked(MouseEvent mouseEvent) {
+        ImageView crdView = (ImageView)mouseEvent.getSource();
+        cardAnimations.changeCardImage(crdView,"joker.png");
+    }
+
+    public void btnShuffleClicked(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("boardpopups/popup.fxml"));
         Stage dialog = new Stage();
         dialog.initStyle(StageStyle.UTILITY);
         dialog.initStyle(StageStyle.UNDECORATED);
+        dialog.initModality(Modality.APPLICATION_MODAL);
         Scene scene = new Scene(root);
         dialog.setScene(scene);
         dialog.setResizable(false);
         dialog.show();
-        boardPopupController.method1();
 
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(6000),
-                ae -> dialog.close()));
+                ae ->dialog.close()));
         timeline.play();
     }
 
 
+    public void crdHideSingle(MouseEvent mouseEvent) {
+        ImageView crdView = (ImageView)mouseEvent.getSource();
+        cardAnimations.hideSingleCard(crdView);
+    }
+
+    public void crdHideMultiple(MouseEvent mouseEvent) {
+
+        ImageView [] arr = {crd_p1,crd_p2,crd_p3};
+        cardAnimations.hideMultipleCards(arr);
+    }
 }
