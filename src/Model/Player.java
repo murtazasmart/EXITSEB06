@@ -35,7 +35,7 @@ public class Player implements Serializable {
     }
 
     Referee re=new Referee();
-    int playersc=re.StartGame();
+    //int playersc=re.StartGame();
     String[][] playerHand=null;
 
     public String[][] displayHand(){

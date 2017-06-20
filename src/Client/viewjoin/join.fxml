@@ -9,23 +9,12 @@
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="319.0" fitWidth="1346.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.6666717529296875" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.3333282470703125">
-               <image>
-                  <Image url="@../Images/Backgrounds/JOIN1.png" />
-               </image></ImageView>
-         </children>
-      </AnchorPane>
-   </top>
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Server.Server">
    <center>
-      <HBox prefHeight="100.0" prefWidth="1228.0" BorderPane.alignment="CENTER">
+      <HBox fillHeight="false" maxHeight="50.0" prefHeight="50.0" prefWidth="1344.0" BorderPane.alignment="CENTER">
          <children>
             <TextField prefWidth="1000.0">
                <HBox.margin>
@@ -45,11 +34,18 @@
       </HBox>
    </center>
    <bottom>
-      <TableView prefHeight="142.0" prefWidth="1992.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableGames" id="tableGames" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="1344.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn prefWidth="200.0" text="Game Name" />
           <TableColumn prefWidth="200.0" text="No of players" />
         </columns>
       </TableView>
    </bottom>
+   <top>
+      <ImageView fitHeight="319.0" fitWidth="1346.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../Images/Backgrounds/JOIN1.png" />
+         </image>
+      </ImageView>
+   </top>
 </BorderPane>

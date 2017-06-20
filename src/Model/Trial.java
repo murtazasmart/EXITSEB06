@@ -28,7 +28,7 @@ public class Trial {
 
 
 
-        Referee re= new Referee();
+        /*Referee re= new Referee();
         int playersc=re.StartGame();
         String[][] playerCarray=re.DistributeCard(playersc);
 
@@ -42,11 +42,11 @@ public class Trial {
             System.out.println("");
         }*/
 
-        Player p=new Player();
+        /*Player p=new Player();
         p.displayHand();
         for(int i=0;i<5;i++){
             p.splitCard(playerCarray);
-        }
+        }*/
 
 
     }

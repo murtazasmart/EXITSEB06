@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Server.Server">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.viewhost.HostController">
    <top>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="902.0" prefWidth="1620.0" BorderPane.alignment="CENTER">
          <children>
@@ -31,7 +31,7 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <TextField layoutX="696.0" layoutY="379.0" prefHeight="47.0" prefWidth="360.0" />
+            <TextField id="hostPortNo" fx:id="hostPortNo" layoutX="696.0" layoutY="379.0" prefHeight="47.0" prefWidth="360.0" />
             <Button fx:id="hostHostButton" layoutX="696.0" layoutY="436.0" mnemonicParsing="false" onAction="#iveBeenClicked" prefHeight="43.0" prefWidth="93.0" style="-fx-background-color: BLACK;" textAlignment="CENTER">
                <graphic>
                   <ImageView blendMode="GREEN" cache="true" fitHeight="64.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
