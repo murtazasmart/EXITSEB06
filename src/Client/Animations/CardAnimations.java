@@ -1,11 +1,9 @@
 package Client.Animations;
 
-import javafx.animation.Interpolator;
-import javafx.animation.PathTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
 import javafx.scene.Cursor;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
@@ -57,32 +55,15 @@ public class CardAnimations {
 
     public void cardRotateOnClick(ImageView crdView)
     {
-
-        System.out.println("ROTATE ACCESSED");
-        crdView = new ImageView();
-        RotateTransition rotateTransition = new RotateTransition(Duration.millis(500),crdView);
+        System.out.println(crdView);
+        RotateTransition rotateTransition = new RotateTransition(Duration.millis(2000),crdView);
         rotateTransition.setAxis(Rotate.Y_AXIS);
         rotateTransition.setFromAngle(0);
         rotateTransition.setToAngle(360);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
-        rotateTransition.setCycleCount(1);
+        rotateTransition.setCycleCount(Animation.INDEFINITE);
         rotateTransition.play();
         
-    }
-
-    public void cardPackShuffle(ImageView[] arr)
-    {
-
-        for(int i=0;i<arr.length;i++)
-        {
-            RotateTransition rotateTransition = new RotateTransition(Duration.millis(500),arr[i]);
-            rotateTransition.setAxis(Rotate.Y_AXIS);
-            rotateTransition.setFromAngle(0);
-            rotateTransition.setToAngle(360);
-            rotateTransition.setInterpolator(Interpolator.LINEAR);
-            rotateTransition.setCycleCount(1);
-            rotateTransition.play();
-        }
     }
 
     public void cardDistribute(ImageView image,Double toX,Double toY)
@@ -102,5 +83,52 @@ public class CardAnimations {
         pathTransition.play();
     }
 
+    public void changeCardImage(ImageView crdView,String fileName)
+    {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(500),crdView);
+        fadeTransition.setInterpolator(Interpolator.EASE_IN);
+        fadeTransition.setFromValue(0.5);
+        fadeTransition.setToValue(1);
+        fadeTransition.setCycleCount(1);
+        fadeTransition.play();
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(50),
+                ae -> crdView.setImage(new Image("Client/Images/Cards/Spades/"+fileName))));
+        timeline.play();
+
+
+    }
+
+    public void hideSingleCard(ImageView cardView)
+    {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(500),cardView);
+        fadeTransition.setInterpolator(Interpolator.EASE_IN);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.setCycleCount(1);
+        fadeTransition.play();
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(500),
+                ae -> cardView.setVisible(false)));
+        timeline.play();
+
+    }
+
+    public void hideMultipleCards(ImageView[] cardsView)
+    {
+        for(ImageView cardsViews:cardsView)
+        {
+            FadeTransition fadeTransition = new FadeTransition(Duration.millis(500),cardsViews);
+            fadeTransition.setInterpolator(Interpolator.EASE_IN);
+            fadeTransition.setFromValue(1);
+            fadeTransition.setToValue(0);
+            fadeTransition.setCycleCount(1);
+            fadeTransition.play();
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(500),
+                    ae -> cardsViews.setVisible(false)));
+            timeline.play();
+        }
+    }
 
 }

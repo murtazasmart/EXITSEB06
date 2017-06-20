@@ -28,6 +28,13 @@ public class StartupController extends Application {
     private JoinController joinController;
     private HostController hostController;
     private Stage stage;
+
+
+    @FXML
+    Button btnJoin,btnQuit,btnHost;
+    @FXML
+    ImageView btnVolume;
+
     public StartupController()
     {
         menuButtonAnimations= new MenuButtonAnimations();
@@ -49,10 +56,6 @@ public class StartupController extends Application {
     }
 
 
-    @FXML
-    Button btnJoin,btnQuit,btnHost;
-    @FXML
-    ImageView btnVolume;
 
     public void btnJoinClicked(ActionEvent actionEvent) throws Exception {
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(500),btnJoin);

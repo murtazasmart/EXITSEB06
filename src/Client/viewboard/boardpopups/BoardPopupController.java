@@ -8,6 +8,7 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -15,14 +16,17 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * Created by Bhagya Rathnayake on 6/19/2017.
  */
-public class BoardPopupController extends Application {
+public class BoardPopupController extends Application implements Initializable{
    private CardAnimations cardAnimations;
     private Timeline cardAnim = new Timeline();
     @FXML
-    ImageView pc1,pc2,pc3,pc4;
+    ImageView pc1,pc2,pc3,pc4,pc5,pc6,pc7,pc8,pc9,pc10,pc11;
 
 
     public BoardPopupController()
@@ -35,16 +39,20 @@ public class BoardPopupController extends Application {
 
     }
 
-    public void method1()
-    {
-        RotateTransition rotateTransition = new RotateTransition(Duration.millis(500),pc1);
-        rotateTransition.setAxis(Rotate.Y_AXIS);
-        rotateTransition.setFromAngle(0);
-        rotateTransition.setToAngle(360);
-        rotateTransition.setInterpolator(Interpolator.LINEAR);
-        rotateTransition.setCycleCount(1);
-        rotateTransition.play();
-//        cardAnimations.cardRotateOnClick(pc1);
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        cardAnimations.cardRotateOnClick(pc1);
+        cardAnimations.cardRotateOnClick(pc2);
+        cardAnimations.cardRotateOnClick(pc3);
+        cardAnimations.cardRotateOnClick(pc4);
+        cardAnimations.cardRotateOnClick(pc5);
+        cardAnimations.cardRotateOnClick(pc6);
+        cardAnimations.cardRotateOnClick(pc7);
+        cardAnimations.cardRotateOnClick(pc8);
+        cardAnimations.cardRotateOnClick(pc9);
+        cardAnimations.cardRotateOnClick(pc10);
+        cardAnimations.cardRotateOnClick(pc11);
 
     }
 }
