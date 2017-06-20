@@ -1,7 +1,9 @@
 package Client.Animations;
 
-import javafx.animation.*;
-import javafx.geometry.Bounds;
+import javafx.animation.Interpolator;
+import javafx.animation.PathTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
 import javafx.scene.Cursor;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
@@ -11,8 +13,6 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
-
-import java.util.List;
 
 /**
  * Created by Bhagya Rathnayake on 6/2/2017.
@@ -59,6 +59,7 @@ public class CardAnimations {
     {
 
         System.out.println("ROTATE ACCESSED");
+        crdView = new ImageView();
         RotateTransition rotateTransition = new RotateTransition(Duration.millis(500),crdView);
         rotateTransition.setAxis(Rotate.Y_AXIS);
         rotateTransition.setFromAngle(0);

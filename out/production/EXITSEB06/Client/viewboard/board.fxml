@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1529.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.viewboard.BoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.viewboard.BoardController">
    <top>
       <Pane prefHeight="69.0" prefWidth="1181.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER" />
    </top>
@@ -82,7 +82,7 @@
             </VBox>
             <VBox alignment="BOTTOM_CENTER" layoutX="7.0" layoutY="332.0" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" style="-fx-background-color: BLACK;">
+                  <Button fx:id="btnHome" mnemonicParsing="false" onAction="#btnHomeClicked" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" style="-fx-background-color: BLACK;">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -103,7 +103,7 @@
          </children></Pane>
    </left>
    <right>
-      <Pane prefHeight="598.0" prefWidth="226.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="598.0" prefWidth="222.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
       <Pane prefHeight="49.0" prefWidth="1194.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER" />
@@ -111,7 +111,7 @@
    <center>
       <AnchorPane prefHeight="531.0" prefWidth="925.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="670.0" fitWidth="1378.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="670.0" fitWidth="1297.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Backgrounds/Board.png" />
                </image>
@@ -123,14 +123,9 @@
                </effect>
             </ImageView>
             <AnchorPane layoutX="451.0" layoutY="238.0" />
-            <ImageView fitHeight="160.0" fitWidth="120.0" layoutX="511.0" layoutY="97.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="160.0" fitWidth="120.0" layoutX="536.0" layoutY="99.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Cards/Diamonds/D1.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="crd_pc_3" fitHeight="166.0" fitWidth="125.0" layoutX="946.0" layoutY="491.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
                </image>
             </ImageView>
             <ImageView fitWidth="120.0" layoutX="603.0" layoutY="98.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
@@ -138,17 +133,7 @@
                   <Image url="@../Images/Cards/Diamonds/D2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="crd_pc_2" fitHeight="166.0" fitWidth="125.0" layoutX="959.0" layoutY="491.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="194.0" layoutY="277.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 32;">
-               <image>
-                  <Image url="@../Images/Cards/Spades/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="crd_pc_1" fitHeight="166.0" fitWidth="125.0" layoutX="976.0" layoutY="492.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
@@ -163,17 +148,17 @@
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="781.0" layoutY="482.0" prefHeight="11.0" prefWidth="111.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="752.0" layoutY="498.0" prefHeight="11.0" prefWidth="111.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="1031.0" layoutY="267.0" prefHeight="33.0" prefWidth="157.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="1066.0" layoutY="284.0" prefHeight="33.0" prefWidth="116.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="927.0" layoutY="424.0" prefHeight="33.0" prefWidth="157.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="953.0" layoutY="425.0" prefHeight="33.0" prefWidth="113.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
@@ -228,6 +213,31 @@
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="552.0" layoutY="379.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
+               <image>
+                  <Image url="@../Images/Cards/Spades/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="560.0" layoutY="379.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
+               <image>
+                  <Image url="@../Images/Cards/Spades/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="569.0" layoutY="379.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
+               <image>
+                  <Image url="@../Images/Cards/Spades/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="104.0" layoutX="579.0" layoutY="379.0" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
+               <image>
+                  <Image url="@../Images/Cards/Spades/back.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="340.0" layoutY="495.0" prefHeight="11.0" prefWidth="111.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bauhaus 93" size="27.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
