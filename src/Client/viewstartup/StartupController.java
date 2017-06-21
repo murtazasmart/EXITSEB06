@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,10 +19,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * Created by Bhagya Rathnayake on 5/29/2017.
  */
-public class StartupController extends Application {
+public class StartupController extends Application implements Initializable{
     private MenuButtonAnimations menuButtonAnimations;
     private MediaPlayerController mediaPlayerController;
     private GeneralButtonActions generalButtonActions;
@@ -34,6 +38,15 @@ public class StartupController extends Application {
     Button btnJoin,btnQuit,btnHost;
     @FXML
     ImageView btnVolume;
+
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(location + " " + resources);
+
+    }
+
+    public void start(){
+        launch();
+    }
 
     public StartupController()
     {
@@ -63,7 +76,7 @@ public class StartupController extends Application {
         fadeTransition.setToValue(0);
         fadeTransition.play();
         stage = (Stage) btnJoin.getScene().getWindow();
-        joinController.start(stage);
+        //joinController.start(stage);
 
     }
 

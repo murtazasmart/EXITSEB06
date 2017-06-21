@@ -1,6 +1,7 @@
 package Client.viewjoin;
 
 import Model.Game;
+import Server.Server;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -10,8 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -21,9 +21,44 @@ import java.util.ResourceBundle;
 /**
  * Created by Bhagya Rathnayake on 6/17/2017.
  */
-public class JoinController extends Application {
+public class JoinController {
 
-    public static void main(String[] args) {
+    @FXML
+    Button joinButton;
+
+    @FXML
+    Button hostButton;
+
+    @FXML
+    TextField joinTextField;
+    private String serverIPAddress;
+
+    Thread t1;
+
+    public void hostHasBeenClicked(){
+        System.out.println("Host clicked");
+    }
+
+    public void iveBeenClicked(){
+        System.out.println("Here clcikeed");
+        Stage stage = (Stage)joinTextField.getScene().getWindow();
+        serverIPAddress = joinTextField.getText();
+        System.out.println(serverIPAddress);
+        if(serverIPAddress != null)
+            System.out.println("ip not null");
+        Server server = new Server();
+       /* t1 = new Thread(server);
+        server.run();*/
+
+        new Thread(() -> {
+            t1 = new Thread(server);
+            server.run();
+        }).start();
+        //stage.close();
+
+    }
+
+    /*public static void main(String[] args) {
         launch();
     }
 
@@ -35,6 +70,6 @@ public class JoinController extends Application {
         primaryStage.setScene(new Scene(root, 1470, 1000));
         primaryStage.setMaximized(true);
         primaryStage.show();
-    }
+    }*/
 }
 

@@ -76,7 +76,7 @@ public class Server extends Thread{
             port = hostController.getPort();
         } catch (UnknownHostException e) {
             e.printStackTrace();
-        }*/
+        }*//*
         HostController hostController = new HostController();
         Thread t1 = new Thread(hostController);
         t1.start();
@@ -87,7 +87,7 @@ public class Server extends Thread{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
         startServer();
         connectClients();
 

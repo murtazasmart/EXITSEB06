@@ -12,16 +12,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Server.Server">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.viewjoin.JoinController">
    <center>
       <HBox fillHeight="false" maxHeight="50.0" prefHeight="50.0" prefWidth="1344.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField prefWidth="1000.0">
+            <TextField id="joinTextField" fx:id="joinTextField" prefWidth="1000.0">
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin>
             </TextField>
-            <JFXButton style="-fx-background-color: red;" text="Join">
+            <JFXButton id="joinButton" fx:id="joinButton" onAction="#iveBeenClicked" style="-fx-background-color: red;" text="Join">
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin>
