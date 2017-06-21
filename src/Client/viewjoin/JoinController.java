@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,7 +34,7 @@ public class JoinController {
     TextField joinTextField;
     private String serverIPAddress;
 
-    Thread t1;
+    Thread mainClientThread;
 
     public void hostHasBeenClicked(){
         System.out.println("Host clicked");
@@ -51,11 +52,23 @@ public class JoinController {
         server.run();*/
 
         new Thread(() -> {
-            t1 = new Thread(server);
+            mainClientThread = new Thread(server);
             server.run();
         }).start();
         //stage.close();
 
+    }
+
+    public void start(Stage stage){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("join.fxml"));
+            stage.setTitle("EXIT-POKER");
+            stage.setScene(new Scene(root, 1470, 1000));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /*public static void main(String[] args) {

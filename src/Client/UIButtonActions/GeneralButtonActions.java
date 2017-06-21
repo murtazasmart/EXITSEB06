@@ -39,7 +39,7 @@ public class GeneralButtonActions{
     public void btnHelpClicked(Button btnHelp) throws IOException {
         try{
             stage = (Stage) btnHelp.getScene().getWindow();
-            helpController.start(stage);
+            //helpController.start(stage);
         }
 
         catch(Exception e)

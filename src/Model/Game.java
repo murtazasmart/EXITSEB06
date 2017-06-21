@@ -116,7 +116,7 @@ public class Game  extends Thread implements Serializable {
             Player player;
             object = clientThreadThreads[i].readObjectFromClient();
             player = (Player) object;
-            totalScore = totalScore + player.score;
+            totalScore = totalScore + player.getScore();
         }
         message.setText("total score is "+totalScore);
         for(int i =0; i < noOfPlayers;i++){

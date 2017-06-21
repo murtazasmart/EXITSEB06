@@ -19,13 +19,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * Created by Bhagya Rathnayake on 5/29/2017.
  */
-public class StartupController extends Application implements Initializable{
+public class StartupController{
     private MenuButtonAnimations menuButtonAnimations;
     private MediaPlayerController mediaPlayerController;
     private GeneralButtonActions generalButtonActions;
@@ -39,15 +40,6 @@ public class StartupController extends Application implements Initializable{
     @FXML
     ImageView btnVolume;
 
-    public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(location + " " + resources);
-
-    }
-
-    public void start(){
-        launch();
-    }
-
     public StartupController()
     {
         menuButtonAnimations= new MenuButtonAnimations();
@@ -59,15 +51,17 @@ public class StartupController extends Application implements Initializable{
 //        obj.method1();
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("startup.fxml"));
-        primaryStage.setTitle("EXIT-POKER");
-        primaryStage.setScene(new Scene(root, 1470, 1000));
-        primaryStage.setMaximized(true);
-        primaryStage.show();
+    public void start(Stage stage){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("startup.fxml"));
+            stage.setTitle("EXIT-POKER");
+            stage.setScene(new Scene(root, 1470, 1000));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 
 
     public void btnJoinClicked(ActionEvent actionEvent) throws Exception {

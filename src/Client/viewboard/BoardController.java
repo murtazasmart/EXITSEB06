@@ -126,8 +126,8 @@ public class BoardController extends Application{
     }
 
     public void btnHomeClicked(ActionEvent actionEvent) throws Exception {
-        stage = (Stage) btnHome.getScene().getWindow();
-        startupController.start(stage);
+//        stage = (Stage) btnHome.getScene().getWindow();
+//        startupController.start(stage);
     }
 
 

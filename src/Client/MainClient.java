@@ -20,8 +20,8 @@ public class MainClient implements Runnable{
     public void run() {
 //        HostController hostController = new HostController();
 //        hostController.startView();
-        StartupController startupController = new StartupController();
-        startupController.start();
+//        StartupController startupController = new StartupController();
+//        startupController.start();
 
         /*Thread t1 = new Thread(hostController);
         t1.run();

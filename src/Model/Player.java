@@ -16,6 +16,14 @@ public class Player implements Serializable {
     int roundBRisk;
     private int playerId;
 
+    public Player() {
+    }
+
+    public Player(ClientThread clientThread){
+        username = clientThread.username;
+
+    }
+
 
     /**
      * @return the numberofplayers

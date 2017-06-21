@@ -17,10 +17,23 @@ public class GUIThread extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Client/viewhelp/help4.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Client/viewhelp/help.fxml"));
         primaryStage.setTitle("EXIT-POKER");
         primaryStage.setScene(new Scene(root, 1470, 1000));
         primaryStage.setMaximized(true);
         primaryStage.show();
     }
+
+    public void getStage(){
+
+    }
+    /*
+    public void changeScene(Scene scene){
+        stage = (Stage) btnJoin.getScene().getWindow();
+        joinController.start(stage);
+    }
+
+    public void startJoinController(Stage){
+
+    }*/
 }
