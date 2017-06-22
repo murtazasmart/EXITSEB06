@@ -6,16 +6,18 @@ package Model;
  */
 public class Referee {
 
-    Card c= new Card();
+    Card c;
     String [] cardpackc;
     String[][] playerCarray;
     int playerscount;
 
-    public Player[] StartGame(Player[] players){
+    public Player[] startGame(Player[] players){
         playerscount = players.length;
         //Player[] players = new Player[5];
-        System.out.println("Game Started");
-        cardpackc =c.Shuffel();
+        System.out.println("Game Started (refereee)");
+        c = new Card();
+        cardpackc = c.Shuffel();
+        System.out.println("cards shuffled (refereee)");
         System.out.println("cards=");
         /*for (int i = 0; i < cardpackc.length; i++) {
             System.out.print(cardpackc[i]+",");
@@ -36,7 +38,7 @@ public class Referee {
             players[i].getObjectReady(playerscount);
             players[i].setNumberofplayers(playerscount);
             players[i].setCardHand(playerCarray);
-            players[i].setUser_info(usernames);
+            players[i].setAllUsernames(usernames);
         }
 
         playerCarray = null;
@@ -118,6 +120,8 @@ public class Referee {
 
     public Player[] CardExchange(Player[] players){
 
+
+
         for(int i = 0; i< playerscount;i++){
             for(int j =0;j<5;j++){
                 if(players[i].getSwapCards()[j] ==true){
@@ -196,16 +200,43 @@ public class Referee {
     }
 
     public Player[] calculateOverallScore(Player[] players){
-        int valueScore=0, typeScore=0, totalScore=0;
+        int valueScore=0, typeScore=0, totalScoreNew=0, totalScoreOld;
         String [][] playerCardHand;
+        int[] allScores = new int[playerscount];
         for(int i = 0;i<playerscount;i++){
+            totalScoreOld = players[i].getScore();
             playerCardHand = players[i].getCardHand();
             typeScore = getTypeScore(i, playerCardHand);
             valueScore = getValueScore(i, playerCardHand);
-            totalScore = typeScore + valueScore;
-            players[i].setScore(totalScore);
+            totalScoreNew = typeScore + valueScore + totalScoreOld;
+            players[i].setScore(totalScoreNew);
+            allScores[i] = totalScoreNew;
+        }
+        for(int i = 0;i<playerscount;i++){
+            players[i].setAllScores(allScores);
         }
 
+        return players;
+    }
+
+    public Player[] updatePlayerToBeKicked(Player[] players){
+        int lowestScore = 999, lowestScorePlayerId = 0;
+        for(int i = 0;i<players.length;i++){
+            if(players[i].getScore()<lowestScore ){
+                lowestScore = players[i].getScore();
+                lowestScorePlayerId = i;
+            }
+        }
+        players[lowestScorePlayerId].setKicked(true);
+        return players;
+    }
+
+    public Player[] updatePointsDonation(Player[] players){
+        for(int i = 0;i<playerscount;i++){
+            if(players[i].isKicked() == true ){
+                players[players[i].getPlayerIdToDonatePoints()].updateDonationScore((players[i].getScore()/4));
+            }
+        }
         return players;
     }
 
@@ -226,22 +257,22 @@ public class Referee {
             switch(type){
 
                 case "s":
-                    typeScore=5;
+                    typeScore+=5;
                     //sum+=point;
                     break;
 
                 case "d":
-                    typeScore=4;
+                    typeScore+=4;
                     //sum+=point;
                     break;
 
                 case "c":
-                    typeScore=3;
+                    typeScore+=3;
                     //sum+=point;
                     break;
 
                 case "h":
-                    typeScore=2;
+                    typeScore+=2;
                     //sum+=point;
                     break;
 
@@ -265,66 +296,66 @@ public class Referee {
 
             System.out.println("user "+ playerId+ " card value= "+value);
 
-        }
+            switch(value){
 
-        switch(value){
+                case "A":
+                    valueScore+=15;
+                    //sum+=point;
+                    break;
+                case "K":
+                    valueScore+=14;
+                    //sum+=point;
+                    break;
+                case "Q":
+                    valueScore+=13;
+                    //sum+=point;
+                    break;
+                case "J":
+                    valueScore+=12;
+                    //sum+=point;
+                    break;
+                case "10":
+                    valueScore+=11;
+                    //sum+=point;
+                    break;
+                case "9":
+                    valueScore+=10;
+                    //sum+=point;
+                    break;
+                case "8":
+                    valueScore+=9;
+                    //sum+=point;
+                    break;
+                case "7":
+                    valueScore+=8;
+                    //sum+=point;
+                    break;
+                case "6":
+                    valueScore+=7;
+                    //sum+=point;
+                    break;
+                case "5":
+                    valueScore+=6;
+                    //sum+=point;
+                    break;
+                case "4":
+                    valueScore+=5;
+                    //sum+=point;
+                    break;
 
-            case "A":
-                valueScore=15;
-                //sum+=point;
-                break;
-            case "K":
-                valueScore=14;
-                //sum+=point;
-                break;
-            case "Q":
-                valueScore=13;
-                //sum+=point;
-                break;
-            case "J":
-                valueScore=12;
-                //sum+=point;
-                break;
-            case "10":
-                valueScore=11;
-                //sum+=point;
-                break;
-            case "9":
-                valueScore=10;
-                //sum+=point;
-                break;
-            case "8":
-                valueScore=9;
-                //sum+=point;
-                break;
-            case "7":
-                valueScore=8;
-                //sum+=point;
-                break;
-            case "6":
-                valueScore=7;
-                //sum+=point;
-                break;
-            case "5":
-                valueScore=6;
-                //sum+=point;
-                break;
-            case "4":
-                valueScore=5;
-                //sum+=point;
-                break;
+                case "3":
+                    valueScore+=4;
+                    //sum+=point;
+                    break;
 
-            case "3":
-                valueScore=4;
-                //sum+=point;
-                break;
-
-            case "2":
-                valueScore=3;
-                //sum+=point;
-                break;
+                case "2":
+                    valueScore+=3;
+                    //sum+=point;
+                    break;
 
 
+
+            }
 
         }
 

@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Game  extends Thread implements Serializable {
     int scoreTick;
     boolean isStarted = false;
-    String gameName;
+    String gameName, gameCreatorName;
     int gameID, totalScore;
     ClientThread[] clientThreadThreads;
     Player[] players;
@@ -22,6 +22,7 @@ public class Game  extends Thread implements Serializable {
     Message message;
     int noOfPlayers;
     Object object;
+    Referee referee;
 
     public Game(){
         maxClientsCount = 10;
@@ -35,12 +36,18 @@ public class Game  extends Thread implements Serializable {
         players = new Player[maxClientsCount];
         scan = new Scanner(System.in);
         message = new Message();
+        referee = new Referee();
     }
 
     @Override
     public void run(){
         startGame();
-        gameMainLogic();
+        while (true){
+            round();
+            if(noOfPlayers == 1)
+                break;
+        }
+        System.out.println("Game has ended");
 
     }
 
@@ -54,19 +61,20 @@ public class Game  extends Thread implements Serializable {
                 //Thread t = new Thread clientThread();
                 (clientThreadThreads[i] = clientThread).start();
                 players[i] = new Player(clientThread);
+                players[i].setPlayerId(i);;
                 noOfPlayers++;
                 System.out.println("here1");
-                clientThreadThreads[i].sendObjectToClient(new Message("uve been added"));
+                clientThreadThreads[i].sendMessageObjectToClient(new Message("uve been added"));
                 break;
             }
         }
         //informAllPlayers("player added");
         for(int i = 0; i < noOfPlayers ; i++){
-            clientThreadThreads[i].sendObjectToClient(new Message("player added"));
+            clientThreadThreads[i].sendMessageObjectToClient(new Message("player added"));
         }
     }
 
-    public void addPlayer(Socket clientSocket, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream) {
+    public void addPlayer(Socket clientSocket, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream, Game clientGameObject) {
         for(int i = 0; i < maxClientsCount; i++){
             if(clientThreadThreads[i]==null){
                 ClientThread clientThread = new ClientThread();
@@ -76,17 +84,29 @@ public class Game  extends Thread implements Serializable {
                 //Thread t = new Thread clientThread();
                 (clientThreadThreads[i] = clientThread).start();
                 players[i] = new Player(clientThread);
+                players[i].setUsername(clientGameObject.getGameCreatorName());
+                players[i].setPlayerId(i);
+                players[i].setNumberofplayers(maxClientsCount);
                 noOfPlayers++;
                 System.out.println("game created and client added");
                 break;
             }
         }
+        if(noOfPlayers == players[0].getNumberofplayers())
+            System.out.println("No of players in game object and player object same");
         informAllPlayers("Game created");
     }
 
     public void informAllPlayers(String messageToBeBroadcast){
         for(int i = 0; i < noOfPlayers ; i++){
-            clientThreadThreads[i].sendObjectToClient(new Message(messageToBeBroadcast));
+            clientThreadThreads[i].sendMessageObjectToClient(new Message(messageToBeBroadcast));
+        }
+    }
+
+    public void informAllPlayers(Player[] players){
+        for(int i = 0; i < noOfPlayers ; i++){
+            System.out.println("thread sent to no "+i);
+            clientThreadThreads[i].sendPlayerObjectToClient(players[i]);
         }
     }
 
@@ -95,33 +115,107 @@ public class Game  extends Thread implements Serializable {
         System.out.println("no of players "+noOfPlayers);
         message.setText("Game is starting");
         for(int i =0; i < noOfPlayers;i++){
-            clientThreadThreads[i].sendObjectToClient(message);
+            clientThreadThreads[i].sendMessageObjectToClient(message);
         }
     }
 
-    public void gameMainLogic(){
-        //THIS IS WHERE THE SYNCHRONISED CALLS COME IN
-        while(true){
-            round();
+    public Player[] handleKickedPlayers(Player[] players){
+        int currentNoOfPlayers = noOfPlayers;
+        String[] allUsernames = players[0].getAllUsernames();
+        String[] newAllUsernames = new String[(currentNoOfPlayers-1)];
+        Player[] newPlayers = new Player[(currentNoOfPlayers-1)];
+        int j = 0;
+        for(int i = 0;i<noOfPlayers;i++){
+            if(players[i].isKicked() == true ){
+                continue;
+            }
+            newPlayers[j] = players[i];
+            newAllUsernames[j] = players[i].getUsername();
+            newPlayers[j].setNumberofplayers(currentNoOfPlayers-1);
+            j++;
         }
+        for(int i = 0;i<currentNoOfPlayers-1;i++){
+            newPlayers[i].setAllUsernames(newAllUsernames);
+        }
+        return newPlayers;
+    }
+
+//    public void gameMainLogic(){
+//        //THIS IS WHERE THE SYNCHRONISED CALLS COME IN
+//        while(true){
+//            round();
+//        }
+//    }
+
+    public int getKickedPlayerId(Player[] players){
+        for(int i =0;i<players.length;i++){
+            if(players[i].isKicked()==true)
+                return i;
+        }
+        return 0;
     }
 
     public void round(){
-        message.setText("Enter number: ");
+        System.out.println("before start game");
+        players = referee.startGame(players);
+        System.out.println("players about to be sent");
+        informAllPlayers(players);
+        System.out.println("players sent");
+
+        //HANDLE ERROR HERE WHEN CLIENT EXITS SUDDENLY, EACH OBJECT IS WAITED FOR ONE BY ONE IN ORDER OF CLIENTHTREADS
         for(int i =0; i < noOfPlayers;i++){
-            clientThreadThreads[i].sendObjectToClient(message);
+            players[i] = (Player)clientThreadThreads[i].readObjectFromClient();
         }
+
+        players = referee.CardExchange(players);
+
+        players = referee.calculateOverallScore(players);
+
+        players = referee.updatePlayerToBeKicked(players);
+
+        informAllPlayers(players);
+
         for(int i =0; i < noOfPlayers;i++){
-            //ClientThread ct;
-            Player player;
-            object = clientThreadThreads[i].readObjectFromClient();
-            player = (Player) object;
-            totalScore = totalScore + player.getScore();
+            players[i] = (Player)clientThreadThreads[i].readObjectFromClient();
         }
-        message.setText("total score is "+totalScore);
-        for(int i =0; i < noOfPlayers;i++){
-            clientThreadThreads[i].sendObjectToClient(message);
+
+        if(noOfPlayers > 2) {
+            players = referee.updatePointsDonation(players);
         }
+
+        //SEND MESSAGE TO TELL WHO GOT DONATED POINTS
+        informAllPlayers(players);
+
+        informAllPlayers(players[getKickedPlayerId(players)].getUsername()+" was kicked and he donated 1/4 of his points to "+players[players[getKickedPlayerId(players)].getPlayerIdToDonatePoints()].getUsername());
+
+        System.out.println("kicked player id "+getKickedPlayerId(players));
+
+        clientThreadThreads = ClientThread.removeClientThread(getKickedPlayerId(players),clientThreadThreads);
+
+        players = handleKickedPlayers(players);
+
+        noOfPlayers--;
+
+        System.out.println("round ended, now noOfPlayers is "+noOfPlayers);
+
+        // REMOVE PLAYER referee
+
+
+//        message.setText("Enter number: ");
+//        for(int i =0; i < noOfPlayers;i++){
+//            clientThreadThreads[i].sendMessageObjectToClient(message);
+//        }
+//        for(int i =0; i < noOfPlayers;i++){
+//            //ClientThread ct;
+//            Player player;
+//            object = clientThreadThreads[i].readObjectFromClient();
+//            player = (Player) object;
+//            totalScore = totalScore + player.getScore();
+//        }
+//        message.setText("total score is "+totalScore);
+//        for(int i =0; i < noOfPlayers;i++){
+//            clientThreadThreads[i].sendMessageObjectToClient(message);
+//        }
     }
 
 
@@ -239,5 +333,13 @@ public class Game  extends Thread implements Serializable {
 
     public void setObject(Object object) {
         this.object = object;
+    }
+
+    public String getGameCreatorName() {
+        return gameCreatorName;
+    }
+
+    public void setGameCreatorName(String gameCreatorName) {
+        this.gameCreatorName = gameCreatorName;
     }
 }

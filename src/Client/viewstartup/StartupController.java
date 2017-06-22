@@ -1,13 +1,16 @@
 package Client.viewstartup;
 
 import Client.Animations.MenuButtonAnimations;
+import Client.Client;
 import Client.Controllers.MediaControllers.MediaPlayerController;
+import Client.MainController;
 import Client.UIButtonActions.GeneralButtonActions;
 import Client.viewhost.HostController;
 import Client.viewjoin.JoinController;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,13 +29,16 @@ import java.util.ResourceBundle;
 /**
  * Created by Bhagya Rathnayake on 5/29/2017.
  */
-public class StartupController{
+public class StartupController extends Application{
     private MenuButtonAnimations menuButtonAnimations;
     private MediaPlayerController mediaPlayerController;
     private GeneralButtonActions generalButtonActions;
     private JoinController joinController;
     private HostController hostController;
     private Stage stage;
+    private MainController mainController;
+    private Client client;
+
 
 
     @FXML
@@ -51,17 +57,66 @@ public class StartupController{
 //        obj.method1();
     }
 
-    public void start(Stage stage){
+    @Override
+    public void start(Stage primaryStage) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("startup.fxml"));
-            stage.setTitle("EXIT-POKER");
-            stage.setScene(new Scene(root, 1470, 1000));
-            stage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("startup.fxml"));
+            loader.setController(this);
+            root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        primaryStage.setTitle("EXIT-POKER");
+        primaryStage.setScene(new Scene(root, 1470, 1000));
+
+//        btnHost.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent actionEvent) {
+//                stage = (Stage) btnHost.getScene().getWindow();
+//                if(client==null) System.out.println("startupp controller client null");
+//                hostController.setClient(client);
+//                try {
+//                    hostController.start(stage);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+
+//        btnHost.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                stage = (Stage) btnHost.getScene().getWindow();
+//                if(client==null) System.out.println("startupp controller client null");
+//                hostController.setClient(client);
+//                try {
+//                    hostController.start(stage);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+
+
+        primaryStage.setMaximized(true);
+        primaryStage.show();
+        client = new Client(client);
+        if(this.client==null)System.out.println("startup start client is null");else System.out.println("client not null in start start");
     }
+
+//    public void start(Stage stage, MainController mainController){
+//        this.mainController = mainController;
+//        Parent root = null;
+//        try {
+//            root = FXMLLoader.load(getClass().getResource("startup.fxml"));
+//            stage.setTitle("EXIT-POKER");
+//            stage.setScene(new Scene(root, 1470, 1000));
+//            stage.show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     public void btnJoinClicked(ActionEvent actionEvent) throws Exception {
@@ -70,7 +125,8 @@ public class StartupController{
         fadeTransition.setToValue(0);
         fadeTransition.play();
         stage = (Stage) btnJoin.getScene().getWindow();
-        //joinController.start(stage);
+        joinController.setClient(client);
+        joinController.start(stage);
 
     }
 
@@ -107,8 +163,22 @@ public class StartupController{
 
     }
 
-    public void btnHostClicked(ActionEvent actionEvent) throws Exception {
-        stage = (Stage) btnJoin.getScene().getWindow();
-        hostController.start(stage);
+    public void btnHostClicked(ActionEvent actionEvent){
+        stage = (Stage) btnHost.getScene().getWindow();
+        if(client==null) System.out.println("startupp controller client null");
+        hostController.setClient(client);
+        try {
+            hostController.start(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

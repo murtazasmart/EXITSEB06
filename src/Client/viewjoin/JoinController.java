@@ -1,5 +1,7 @@
 package Client.viewjoin;
 
+import Client.Client;
+import Client.viewwaitingroom.WaitingRoomController;
 import Model.Game;
 import Server.Server;
 import javafx.application.Application;
@@ -22,22 +24,34 @@ import java.util.ResourceBundle;
 /**
  * Created by Bhagya Rathnayake on 6/17/2017.
  */
-public class JoinController {
+public class JoinController extends Application{
 
     @FXML
-    Button joinButton;
-
-    @FXML
-    Button hostButton;
-
+    Button btnJoin;
     @FXML
     TextField joinTextField;
+
     private String serverIPAddress;
+    Client client;
 
     Thread mainClientThread;
 
-    public void hostHasBeenClicked(){
-        System.out.println("Host clicked");
+    public void btnJoinClicked(){
+        client.setGameName(joinTextField.getText());
+        JoinService joinService = new JoinService();
+        joinService.setClient(client);
+        boolean gameJoined = joinService.joinGame();
+        if(gameJoined){
+            Stage stage = (Stage)btnJoin.getScene().getWindow();
+            WaitingRoomController waitingRoomController = new WaitingRoomController();
+            waitingRoomController.setClient(client);
+            try {
+                waitingRoomController.start(stage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public void iveBeenClicked(){
@@ -62,13 +76,15 @@ public class JoinController {
     public void start(Stage stage){
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("join.fxml"));
-            stage.setTitle("EXIT-POKER");
-            stage.setScene(new Scene(root, 1470, 1000));
-            stage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("join.fxml"));
+            loader.setController(this);
+            root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        stage.setTitle("EXIT-POKER");
+        stage.setScene(new Scene(root, 1470, 1000));
+        stage.show();
     }
 
     /*public static void main(String[] args) {
@@ -84,5 +100,13 @@ public class JoinController {
         primaryStage.setMaximized(true);
         primaryStage.show();
     }*/
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }
 

@@ -32,6 +32,21 @@ public class ClientThread extends Thread implements Serializable {
 
     }
 
+    public ClientThread(ClientThread clientThread) {
+        this.clientSocket = clientThread.clientSocket;
+        this.writeToServer = clientThread.writeToServer;
+        this.readFromServer = clientThread.readFromServer;
+        this.sendObjectToClient = clientThread.sendObjectToClient;
+        this.receiveObjectFromClient = clientThread.receiveObjectFromClient;
+        this.ipAddress = clientThread.ipAddress;
+        this.username = clientThread.username;
+        this.score = clientThread.score;
+        this.gameID = clientThread.gameID;
+        this.gameName = clientThread.gameName;
+        this.object = clientThread.object;
+        this.isDisconnected = clientThread.isDisconnected;
+    }
+
     public ClientThread(){
 
     }
@@ -41,7 +56,7 @@ public class ClientThread extends Thread implements Serializable {
 
     }
 
-    public boolean sendObjectToClient(Message message){
+    public boolean sendMessageObjectToClient(Message message){
         try {
             sendObjectToClient.reset();
             sendObjectToClient.writeObject(message);
@@ -51,7 +66,34 @@ public class ClientThread extends Thread implements Serializable {
             e.printStackTrace();
             return false;
         }
+    }
 
+    public boolean sendPlayerObjectToClient(Player player){
+        try {
+            sendObjectToClient.reset();
+            sendObjectToClient.writeObject(player);
+            sendObjectToClient.flush();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static ClientThread[] removeClientThread(int playerId, ClientThread[] clientThreads){
+        int noOfPlayers = clientThreads.length;
+        clientThreads[playerId] = null;
+        noOfPlayers = noOfPlayers -1;
+        ClientThread[] newClientThreads = new ClientThread[noOfPlayers];
+        int j = 0;
+        for(int i = 0 ; i< clientThreads.length;i++){
+            if(i==playerId)
+                continue;
+            newClientThreads[j] = clientThreads[i];
+            j++;
+        }
+
+        return newClientThreads;
     }
 
     public String getUsername() {

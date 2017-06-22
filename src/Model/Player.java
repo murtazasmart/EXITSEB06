@@ -9,12 +9,15 @@ public class Player implements Serializable {
 
 
     private String username;
-    boolean isKicked;
+    private boolean isKicked = false;
     private int numberofplayers;
     private boolean swapCards[];
     int roundARisk;
     int roundBRisk;
     private int playerId;
+    private String[] allUsernames;
+    private  int[] allScores;
+    private int playerIdToDonatePoints;
 
     public Player() {
     }
@@ -212,15 +215,16 @@ public class Player implements Serializable {
         this.Score=Score;
     }
 
-    //to keep the username for eac user id
-    private String[] user_info=new String[numberofplayers];
-
-    public String[] getUser_info(){
-        return user_info;
-    }
-    public void setUser_info(String[] user_info){
-        this.user_info=user_info;
-    }
+// ALREADY INCLUDED AS allUsernames
+// to keep the username for eac user id
+//    private String[] user_info=new String[numberofplayers];
+//
+//    public String[] getUser_info(){
+//        return user_info;
+//    }
+//    public void setUser_info(String[] user_info){
+//        this.user_info=user_info;
+//    }
 
     //change card hand
     private String[] ChangeHand=new String[5];//private String[][] ChangeHand=new String[numberofplayers][5];
@@ -248,7 +252,7 @@ public class Player implements Serializable {
     }
 
     void getObjectReady(int playerscount) {
-        swapCards = new boolean[playerscount];
+        swapCards = new boolean[5];
     }
 
     /**
@@ -265,11 +269,43 @@ public class Player implements Serializable {
         this.playerId = playerId;
     }
 
+    public String[] getAllUsernames() {
+        return allUsernames;
+    }
 
+    public void setAllUsernames(String[] allUsernames) {
+        this.allUsernames = allUsernames;
+    }
 
+    public boolean isKicked() {
+        return isKicked;
+    }
 
+    public void setKicked(boolean kicked) {
+        isKicked = kicked;
+    }
 
-//    String username;
+    public int getPlayerIdToDonatePoints() {
+        return playerIdToDonatePoints;
+    }
+
+    public void setPlayerIdToDonatePoints(int playerIdToDonatePoints) {
+        this.playerIdToDonatePoints = playerIdToDonatePoints;
+    }
+
+    public void updateDonationScore(int score){
+        Score += score;
+    }
+
+    public int[] getAllScores() {
+        return allScores;
+    }
+
+    public void setAllScores(int[] allScores) {
+        this.allScores = allScores;
+    }
+
+    //    String username;
 //    int score;
 //    String[][] otherPlayerCards;
 //

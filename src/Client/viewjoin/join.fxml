@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.viewjoin.JoinController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <HBox fillHeight="false" maxHeight="50.0" prefHeight="50.0" prefWidth="1344.0" BorderPane.alignment="CENTER">
          <children>
@@ -21,7 +21,7 @@
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin>
             </TextField>
-            <JFXButton id="joinButton" fx:id="joinButton" onAction="#iveBeenClicked" style="-fx-background-color: red;" text="Join">
+            <JFXButton id="joinButton" fx:id="btnJoin" onAction="#btnJoinClicked" style="-fx-background-color: red;" text="Join">
                <HBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin>
@@ -34,7 +34,7 @@
       </HBox>
    </center>
    <bottom>
-      <TableView fx:id="tableGames" id="tableGames" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="1344.0" BorderPane.alignment="CENTER">
+      <TableView id="tableGames" fx:id="tableGames" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="1344.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn prefWidth="200.0" text="Game Name" />
           <TableColumn prefWidth="200.0" text="No of players" />

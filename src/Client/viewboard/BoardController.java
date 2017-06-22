@@ -2,6 +2,7 @@ package Client.viewboard;
 
 import Client.Animations.CardAnimations;
 import Client.Animations.MenuButtonAnimations;
+import Client.Client;
 import Client.UIButtonActions.GeneralButtonActions;
 import Client.viewboard.boardpopups.BoardPopupController;
 import Client.viewstartup.StartupController;
@@ -39,6 +40,8 @@ public class BoardController extends Application{
     private Stage stage;
     private StartupController startupController;
     private BoardPopupController boardPopupController;
+    private Client client;
+
     @FXML
     Label lblOpponent1,lblOpponent2,lblOpponent3,lblOpponent4,lblOpponent5;
     @FXML
@@ -58,7 +61,9 @@ public class BoardController extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("board.fxml"));
+        loader.setController(this);
+        Parent root = loader.load();
         primaryStage.setTitle("EXIT-POKER");
         primaryStage.setScene(new Scene(root));
         primaryStage.setMaximized(true);
@@ -163,5 +168,13 @@ public class BoardController extends Application{
 
         ImageView [] arr = {crd_p1,crd_p2,crd_p3};
         cardAnimations.hideMultipleCards(arr);
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
