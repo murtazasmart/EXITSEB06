@@ -13,7 +13,7 @@ public class WaitingRoomService {
     Client client;
 
     public boolean waitngForAllPlayers(){
-        Message message = null;
+        Message message;
         try {
             message = (Message)client.getReceiveObjectFromServer().readObject();
             System.out.println(message.getText());

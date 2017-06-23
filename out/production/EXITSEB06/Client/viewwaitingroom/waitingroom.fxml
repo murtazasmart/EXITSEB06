@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="1179.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.viewstartup.StartupController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="1179.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <HBox prefHeight="80.0" prefWidth="1184.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER" />
    </bottom>
@@ -18,7 +18,7 @@
       <AnchorPane prefHeight="288.0" prefWidth="855.0">
          <children>
       
-               <ImageView fitHeight="258.0" fitWidth="466.0" layoutX="405.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.75; -fx-scale-y: 1.5;">
+               <ImageView fx:id="imageView" fitHeight="258.0" fitWidth="466.0" layoutX="405.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.75; -fx-scale-y: 1.5;">
                   <image>
                      <Image url="@../Images/Backgrounds/63763738-poker-wallpapers.png" />
                   </image>
@@ -35,7 +35,7 @@
    <top>
       <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#btnVolumeClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="71.0" prefWidth="90.0" style="-fx-background-color: BLACK;">
+            <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="90.0" style="-fx-background-color: BLACK;">
                <graphic>
                   <ImageView fx:id="btnVolume" fitHeight="59.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>

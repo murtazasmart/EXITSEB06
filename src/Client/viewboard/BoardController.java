@@ -6,6 +6,7 @@ import Client.Client;
 import Client.UIButtonActions.GeneralButtonActions;
 import Client.viewboard.boardpopups.BoardPopupController;
 import Client.viewstartup.StartupController;
+import Model.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -41,14 +42,21 @@ public class BoardController extends Application{
     private StartupController startupController;
     private BoardPopupController boardPopupController;
     private Client client;
+    Player player;
+    int myPlayerId;
+    ImageView[] crd_pArr; //All oponents cards stored here
+    Label[] lblPlayers;
+    String[][] cardHand;
 
     @FXML
-    Label lblOpponent1,lblOpponent2,lblOpponent3,lblOpponent4,lblOpponent5;
+    Label lblPlayer1,lblPlayer2,lblPlayer3,lblPlayer4,lblPlayer5,lblPlayer6;
     @FXML
     ImageView opo_1_cd_1,opo_1_cd_2,opo_c_cd_1,crd_pc_1,crd_pc_2,crd_pc_3;
     @FXML
     Button btnHome,btnShuffle;
-    @FXML ImageView crd_p1,crd_p2,crd_p3;
+    @FXML ImageView crd_p1,crd_p11,crd_p2,crd_p21,crd_p3,crd_31,crd_p4,crd_p41,crd_p5,crd_p51,crd_p6,crd_p61,crdMain1,crdMain2,crdMain3,crdMain4,crdMain5;
+    @FXML
+    private List<ImageView> otherPlayersCardImages,crdPackPlayer1,crdPackPlayer2,crdPackPlayer3,crdPackPlayer4,crdPackPlayer5,crdPackPlayer6 ;
 
     public BoardController()
     {
@@ -68,6 +76,73 @@ public class BoardController extends Application{
         primaryStage.setScene(new Scene(root));
         primaryStage.setMaximized(true);
         primaryStage.show();
+        //crdMArr = new ImageView[]{crdMain1,crdMain2,crdMain3,crdMain4,crdMain5};
+        BoardService boardService = new BoardService();
+        boardService.setClient(client);
+        player = boardService.getPlayerFromServer();
+        lblPlayers = new Label[]{lblPlayer1,lblPlayer2,lblPlayer3,lblPlayer4,lblPlayer5,lblPlayer6};
+        ImageView[] crd_pArr2 = {crd_p1,crd_p11,crd_p2,crd_p21,crd_p3,crd_31,crd_p4,crd_p41,crd_p5,crd_p51,crd_p6,crd_p61};
+        crd_pArr = crd_pArr2;
+        for(int i = 0;i<player.getNumberofplayers();i++){
+            if(i == player.getPlayerId()){
+                continue;
+            }
+            else{
+                lblPlayers[i].setText(player.getAllUsernames()[i]);
+            }
+            System.out.println(player.getAllUsernames()[i]);
+        }
+        cardHand = player.getCardHand();
+        String cardFileLocation, folderName, fileName;
+        for(int i = 0 ; i<cardHand.length;i++){
+            if(i == player.getPlayerId()){ //ALtered have to check if working same manner as client file
+                folderName = client.getCardFolderName(cardHand[i][0]);
+                fileName = client.getCardFileName(cardHand[i][0]);
+                cardFileLocation = "Client/Images/Cards/" + folderName + "/" + fileName + ".png";
+                System.out.println(cardFileLocation);
+                crdMain1.setImage(new Image(cardFileLocation));
+                folderName = client.getCardFolderName(cardHand[i][1]);
+                fileName = client.getCardFileName(cardHand[i][1]);
+                cardFileLocation = "Client/Images/Cards/" + folderName + "/" + fileName + ".png";
+                System.out.println(cardFileLocation);
+                crdMain2.setImage(new Image(cardFileLocation));
+                folderName = client.getCardFolderName(cardHand[i][2]);
+                fileName = client.getCardFileName(cardHand[i][2]);
+                cardFileLocation = "Client/Images/Cards/" + folderName + "/" + fileName + ".png";
+                System.out.println(cardFileLocation);
+                crdMain3.setImage(new Image(cardFileLocation));
+                folderName = client.getCardFolderName(cardHand[i][3]);
+                fileName = client.getCardFileName(cardHand[i][3]);
+                cardFileLocation = "Client/Images/Cards/" + folderName + "/" + fileName + ".png";
+                System.out.println(cardFileLocation);
+                crdMain4.setImage(new Image(cardFileLocation));
+                folderName = client.getCardFolderName(cardHand[i][4]);
+                fileName = client.getCardFileName(cardHand[i][4]);
+                cardFileLocation = "Client/Images/Cards/" + folderName + "/" + fileName + ".png";
+                System.out.println(cardFileLocation);
+                crdMain5.setImage(new Image(cardFileLocation));
+                System.out.println("player "+player.getUsername()+" score is "+player.getScore());
+            }else{
+                System.out.println("Player "+player.getAllUsernames()[i]+" 2 inital cards are "+player.getIndividualCardHand(i,0)+" "+player.getIndividualCardHand(i,1));
+            }
+
+        }
+        for(int i =0;i<cardHand.length;i++){
+            if(i==player.getPlayerId())
+                continue;
+            for(int j=0;j<2;j++){
+                folderName = client.getCardFolderName(cardHand[i][j]);
+                fileName = client.getCardFileName(cardHand[i][j]);
+                cardFileLocation = "Client/Images/Cards/" + folderName + "/" + fileName + ".png";
+                System.out.println(cardFileLocation);
+                crdPackPlayer1.add()
+            }
+        }
+//        int i=0, j=0;
+//        for(ImageView imageView:otherPlayersCardImages){
+//
+//            imageView.setImage(new Image());
+//        }
     }
 
     public void cardMouseEntered(MouseEvent mouseEvent) {

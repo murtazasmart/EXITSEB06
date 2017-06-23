@@ -52,6 +52,7 @@ public class HostController extends Application {
         if(client==null)System.out.println("game is null");else System.out.println("client not null");
         client.setGameName(hostGameName.getText());
         client.setNumberOfPlayers(Integer.parseInt(hostNoPlayers.getText()));
+        client.setUsername("murtaza");
         HostService hostService = new HostService();
         hostService.setClient(client);
         boolean gameHosted = hostService.hostGame();
@@ -60,11 +61,6 @@ public class HostController extends Application {
             Stage stage = (Stage)btnHostGame.getScene().getWindow();
             WaitingRoomController waitingRoomController = new WaitingRoomController();
             waitingRoomController.setClient(client);
-            try {
-                waitingRoomController.start(stage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
             try {
                 waitingRoomController.start(stage);
             } catch (Exception e) {

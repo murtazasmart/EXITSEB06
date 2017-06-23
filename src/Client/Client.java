@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 /**
  * Created by MA_Laptop on 6/18/2017.
@@ -238,7 +239,46 @@ public class Client {
         }
     }
 
-    //getTypeCard
+    public String getCardType(String str){
+        String type=str.substring(0,str.indexOf("-"));
+        return type;
+    }
+
+    public String getCardValue(String str){
+        String value = str.substring(str.indexOf("-")+1);
+        return value;
+    }
+
+    public String getCardFolderName(String cardHand) {
+        String folderName,res;
+        res = getCardType(cardHand);
+        if(res.equalsIgnoreCase("H"))
+            folderName = "Hearts";
+        else if(res.equalsIgnoreCase("D"))
+            folderName = "Diamonds";
+        else if(res.equalsIgnoreCase("S"))
+            folderName = "Spades";
+        else
+            folderName = "Clubs";
+
+        return folderName;
+    }
+
+    public String getCardFileName(String cardHand) {
+        String fileName, res;
+        res = getCardType(cardHand);
+        if(res.equalsIgnoreCase("H"))
+            fileName = "H";
+        else if(res.equalsIgnoreCase("D"))
+            fileName = "D";
+        else if(res.equalsIgnoreCase("S"))
+            fileName = "S";
+        else
+            fileName = "C";
+        res = getCardValue(cardHand);
+        fileName = fileName+res;
+        return fileName;
+    }
 
     //getValueCard
     /*
@@ -354,4 +394,5 @@ public class Client {
     public void setNumberOfPlayers(int numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
     }
+
 }
