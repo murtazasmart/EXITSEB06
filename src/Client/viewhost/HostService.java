@@ -8,6 +8,7 @@ import Model.Player;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 /**
  * Created by MA_Laptop on 6/21/2017.
@@ -21,6 +22,8 @@ public class HostService {
         try {
                 Game game = new Game();
                 game.setGameName(client.getGameName());
+            Scanner scan = new Scanner(System.in);
+                game.setGameCreatorName(scan.next());
                 game.setMaxClientsCount(client.getNumberOfPlayers());
                 client.getSendObjectToServer().writeObject(game);
                 client.getSendObjectToServer().flush();

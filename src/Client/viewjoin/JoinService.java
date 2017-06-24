@@ -4,6 +4,7 @@ import Client.Client;
 import Model.ClientThread;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Created by MA_Laptop on 6/21/2017.
@@ -14,6 +15,8 @@ public class JoinService {
     public boolean joinGame(){
         ClientThread clientThread = new ClientThread();
         clientThread.setGameName(client.getGameName());
+        Scanner scan = new Scanner(System.in);
+        clientThread.setUsername(scan.next());
         try {
             client.getSendObjectToServer().writeObject(clientThread);
             client.getSendObjectToServer().flush();

@@ -279,20 +279,62 @@
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
             </ImageView>
+            <Label layoutX="832.0" layoutY="600.0" prefHeight="40.0" prefWidth="194.0" text="your score is">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblScore" layoutX="1022.0" layoutY="584.0" text="245">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
             <fx:define>
-               <ArrayList fx:id="otherPlayersCardList" >
-                  <fx:reference source="crd_p1"/>
-                  <fx:reference source="crd_p11"/>
-                  <fx:reference source="crd_p2"/>
-                  <fx:reference source="crd_p21"/>
-                  <fx:reference source="crd_p3"/>
-                  <fx:reference source="crd_p31"/>
-                  <fx:reference source="crd_p4"/>
-                  <fx:reference source="crd_p41"/>
-                  <fx:reference source="crd_p5"/>
-                  <fx:reference source="crd_p51"/>
+               <ArrayList fx:id="crdPackAllPlayers">
+                  <ArrayList fx:id="crdPackPlayer1">
+                     <fx:reference source="crd_p1" />
+                     <fx:reference source="crd_p11" />
+                  </ArrayList>
+                  <ArrayList fx:id="crdPackPlayer2">
+                     <fx:reference source="crd_p2" />
+                     <fx:reference source="crd_p21" />
+                  </ArrayList>
+                  <ArrayList fx:id="crdPackPlayer3">
+                     <fx:reference source="crd_p3" />
+                     <fx:reference source="crd_p31" />
+                  </ArrayList>
+                  <ArrayList fx:id="crdPackPlayer4">
+                     <fx:reference source="crd_p4" />
+                     <fx:reference source="crd_p41" />
+                  </ArrayList>
+                  <ArrayList fx:id="crdPackPlayer5">
+                     <fx:reference source="crd_p5" />
+                     <fx:reference source="crd_p51" />
+                  </ArrayList>
+                  <ArrayList fx:id="crdPackPlayer6">
+                     <fx:reference source="crd_p6" />
+                     <fx:reference source="crd_p61" />
+                  </ArrayList>
+               </ArrayList>
+
+               <ArrayList fx:id="otherPlayersCardList">
+                  <fx:reference source="crd_p1" />
+                  <fx:reference source="crd_p11" />
+                  <fx:reference source="crd_p2" />
+                  <fx:reference source="crd_p21" />
+                  <fx:reference source="crd_p3" />
+                  <fx:reference source="crd_p31" />
+                  <fx:reference source="crd_p4" />
+                  <fx:reference source="crd_p41" />
+                  <fx:reference source="crd_p5" />
+                  <fx:reference source="crd_p51" />
                </ArrayList>
             </fx:define>
+            <Label fx:id="lblUsername" layoutX="686.0" layoutY="600.0" text="username">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

@@ -25,6 +25,18 @@ public class BoardService {
         return player;
     }
 
+    public Message getMessageFromServer(){
+        Message message = null;
+        try {
+            message = (Message) client.getReceiveObjectFromServer().readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+
     public boolean sendPlayerToServer(Player player){
         try {
             client.getSendObjectToServer().writeObject(player);

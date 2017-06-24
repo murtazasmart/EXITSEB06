@@ -22,7 +22,7 @@ public class ConnectToServerService {
             //scan = new Scanner(System.in);
             //ipAddress = InetAddress.getByName(scan.nextLine());
             InetAddress ipAddress = InetAddress.getByName("192.168.1.103");
-            Socket clientSocket = new Socket(ipAddress, 4444);
+            Socket clientSocket = new Socket(ipAddress, 4445);
             System.out.println("connected?");
             ObjectOutputStream sendObjectToServer = new ObjectOutputStream(clientSocket.getOutputStream());
             ObjectInputStream receiveObjectFromServer = new ObjectInputStream(clientSocket.getInputStream());

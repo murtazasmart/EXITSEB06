@@ -39,7 +39,7 @@ public class Client {
             System.out.println("Enter IP of host followed:");
             scan = new Scanner(System.in);
             ipAddress = InetAddress.getByName(scan.nextLine());
-            clientSocket = new Socket(ipAddress, 4444);
+            clientSocket = new Socket(ipAddress, 4445);
             System.out.println("connected?");
             sendObjectToServer = new ObjectOutputStream(clientSocket.getOutputStream());
             receiveObjectFromServer = new ObjectInputStream(clientSocket.getInputStream());

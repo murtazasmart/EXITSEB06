@@ -39,6 +39,7 @@ public class JoinController extends Application{
     public void btnJoinClicked(){
         client.setGameName(joinTextField.getText());
         JoinService joinService = new JoinService();
+        client.setUsername("mustafa");
         joinService.setClient(client);
         boolean gameJoined = joinService.joinGame();
         if(gameJoined){

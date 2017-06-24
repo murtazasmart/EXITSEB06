@@ -99,6 +99,22 @@ public class CardAnimations {
 
     }
 
+    public void changeMultipleCards(ImageView[] crdView,String fileName){
+        for(ImageView cardView: crdView){
+            FadeTransition fadeTransition = new FadeTransition(Duration.millis(500),cardView);
+            fadeTransition.setInterpolator(Interpolator.EASE_IN);
+            fadeTransition.setFromValue(0.5);
+            fadeTransition.setToValue(1);
+            fadeTransition.setCycleCount(1);
+            fadeTransition.play();
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(50),
+                    ae -> cardView.setImage(new Image("Client/Images/Cards/"+fileName))));
+            timeline.play();
+        }
+
+    }
+
     public void hideSingleCard(ImageView cardView)
     {
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(500),cardView);
