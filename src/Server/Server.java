@@ -147,11 +147,10 @@ public class Server extends Thread{
                     Game game = (Game)receivedObject;
                     createGame(game);
                     for(int i = 0; i < maxGamesCount; i++){
-                        if(activeGames[i].getGameName().equals(game.getGameName())){
+                        if(activeGames[i].getGameName().equalsIgnoreCase(game.getGameName())){
                             activeGames[i].addPlayer(clientSocket, receiveObjectFromClient, sendObjectToClient, game);
-
+                            break;
                         }
-                        break;
                     }
                     System.out.println("game created and player added");
                 }
@@ -169,7 +168,8 @@ public class Server extends Thread{
     public void createGame(Game gameObject){
         //DONT USE SAME OBJECT FROM CLIENT CAUSE NOT SAFE, CREATE A NEW OBJECT AND ONLY UPDATE RELEVANT DETAILS
         for(int i = 0; i < maxGamesCount; i++){
-            if(activeGames[i]==null || activeGames[i].getGameName().equalsIgnoreCase(gameObject.getGameName())){
+            System.out.println("game "+i+" is "+activeGames[i]);
+            if(activeGames[i]==null || activeGames[i].getGameName().equalsIgnoreCase(gameObject.getGameName()) || activeGames[i].isEnded()){
                 //Thread t = new Thread client();
                 gameObject = new Game(gameObject.getGameName(), i, gameObject.getMaxClientsCount());
                 //Store game details in DB

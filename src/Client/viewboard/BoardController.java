@@ -9,8 +9,10 @@ import Client.viewstartup.StartupController;
 import Model.Message;
 import Model.Player;
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,9 +23,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -33,6 +37,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Timer;
 
 /**
  * Created by Bhagya Rathnayake on 6/2/2017.
@@ -54,9 +59,10 @@ public class BoardController extends Application{
     Label[] lblPlayers;
     String[][] cardHand;
     boolean gameEnd;
+    private boolean[] arrSwapCards;
 
     @FXML
-    Label lblPlayer1,lblPlayer2,lblPlayer3,lblPlayer4,lblPlayer5,lblPlayer6, lblScore, lblUsername;
+    Label lblPlayer1,lblPlayer2,lblPlayer3,lblPlayer4,lblPlayer5,lblPlayer6, lblScore, lblUsername, lblHints;
     @FXML
     ImageView opo_1_cd_1,opo_1_cd_2,opo_c_cd_1,crd_pc_1,crd_pc_2,crd_pc_3;
     @FXML
@@ -72,6 +78,7 @@ public class BoardController extends Application{
         generalButtonActions= new GeneralButtonActions();
         startupController= new StartupController();
         boardPopupController = new BoardPopupController();
+        arrSwapCards= new boolean[5];
     }
 
     @Override
@@ -89,7 +96,8 @@ public class BoardController extends Application{
         lblPlayers = new Label[]{lblPlayer1,lblPlayer2,lblPlayer3,lblPlayer4,lblPlayer5,lblPlayer6};
         ImageView[] crd_pArr2 = {crd_p1,crd_p11,crd_p2,crd_p21,crd_p3,crd_31,crd_p4,crd_p41,crd_p5,crd_p51,crd_p6,crd_p61};
         crd_pArr = crd_pArr2;
-
+        crdMain1.setEffect(new DropShadow(6d, 6d, 6d, Color.GOLD));
+        crdMain2.setEffect(new DropShadow(4d, 4d, 4d, Color.GOLD));
         roundPartA();
         //INSERT TIMER FOR ROUND A AND ALSO FREEZE BEFORE SUBMITTING
     }
@@ -166,23 +174,24 @@ public class BoardController extends Application{
     }
 
     public void btnShuffleClicked(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("boardpopups/popup.fxml"));
-        Stage dialog = new Stage();
-        dialog.initStyle(StageStyle.UTILITY);
-        dialog.initStyle(StageStyle.UNDECORATED);
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        Scene scene = new Scene(root);
-        dialog.setScene(scene);
-        dialog.setResizable(false);
-        dialog.show();
-
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(6000),
-                ae ->dialog.close()));
-        timeline.play();
-        //SET FREEZE WINDOW TRUE
+//        Parent root = FXMLLoader.load(getClass().getResource("boardpopups/popup.fxml"));
+//        Stage dialog = new Stage();
+//        dialog.initStyle(StageStyle.UTILITY);
+//        dialog.initStyle(StageStyle.UNDECORATED);
+//        dialog.initModality(Modality.APPLICATION_MODAL);
+//        Scene scene = new Scene(root);
+//        dialog.setScene(scene);
+//        dialog.setResizable(false);
+//        dialog.show();
+//
+//        Timeline timeline = new Timeline(new KeyFrame(
+//                Duration.millis(3000),
+//                ae ->{
+//                    dialog.close();
+//
+//                }));
+//        timeline.play();
         roundPartB();
-        //SET FREEZE WINDOW FALSE
     }
 
     public String generateFileLocation(String cardHand){
@@ -261,7 +270,7 @@ public class BoardController extends Application{
                 j++;
             }
         }
-
+        lblHints.setText("Observe your opponents cards before they disappear!");
         lblScore.setText(String.valueOf(player.getScore()));
 
 //        int i=0, j=0;
@@ -269,21 +278,39 @@ public class BoardController extends Application{
 //
 //            imageView.setImage(new Image());
 //        }
+//        PauseTransition pause = new PauseTransition(
+//                Duration.seconds(10)
+//                );
+//        pause.play();'
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(5000),
+                a-> {
+                    hideOtherCardPacks();
+                    lblHints.setText("You can now swap a maximum of 3 cards, click to swap!!");
+                }
+                ));
+        timeline.play();
+
         return true;
     }
 
     public boolean roundPartB(){
         //UPDATE SWAP OPTION CODE HAS TO BE INSERTED
+        player.setSwapCards(arrSwapCards);
         boardService.sendPlayerToServer(player);
         player = boardService.getPlayerFromServer();
 
         cardHand = player.getCardHand();
         updateMainCardPack(cardHand);
+        lblHints.setText("This is your updated hand.");
+
         lblScore.setText(String.valueOf(player.getScore()));
-        hideOtherCardPacks();
+        lblHints.setText("Your final score.");
+        //hideOtherCardPacks();
         //UPDATE BOARD CODE HAS TO BE INSERTED
 
-        //CHECKED KICK CODE
+        //        Timeline timeline
+
         if(player.isKicked() == true){
             System.out.println("You've been kicked");
             if(player.getAllUsernames().length >1){
@@ -298,7 +325,7 @@ public class BoardController extends Application{
                             choices.add(player.getAllUsernames()[i]);
                     }
                     stage = (Stage) btnShuffle.getScene().getWindow();
-                    ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
+                    ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
                     dialog.setTitle("You LOSE!!");
                     dialog.setHeaderText("Donate your points");
                     dialog.setContentText("Choose a person to donate quarter of your points::");
@@ -312,63 +339,110 @@ public class BoardController extends Application{
             }
         }
 
-        boardService.sendPlayerToServer(player);
+        // Lambda Runnable
+        Runnable task2 = () -> {
 
-        boardService.getPlayerFromServer();
+            System.out.println("about to send");
 
-        Message message = boardService.getMessageFromServer();
+            boardService.sendPlayerToServer(player);
 
+//            if(!player.isKicked()){
+//                try {
+//                    System.out.println("waiting in thread for 15secs");
+//                    Thread.sleep(25000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
 
-        if(player.getNumberofplayers()<2){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Points Update");
-            alert.setHeaderText("Points Update");
-            alert.setContentText(message.getText());
+            System.out.println("about to receive");
 
-            alert.showAndWait();
-        }
+            boardService.getPlayerFromServer();
 
-        if(player.isKicked() != true && player.getNumberofplayers() <= 2){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("You Won");
-            alert.setHeaderText("You WON!!");
-            alert.setContentText("Congratulations you WON IN FOKER");
-
-            alert.showAndWait();
-        }
-
-        if(player.isKicked()){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("You LOSE");
-            alert.setHeaderText("You LOSE!!");
-            alert.setContentText("You had the lowest score. You've been kicked from the game. You lose! Better luck next time. ");
-
-            alert.showAndWait();
-        }
+            Message message = boardService.getMessageFromServer();
 
 
-        if(player.isKicked() == true || player.getNumberofplayers() == 2){
-            gameEnd = true;
-        }
+            Platform.runLater(() -> {
+                //CHECKED KICK CODE
 
-        if(player.isKicked()){
-            stage = (Stage)btnShuffle.getScene().getWindow();
-            StartupController startupController = new StartupController();
-            startupController.setClient(client);
-            startupController.start(stage);
-        }
+                if(player.getNumberofplayers()<2){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Points Update");
+                    alert.setHeaderText("Points Update");
+                    alert.setContentText(message.getText());
 
-        if(!gameEnd){
-            Stage stage = (Stage)btnShuffle.getScene().getWindow();
-            BoardController boardController = this;
-            boardController.setClient(client);
-            boardController.setPlayer(player);
-            try {
-                boardController.start(stage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+                    alert.showAndWait();
+                }
+
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if(player.isKicked() != true && player.getNumberofplayers() <= 2){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("You Won");
+                    alert.setHeaderText("You WON!!");
+                    alert.setContentText("Congratulations you WON IN FOKER");
+
+                    alert.showAndWait();
+                }
+
+                if(player.isKicked()){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("You LOSE");
+                    alert.setHeaderText("You LOSE!!");
+                    alert.setContentText("You had the lowest score. You've been kicked from the game. You lose! Better luck next time. ");
+
+                    alert.showAndWait();
+                }
+
+                if(player.getNumberofplayers() == 2){
+                    gameEnd = true;
+                }
+
+                if(player.isKicked()){
+                    stage = (Stage)btnShuffle.getScene().getWindow();
+                    StartupController startupController = new StartupController();
+                    startupController.setClient(client);
+                    startupController.start(stage);
+                }
+
+                if(!gameEnd && !player.isKicked()){
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Next round is starting");
+                    alert.setHeaderText("Next round is starting!!");
+                    alert.setContentText("Concentrate. You are moving to the next round ");
+                    alert.show();
+
+                    Stage stage = (Stage)btnShuffle.getScene().getWindow();
+                    BoardController boardController = new BoardController();
+                    boardController.setClient(client);
+                    try {
+                        boardController.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        };
+
+        // start the thread
+        new Thread(task2).start();
+
+
+
+
+
+
+
+
 
 
 
@@ -402,8 +476,48 @@ public class BoardController extends Application{
 
     public void hideOtherCardPacks(){
         ImageView [] arr = {crd_p1,crd_p11,crd_p2,crd_p21,crd_p3,crd_31,crd_p4,crd_p41,crd_p5,crd_p51,crd_p6,crd_p61};
-        //cardAnimations.hideMultipleCards(arr);
-        cardAnimations.changeMultipleCards(arr,"Spades/back.png");
+//        cardAnimations.hideMultipleCards(arr);
+        //Platform.runLater(() -> cardAnimations.changeMultipleCards(arr,"Spades/back.png"));
+        for(ImageView img : arr){
+            if(img!=null)
+            img.setImage(new Image("Client/Images/Cards/Spades/back.png"));
+        }
+    }
+
+    public void selectedCards(MouseEvent mouseEvent) {
+        ImageView crdView = (ImageView) mouseEvent.getSource();
+        String cardID = crdView.getId();
+        switch (cardID) {
+            case "crdMain5":
+                arrSwapCards[4] = (arrSwapCards[4])?false:true;
+                if(arrSwapCards[4]) cardAnimations.cardMouseEnteredGrow(crdMain5); else cardAnimations.cardMouseExited(crdMain5);
+                System.out.println("card swapped id 4 " +arrSwapCards[4]);
+                break;
+            case "crdMain4":
+                arrSwapCards[3] = (arrSwapCards[3])?false:true;
+                if(arrSwapCards[3]) cardAnimations.cardMouseEnteredGrow(crdMain4); else cardAnimations.cardMouseExited(crdMain4);
+                System.out.println("card swapped id 3 " +arrSwapCards[3]);
+                break;
+            case "crdMain3":
+                arrSwapCards[2] = (arrSwapCards[2])?false:true;
+                if(arrSwapCards[2]) cardAnimations.cardMouseEnteredGrow(crdMain3); else cardAnimations.cardMouseExited(crdMain3);
+                System.out.println("card swapped id 2 " +arrSwapCards[2]);
+                break;
+            case "crdMain2":
+                arrSwapCards[1] = (arrSwapCards[1])?false:true;
+                if(arrSwapCards[1]) cardAnimations.cardMouseEnteredGrow(crdMain2); else cardAnimations.cardMouseExited(crdMain2);
+                System.out.println("card swapped id 1" +arrSwapCards[1]);
+                break;
+            case "crdMain1":
+                arrSwapCards[0] = (arrSwapCards[0])?false:true;
+                if(arrSwapCards[0]) cardAnimations.cardMouseEnteredGrow(crdMain1); else cardAnimations.cardMouseExited(crdMain1);
+                System.out.println("card swapped id 0 " +arrSwapCards[0]);
+                break;
+        }
+    }
+
+    public void swapCards(ActionEvent actionEvent) {
+        player.setSwapCards(arrSwapCards);
     }
 
 

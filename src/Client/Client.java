@@ -38,7 +38,7 @@ public class Client {
         try {
             System.out.println("Enter IP of host followed:");
             scan = new Scanner(System.in);
-            ipAddress = InetAddress.getByName(scan.nextLine());
+            ipAddress = InetAddress.getByName("169.254.51.167");
             clientSocket = new Socket(ipAddress, 4445);
             System.out.println("connected?");
             sendObjectToServer = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -88,10 +88,10 @@ public class Client {
 //            System.out.println("Enter player name:");
 //            player.setUsername(scan.next());
             Message message = (Message)receiveObjectFromServer.readObject();
-            System.out.println(message.getText());
+            System.out.println(" Messag befor while loop :" +message.getText());
             while(true){
                 message = (Message)receiveObjectFromServer.readObject();
-                System.out.println(message.getText());
+                System.out.println("messgae inside while loop " +message.getText());
                 if(message.getText().equalsIgnoreCase("Game is starting"))
                     break;
             }

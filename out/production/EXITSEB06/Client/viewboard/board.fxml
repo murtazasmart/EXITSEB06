@@ -24,12 +24,6 @@
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Button mnemonicParsing="false" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: BLACK;">
-                     <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Icons/ButtonIcons/settings-1.png" />
-                           </image></ImageView>
-                     </graphic>
                      <tooltip>
                         <Tooltip text="SETTINGS" textAlignment="CENTER">
                            <font>
@@ -37,12 +31,6 @@
                            </font></Tooltip>
                      </tooltip></Button>
                   <Button mnemonicParsing="false" onMouseClicked="#btnHelpClicked" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: BLACK;">
-                     <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="90.0" onMouseClicked="#btnHelpClicked" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Icons/ButtonIcons/help.png" />
-                           </image></ImageView>
-                     </graphic>
                      <tooltip>
                         <Tooltip text="HELP">
                            <font>
@@ -51,12 +39,6 @@
                         </Tooltip>
                      </tooltip></Button>
                   <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: BLACK;">
-                     <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Icons/ButtonIcons/info.png" />
-                           </image></ImageView>
-                     </graphic>
                      <tooltip>
                         <Tooltip text="About">
                            <font>
@@ -65,12 +47,6 @@
                         </Tooltip>
                      </tooltip></Button>
                   <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#btnQuitClicked" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: BLACK;">
-                     <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Icons/ButtonIcons/error.png" />
-                           </image></ImageView>
-                     </graphic>
                      <tooltip>
                         <Tooltip text="QUIT">
                            <font>
@@ -83,13 +59,6 @@
             <VBox alignment="BOTTOM_CENTER" layoutX="7.0" layoutY="332.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Button fx:id="btnHome" mnemonicParsing="false" onAction="#btnHomeClicked" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" style="-fx-background-color: BLACK;">
-                     <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Icons/ButtonIcons/home-2.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                      <tooltip>
                         <Tooltip text="HOME">
                            <font>
@@ -119,52 +88,52 @@
                   <DropShadow />
                </effect>
             </ImageView>
-            <ImageView fx:id="crdMain5" fitHeight="160.0" fitWidth="120.0" layoutX="406.0" layoutY="101.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="crdMain5" fitHeight="160.0" fitWidth="120.0" layoutX="406.0" layoutY="101.0" onMousePressed="#selectedCards" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Cards/Diamonds/DA.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="crdMain4" fitHeight="160.0" fitWidth="120.0" layoutX="472.0" layoutY="100.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="crdMain4" fitHeight="160.0" fitWidth="120.0" layoutX="472.0" layoutY="100.0" onMousePressed="#selectedCards" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Cards/Diamonds/DA.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="crdMain3" fitHeight="160.0" fitWidth="120.0" layoutX="539.0" layoutY="99.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="crdMain3" fitHeight="160.0" fitWidth="120.0" layoutX="539.0" layoutY="99.0" onMousePressed="#selectedCards" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Cards/Diamonds/DA.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="crdMain2" fitHeight="160.0" fitWidth="120.0" layoutX="607.0" layoutY="99.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="crdMain2" fitHeight="160.0" fitWidth="120.0" layoutX="607.0" layoutY="99.0" onMousePressed="#selectedCards" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Cards/Diamonds/DA.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="crdMain1" fitWidth="120.0" layoutX="676.0" layoutY="101.0" onMouseEntered="#cardMouseEntered" onMouseExited="#cardMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="crdMain1" fitWidth="120.0" layoutX="676.0" layoutY="101.0" onMousePressed="#selectedCards" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Cards/Diamonds/D4.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblPlayer5" layoutX="24.0" layoutY="297.0" prefHeight="14.0" prefWidth="96.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblPlayer5" layoutX="24.0" layoutY="297.0" prefHeight="14.0" prefWidth="96.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label fx:id="lblPlayer3" layoutX="166.0" layoutY="409.0" prefHeight="13.0" prefWidth="98.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblPlayer3" layoutX="166.0" layoutY="409.0" prefHeight="13.0" prefWidth="98.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label fx:id="lblPlayer2" layoutX="752.0" layoutY="498.0" prefHeight="11.0" prefWidth="111.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblPlayer2" layoutX="752.0" layoutY="498.0" prefHeight="11.0" prefWidth="111.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label fx:id="lblPlayer6" layoutX="1068.0" layoutY="291.0" prefHeight="33.0" prefWidth="116.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblPlayer6" layoutX="1068.0" layoutY="291.0" prefHeight="33.0" prefWidth="116.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
             </Label>
-            <Label fx:id="lblPlayer4" layoutX="953.0" layoutY="425.0" prefHeight="33.0" prefWidth="113.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblPlayer4" layoutX="953.0" layoutY="425.0" prefHeight="33.0" prefWidth="113.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
@@ -179,14 +148,12 @@
                            </image></ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Icons/ButtonIcons/send.png" />
-                           </image></ImageView>
-                     </graphic>
-                  </Button>
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseEntered="#generalButtonMouseEntered" onMouseExited="#generalButtonMouseExited" style="-fx-background-color: transparent;" />
+                  <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/ButtonIcons/settings-1.png" />
+                     </image>
+                  </ImageView>
                </children>
             </HBox>
             <ImageView fx:id="crd_p5" fitHeight="135.0" fitWidth="104.0" layoutX="47.0" layoutY="133.0" onMouseClicked="#cardRevealWhenClicked" onMouseEntered="#cardMouseEnteredPaintBorder" onMouseExited="#cardMouseExitedRemovePaintBorder" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 50;">
@@ -249,7 +216,7 @@
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblPlayer1" layoutX="340.0" layoutY="495.0" prefHeight="11.0" prefWidth="111.0" text="PLAYER" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblPlayer1" layoutX="340.0" layoutY="495.0" prefHeight="11.0" prefWidth="111.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="27.0" />
                </font>
@@ -279,12 +246,12 @@
                   <Image url="@../Images/Cards/Spades/back.png" />
                </image>
             </ImageView>
-            <Label layoutX="832.0" layoutY="600.0" prefHeight="40.0" prefWidth="194.0" text="your score is">
+            <Label layoutX="926.0" layoutY="620.0" prefHeight="40.0" prefWidth="194.0" text="your score is">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <Label fx:id="lblScore" layoutX="1022.0" layoutY="584.0" text="245">
+            <Label fx:id="lblScore" layoutX="1116.0" layoutY="604.0" text="245">
                <font>
                   <Font size="40.0" />
                </font>
@@ -330,7 +297,17 @@
                   <fx:reference source="crd_p51" />
                </ArrayList>
             </fx:define>
-            <Label fx:id="lblUsername" layoutX="686.0" layoutY="600.0" text="username">
+            <Label fx:id="lblUsername" layoutX="780.0" layoutY="620.0" text="username">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="264.0" layoutY="20.0" prefHeight="29.0" prefWidth="204.0" text="Hint:">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblHints" layoutX="328.0" layoutY="20.0" text="Swap any three cards">
                <font>
                   <Font size="28.0" />
                </font>

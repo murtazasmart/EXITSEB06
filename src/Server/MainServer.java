@@ -8,8 +8,8 @@ import Model.*;
  */
 public class MainServer {
     public static void main(String[] args) {
-        //only for testing
-        Server server = new Server("192.168.1.103",4445);
+        //only for testingtt
+        Server server = new Server("169.254.51.167",4445);
         server.start();
 //        HostController hostController = new HostController();
 //        hostController.startView();

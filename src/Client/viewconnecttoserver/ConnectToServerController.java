@@ -2,6 +2,7 @@ package Client.viewconnecttoserver;
 
 import Client.Client;
 import Client.MainController;
+import Client.viewboard.BoardController;
 import Client.viewstartup.StartupController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -16,6 +17,8 @@ import javafx.stage.Stage;
  * Created by MA_Laptop on 6/21/2017.
  */
 public class ConnectToServerController extends Application{
+
+    Client client;
 
     public static void main(String[] args) {
         launch();
@@ -34,18 +37,37 @@ public class ConnectToServerController extends Application{
                 }
         );*/
         ConnectToServerService connectToServerService = new ConnectToServerService();
-        Client client = connectToServerService.connectToServer();
-        //if(client==null)System.out.println("connecttoserver client is null");else System.out.println("client not null in connect to server");
-        if(client != null){
-            Stage stage = (Stage)connectToServerButton.getScene().getWindow();
-            StartupController startupController = new StartupController();
-            startupController.setClient(client);
-            try {
-                startupController.start(stage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        client = connectToServerService.connectToServer();
+//        //if(client==null)System.out.println("connecttoserver client is null");else System.out.println("client not null in connect to server");
+//        if(client != null){
+//            Stage stage = (Stage)connectToServerButton.getScene().getWindow();
+//            StartupController startupController = new StartupController();
+//            startupController.setClient(client);
+//            try {
+//                startupController.start(stage);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+
+        Runnable task2 = () -> {
+            client = connectToServerService.connectToServer();
+            Platform.runLater(() -> {
+                if(client != null){
+                    Stage stage = (Stage)connectToServerButton.getScene().getWindow();
+                    StartupController startupController = new StartupController();
+                    startupController.setClient(client);
+                    try {
+                        startupController.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        };
+
+        // start the thread
+        new Thread(task2).start();
 
     }
 

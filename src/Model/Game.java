@@ -24,6 +24,10 @@ public class Game  extends Thread implements Serializable {
     Object object;
     Referee referee;
 
+
+
+    boolean isEnded;
+
     public Game(){
         maxClientsCount = 10;
     }
@@ -48,6 +52,8 @@ public class Game  extends Thread implements Serializable {
                 break;
         }
         System.out.println("Game has ended");
+        //CLEAN UP CODE, CLOSE CONNECTIONS AND REMOVE GAME FROM Db
+        isEnded = true;
 
     }
 
@@ -76,13 +82,17 @@ public class Game  extends Thread implements Serializable {
 
     public void addPlayer(Socket clientSocket, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream, Game clientGameObject) {
         for(int i = 0; i < maxClientsCount; i++){
+            System.out.println("clientthreads no "+i+" is "+clientThreadThreads[i]);
             if(clientThreadThreads[i]==null){
+                System.out.println("client added");
                 ClientThread clientThread = new ClientThread();
                 clientThread.clientSocket = clientSocket;
                 clientThread.receiveObjectFromClient = objectInputStream;
                 clientThread.sendObjectToClient = objectOutputStream;
+                System.out.println("client added 1");
                 //Thread t = new Thread clientThread();
                 (clientThreadThreads[i] = clientThread).start();
+                System.out.println("client added part 2");
                 players[i] = new Player(clientThread);
                 players[i].setUsername(clientGameObject.getGameCreatorName());
                 players[i].setPlayerId(i);
@@ -132,6 +142,7 @@ public class Game  extends Thread implements Serializable {
             newPlayers[j] = players[i];
             newAllUsernames[j] = players[i].getUsername();
             newPlayers[j].setNumberofplayers(currentNoOfPlayers-1);
+            newPlayers[j].setPlayerId(j);
             j++;
         }
         for(int i = 0;i<currentNoOfPlayers-1;i++){
@@ -341,5 +352,13 @@ public class Game  extends Thread implements Serializable {
 
     public void setGameCreatorName(String gameCreatorName) {
         this.gameCreatorName = gameCreatorName;
+    }
+
+    public boolean isEnded() {
+        return isEnded;
+    }
+
+    public void setEnded(boolean ended) {
+        isEnded = ended;
     }
 }
