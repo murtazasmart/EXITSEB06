@@ -402,7 +402,7 @@ public class BoardController extends Application{
 
     public void hideOtherCardPacks(){
         ImageView [] arr = {crd_p1,crd_p11,crd_p2,crd_p21,crd_p3,crd_31,crd_p4,crd_p41,crd_p5,crd_p51,crd_p6,crd_p61};
-        cardAnimations.hideMultipleCards(arr);
+        //cardAnimations.hideMultipleCards(arr);
         cardAnimations.changeMultipleCards(arr,"Spades/back.png");
     }
 
