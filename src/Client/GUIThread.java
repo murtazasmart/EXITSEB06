@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,8 +24,9 @@ public class GUIThread extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Client/viewconnecttoserver/connecttoserver.fxml"));
         primaryStage.setTitle("EXIT-POKER");
-        primaryStage.setScene(new Scene(root, 1470, 1000));
-        primaryStage.setMaximized(true);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }
 
