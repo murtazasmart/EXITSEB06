@@ -312,6 +312,11 @@
                   <Font size="28.0" />
                </font>
             </Label>
+            <Label fx:id="lblWaitingForPlayers" layoutX="498.0" layoutY="573.0" text="Waiting for players...">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
