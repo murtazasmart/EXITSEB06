@@ -53,6 +53,7 @@ public class BoardController extends Application{
     Label[] lblPlayers;
     String[][] cardHand;
     boolean gameEnd;
+    boolean btnShuffleClicked;
     private boolean[] arrSwapCards;
 
     @FXML
@@ -93,6 +94,7 @@ public class BoardController extends Application{
         crdMain1.setEffect(new DropShadow(6d, 6d, 6d, Color.GOLD));
         crdMain2.setEffect(new DropShadow(4d, 4d, 4d, Color.GOLD));
         lblWaitingForPlayers.setText("");
+        btnShuffleClicked = false;
         roundPartA();
         //INSERT TIMER FOR ROUND A AND ALSO FREEZE BEFORE SUBMITTING
     }
@@ -186,7 +188,9 @@ public class BoardController extends Application{
 //
 //                }));
 //        timeline.play();
-        roundPartB();
+        if(!btnShuffleClicked)
+            roundPartB();
+        btnShuffleClicked = true;
     }
 
     public String generateFileLocation(String cardHand){
@@ -266,7 +270,7 @@ public class BoardController extends Application{
             }
         }
         lblHints.setText("Observe your opponents cards before they disappear!");
-        lblScore.setText(String.valueOf(player.getScore()));
+        lblScore.setText("You have only 20 seconds.");
 
 //        int i=0, j=0;
 //        for(ImageView imageView:otherPlayersCardImages){
@@ -285,6 +289,15 @@ public class BoardController extends Application{
                 }
                 ));
         timeline.play();
+
+        Timeline timelineRoundA = new Timeline(new KeyFrame(
+                Duration.millis(20000),
+                a-> {
+                    roundPartB();
+                    btnShuffleClicked = true;
+                }
+        ));
+        timelineRoundA.play();
 
         return true;
     }
@@ -559,6 +572,7 @@ public class BoardController extends Application{
         // Lambda Runnable
         Runnable t1 = () -> {
             //UPDATE SWAP OPTION CODE HAS TO BE INSERTED
+            lblWaitingForPlayers.setText("Waiting other players...");
             player.setSwapCards(arrSwapCards);
             boardService.sendPlayerToServer(player);
             player = boardService.getPlayerFromServer();
@@ -602,8 +616,6 @@ public class BoardController extends Application{
                     }
                 }
 
-                lblWaitingForPlayers.setText("Waiting other players...");
-
                 // Lambda Runnable
                 Runnable t2 = () -> {
 
@@ -624,19 +636,22 @@ public class BoardController extends Application{
                     final Message msg = boardService.getMessageFromServer();
 
                     Platform.runLater( ()-> {
-                        if(player.getNumberofplayers()<2){
+
+                        lblWaitingForPlayers.setText("");
+
+                        if(player.getNumberofplayers()>2){
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Points Update");
                             alert.setHeaderText("Points Update");
                             alert.setContentText(msg.getText());
-
-                            alert.showAndWait();
+                            lblWaitingForPlayers.setText(msg.getText());
+                            //alert.showAndWait();
                         }
 
                         if(player.isKicked() != true && player.getNumberofplayers() <= 2){
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("You Won");
-                            alert.setHeaderText("You WON!!");
+                            alert.setHeaderText("Your score is "+player.getScore());
                             alert.setContentText("Congratulations you WON IN FOKER");
 
                             alert.showAndWait();
@@ -645,7 +660,7 @@ public class BoardController extends Application{
                         if(player.isKicked()){
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("You LOSE");
-                            alert.setHeaderText("You LOSE!!");
+                            alert.setHeaderText("Score is "+player.getScore());
                             alert.setContentText("You had the lowest score. You've been kicked from the game. You lose! Better luck next time. ");
 
                             alert.showAndWait();
@@ -670,7 +685,7 @@ public class BoardController extends Application{
                             }
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Next round is starting");
-                            alert.setHeaderText("Next round is starting!!");
+                            alert.setHeaderText("Your score is "+player.getScore());
                             alert.setContentText("Concentrate. You are moving to the next round ");
                             alert.show();
 

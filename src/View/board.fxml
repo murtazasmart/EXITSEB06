@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import java.util.ArrayList?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1529.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Pane prefHeight="69.0" prefWidth="1181.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER" />
    </top>
@@ -307,12 +307,12 @@
                   <Font size="28.0" />
                </font>
             </Label>
-            <Label fx:id="lblHints" layoutX="328.0" layoutY="20.0" text="Swap any three cards">
+            <Label fx:id="lblHints" layoutX="414.0" layoutY="20.0" text="Swap any three cards">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <Label fx:id="lblWaitingForPlayers" layoutX="498.0" layoutY="573.0" text="Waiting for players...">
+            <Label fx:id="lblWaitingForPlayers" layoutX="480.0" layoutY="573.0" text="Waiting for players...">
                <font>
                   <Font size="28.0" />
                </font>

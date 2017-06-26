@@ -180,7 +180,7 @@ public class Game  extends Thread implements Serializable {
 
         players = referee.CardExchange(players);
 
-        players = referee.calculateOverallScore(players);
+        players = referee.calculateScoreRoundB(players);
 
         players = referee.updatePlayerToBeKicked(players);
 

@@ -12,8 +12,7 @@ public class Player implements Serializable {
     private boolean isKicked = false;
     private int numberofplayers;
     private boolean swapCards[];
-    int roundARisk;
-    int roundBRisk;
+    private int risk, alpha;
     private int playerId;
     private String[] allUsernames;
     private  int[] allScores;
@@ -135,4 +134,19 @@ public class Player implements Serializable {
         this.allScores = allScores;
     }
 
+    public int getRisk() {
+        return risk;
+    }
+
+    public void setRisk(int risk) {
+        this.risk = risk;
+    }
+
+    public int getAlpha() {
+        return alpha;
+    }
+
+    public void setAlpha(int alpha) {
+        this.alpha = alpha;
+    }
 }//end of player class
