@@ -1,6 +1,6 @@
 package Client.UIButtonActions;
 
-import ViewController.HelpController;
+import GUI.ViewController.HelpController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;

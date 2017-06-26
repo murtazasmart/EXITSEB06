@@ -18,7 +18,7 @@ public class GUIThread extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/View/connecttoserver.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/connecttoserver.fxml"));
         primaryStage.setTitle("EXIT-POKER");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);

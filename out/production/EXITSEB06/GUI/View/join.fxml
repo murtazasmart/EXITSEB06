@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1344.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <AnchorPane prefHeight="470.0" prefWidth="1344.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="469.0" fitWidth="1280.0" layoutX="255.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Resources/Images/Backgrounds/63763738-poker-wallpapers.png" />
+               </image>
+            </ImageView>
+            <TextField id="joinTextField" fx:id="joinTextField" layoutX="386.0" layoutY="235.0" prefHeight="55.0" prefWidth="445.0" />
+            <JFXButton id="btnJoin" fx:id="btnJoin" buttonType="RAISED" layoutX="843.0" layoutY="236.0" onAction="#btnJoinClicked" prefHeight="54.0" prefWidth="114.0" style="-fx-background-color: GREEN;" text="JOIN" textFill="#e8e2e2">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </JFXButton>
+            <Label contentDisplay="CENTER" layoutX="370.0" layoutY="105.0" prefHeight="132.0" prefWidth="559.0" style="-fx-alignment: CENTER;" text="ENTER YOUR TEAM NAME" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="35.0" />
+               </font>
+            </Label>
+            <JFXButton id="btnJoinBack" fx:id="btnJoinBack" buttonType="RAISED" layoutX="967.0" layoutY="236.0" onAction="#btnBackClicked" prefHeight="54.0" prefWidth="114.0" style="-fx-background-color: RED;" text="BACK" textFill="#e8e2e2">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>
