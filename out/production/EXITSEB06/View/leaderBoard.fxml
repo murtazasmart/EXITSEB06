@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="400.0" fitWidth="594.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Client/Images/Backgrounds/shuffle.png" />
+                  <Image url="@../Resources/Images/Backgrounds/shuffle.png" />
                </image>
             </ImageView>
             <TableView fx:id="tblLeaderBoard" layoutY="62.0" prefHeight="286.0" prefWidth="600.0" style="-fx-background-color: TRANSPARENT;">

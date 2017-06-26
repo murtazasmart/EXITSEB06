@@ -10,61 +10,61 @@
    <children>
       <ImageView fitHeight="415.0" fitWidth="704.0" layoutX="163.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Client/Images/Backgrounds/shuffle.png" />
+            <Image url="@../Resources/Images/Backgrounds/shuffle.png" />
          </image></ImageView>
       <ImageView fx:id="pc11" fitHeight="88.0" fitWidth="76.0" layoutX="774.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc1" fitHeight="88.0" fitWidth="76.0" layoutX="95.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc2" fitHeight="88.0" fitWidth="76.0" layoutX="161.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc3" fitHeight="88.0" fitWidth="76.0" layoutX="229.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc4" fitHeight="88.0" fitWidth="76.0" layoutX="296.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc5" fitHeight="88.0" fitWidth="76.0" layoutX="365.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc6" fitHeight="88.0" fitWidth="76.0" layoutX="435.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc7" fitHeight="88.0" fitWidth="76.0" layoutX="503.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc8" fitHeight="88.0" fitWidth="76.0" layoutX="571.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc9" fitHeight="88.0" fitWidth="76.0" layoutX="639.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pc10" fitHeight="88.0" fitWidth="76.0" layoutX="707.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
          <image>
-            <Image url="@../Client/Images/Cards/Spades/back.png" />
+            <Image url="@../Resources/Images/Cards/Spades/back.png" />
          </image>
       </ImageView>
       <Label layoutX="-3.0" layoutY="34.0" prefHeight="65.0" prefWidth="885.0" style="-fx-alignment: CENTER;" text="SHUFFELLING CARDS. PLEASE WAIT..." textFill="WHITE">

@@ -20,7 +20,7 @@
       
                <ImageView fx:id="imageView" fitHeight="258.0" fitWidth="466.0" layoutX="405.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.75; -fx-scale-y: 1.5;">
                   <image>
-                     <Image url="@../Client/Images/Backgrounds/63763738-poker-wallpapers.png" />
+                     <Image url="@../Resources/Images/Backgrounds/63763738-poker-wallpapers.png" />
                   </image>
             </ImageView>
             <Label layoutX="57.0" layoutY="80.0" prefHeight="129.0" prefWidth="1082.0" text="Waiting for players to connect..." textFill="#aea4a4">
@@ -39,7 +39,7 @@
                <graphic>
                   <ImageView fx:id="btnVolume" fitHeight="59.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Client/Images/Icons/ButtonIcons/speaker-2.png" />
+                        <Image url="@../Resources/Images/Icons/ButtonIcons/speaker-2.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />

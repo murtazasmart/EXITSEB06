@@ -19,7 +19,7 @@ import java.io.IOException;
 public class JoinController extends Application{
 
     @FXML
-    Button btnJoin;
+    Button btnJoin, btnJoinBack;
     @FXML
     TextField joinTextField;
 
@@ -64,6 +64,13 @@ public class JoinController extends Application{
         }).start();
         //stage.close();
 
+    }
+
+    public void btnBackClicked(){
+        Stage stage = (Stage)btnJoinBack.getScene().getWindow();
+        StartupController startupController = new StartupController();
+        startupController.setClient(client);
+        startupController.start(stage);
     }
 
     public void start(Stage stage){

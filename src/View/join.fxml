@@ -19,7 +19,7 @@
                </image>
             </ImageView>
             <TextField id="joinTextField" fx:id="joinTextField" layoutX="386.0" layoutY="235.0" prefHeight="55.0" prefWidth="445.0" />
-            <JFXButton id="joinButton" fx:id="btnJoin" buttonType="RAISED" layoutX="843.0" layoutY="236.0" onAction="#btnJoinClicked" prefHeight="54.0" prefWidth="114.0" style="-fx-background-color: GREEN;" text="JOIN" textFill="#e8e2e2">
+            <JFXButton id="btnJoin" fx:id="btnJoin" buttonType="RAISED" layoutX="843.0" layoutY="236.0" onAction="#btnJoinClicked" prefHeight="54.0" prefWidth="114.0" style="-fx-background-color: GREEN;" text="JOIN" textFill="#e8e2e2">
                <font>
                   <Font size="22.0" />
                </font>
@@ -29,7 +29,7 @@
                   <Font name="Berlin Sans FB" size="35.0" />
                </font>
             </Label>
-            <JFXButton id="joinButton" fx:id="btnJoin1" buttonType="RAISED" layoutX="967.0" layoutY="236.0" onAction="#btnJoinClicked" prefHeight="54.0" prefWidth="114.0" style="-fx-background-color: RED;" text="BACK" textFill="#e8e2e2">
+            <JFXButton id="btnJoinBack" fx:id="btnJoinBack" buttonType="RAISED" layoutX="967.0" layoutY="236.0" onAction="#btnBackClicked" prefHeight="54.0" prefWidth="114.0" style="-fx-background-color: RED;" text="BACK" textFill="#e8e2e2">
                <font>
                   <Font size="22.0" />
                </font>

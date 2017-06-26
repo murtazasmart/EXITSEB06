@@ -23,7 +23,7 @@ public class HostController extends Application {
     @FXML
     TextField hostGameName, hostNoPlayers;
     @FXML
-    Button btnHostGame;
+    Button btnHostGame, btnHostGameBack;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -55,6 +55,13 @@ public class HostController extends Application {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void btnBackClicked(){
+        Stage stage = (Stage)btnHostGameBack.getScene().getWindow();
+        StartupController startupController = new StartupController();
+        startupController.setClient(client);
+        startupController.start(stage);
     }
 
     public String getServerIPAddress() {

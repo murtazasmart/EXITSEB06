@@ -29,7 +29,6 @@ public class StartupController extends Application{
     private JoinController joinController;
     private HostController hostController;
     private Stage stage;
-    private MainController mainController;
     private Client client;
 
 
