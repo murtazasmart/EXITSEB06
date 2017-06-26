@@ -1,20 +1,7 @@
 package Server;
 
-import Client.viewboard.BoardController;
-import Client.viewhost.HostController;
-import Client.viewjoin.JoinController;
 import Model.ClientThread;
 import Model.Game;
-import Model.KnockKnockProtocol;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import org.apache.commons.validator.routines.InetAddressValidator;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -37,7 +24,6 @@ public class Server extends Thread{
     ObjectOutputStream sendObjectToClient;
     ObjectInputStream receiveObjectFromClient;
     Object receivedObject;
-    KnockKnockProtocol kkp;
     InetAddress clientIPAddress, serverIPAddress;
     ClientThread[] clientThreadThreads;
     int maxClientsCount, port, maxGamesCount, currentGamesCount;
@@ -116,38 +102,38 @@ public class Server extends Thread{
 
     }
 
-    public void connectClients(){
-        try {
-            //Sets up socket and IP to communicate with client and a while loop is used to make it continuous, if not it only waits
-            //for one listen instance received from client
-            //ServerSocket class creates a socket whereas the socket class just makes it possible to listen to an already existing socket
+    public void connectClients() {
+        while (true){
+            try {
+                //Sets up socket and IP to communicate with client and a while loop is used to make it continuous, if not it only waits
+                //for one listen instance received from client
+                //ServerSocket class creates a socket whereas the socket class just makes it possible to listen to an already existing socket
 
-            while(true){
-                System.out.println("no of active games "+currentGamesCount);
+
+                System.out.println("no of active games " + currentGamesCount);
                 clientSocket = serverSocket.accept();
                 receiveObjectFromClient = new ObjectInputStream(clientSocket.getInputStream());
                 sendObjectToClient = new ObjectOutputStream(clientSocket.getOutputStream());
                 receivedObject = receiveObjectFromClient.readObject();
-                if(receivedObject.getClass() == ClientThread.class){
+                if (receivedObject.getClass() == ClientThread.class) {
                     //Game name received from serverClientThread, if he wants to join he sends a serverClientThread object, GameID will be same as active array val
                     System.out.println("got client thread");
-                    ClientThread serverClientThread = (ClientThread)receivedObject;
-                    for(int i = 0; i < maxGamesCount; i++){
-                        if(activeGames[i].getGameName().equalsIgnoreCase(serverClientThread.getGameName())){
+                    ClientThread serverClientThread = (ClientThread) receivedObject;
+                    for (int i = 0; i < maxGamesCount; i++) {
+                        if (activeGames[i].getGameName().equalsIgnoreCase(serverClientThread.getGameName())) {
                             activeGames[i].addPlayer(serverClientThread, clientSocket, receiveObjectFromClient, sendObjectToClient);
-                            if(activeGames[i].getMaxClientsCount() == activeGames[i].getNoOfPlayers())
+                            if (activeGames[i].getMaxClientsCount() == activeGames[i].getNoOfPlayers())
                                 activeGames[i].start();
-                            System.out.println("max clients: "+activeGames[i].getMaxClientsCount()+" noOfPlayers is: "+activeGames[i].getNoOfPlayers());
+                            System.out.println("max clients: " + activeGames[i].getMaxClientsCount() + " noOfPlayers is: " + activeGames[i].getNoOfPlayers());
                             break;
                         }
                     }
                     System.out.println("Game joined");
-                }
-                else if(receivedObject.getClass() == Game.class){
-                    Game game = (Game)receivedObject;
+                } else if (receivedObject.getClass() == Game.class) {
+                    Game game = (Game) receivedObject;
                     createGame(game);
-                    for(int i = 0; i < maxGamesCount; i++){
-                        if(activeGames[i].getGameName().equalsIgnoreCase(game.getGameName())){
+                    for (int i = 0; i < maxGamesCount; i++) {
+                        if (activeGames[i].getGameName().equalsIgnoreCase(game.getGameName())) {
                             activeGames[i].addPlayer(clientSocket, receiveObjectFromClient, sendObjectToClient, game);
                             break;
                         }
@@ -156,12 +142,14 @@ public class Server extends Thread{
                 }
 
 
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 

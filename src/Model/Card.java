@@ -26,56 +26,41 @@ public class Card {
 
 
         for(int x=0;x<52;x++){
-            //System.out.println("ROUND="+x);
             int cardid=0;
             boolean randno=false;
             while(randno==false){
                 cardid= (int) (Math.random()*100);
-                //System.out.println("random number="+cardid);
                 if (cardid<52) {
                     if (pack[cardid] != "done") {
                         randno = true;
-                        //System.out.println("Number ok");
                     }
                 }
             }
 
             boolean isDone=false;
             int y=0;
-            //System.out.println("Start cheking complet level");
             while (y<52){
 
                 if (pack[y]=="done"){
                     isDone=true;
                 }else{
                     isDone=false;
-                    //System.out.println("Breaked");
                     break;
                 }
                 y++;
             }
-            //System.out.println("end cheking");
-
             if (isDone==false) {
                 if (pack[cardid]!="done"){
-                    //System.out.println("is done NOT COMPLEATED");
                     shfpack[x] = pack[cardid];
                     pack[cardid] = "done";
                 }
 
             }
-            //System.out.println("END ROUND="+x);
-            //System.out.println("");
         }
-
-        //System.out.println("mekala");
-        //System.out.print("real pack= ");
         for (int xx=0; xx<52;xx++){
 
             System.out.print(pack[xx]+",");
         }
-        //System.out.println("");
-        //System.out.print("shufl pack=");
         for (int yy=0; yy<52;yy++){
 
             //System.out.print(shfpack[yy]+",");
