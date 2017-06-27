@@ -3,7 +3,7 @@ package GUI.ViewController;
 import Utilities.Animations.MenuButtonAnimations;
 import Model.Client;
 import Utilities.MediaControllers.MediaPlayerController;
-import Client.UIButtonActions.GeneralButtonActions;
+import Utilities.UIButtonActions.GeneralButtonActions;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

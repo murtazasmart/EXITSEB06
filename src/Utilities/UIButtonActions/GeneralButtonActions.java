@@ -1,4 +1,4 @@
-package Client.UIButtonActions;
+package Utilities.UIButtonActions;
 
 import GUI.ViewController.HelpController;
 import javafx.scene.control.Alert;

@@ -3,7 +3,7 @@ package GUI.ViewController;
 import Utilities.Animations.CardAnimations;
 import Utilities.Animations.MenuButtonAnimations;
 import Model.Client;
-import Client.UIButtonActions.GeneralButtonActions;
+import Utilities.UIButtonActions.GeneralButtonActions;
 import GUI.Services.BoardService;
 import Model.Message;
 import Model.Player;
