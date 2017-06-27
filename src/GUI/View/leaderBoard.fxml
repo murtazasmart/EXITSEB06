@@ -34,7 +34,7 @@
                   <Font name="Berlin Sans FB" size="22.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: RED; -fx-border-radius: 20;" text="BACK" textFill="#f8f4f4" />
+            <JFXButton fx:id="btnBack" buttonType="RAISED" layoutX="7.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnBackClicked" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: RED; -fx-border-radius: 20;" text="BACK" textFill="#f8f4f4" />
             <JFXButton buttonType="RAISED" layoutX="480.0" layoutY="361.0" mnemonicParsing="false" style="-fx-background-color: RED; -fx-border-radius: 20;" text="CLEAR RECORDS" textFill="#f8f4f4" />
          </children>
       </Pane>
