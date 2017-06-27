@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Server</OriginalElement>
+  <nodes>
+    <node x="1037.0" y="543.5">Controller.Referee</node>
+    <node x="465.0312499999999" y="2665.0">Server.Server</node>
+    <node x="1110.5" y="0.0">Model.Card</node>
+    <node x="1446.0" y="664.0">Model.Message</node>
+    <node x="0.0" y="235.0">Model.ClientThread</node>
+    <node x="3029.220643939394" y="0.0">Model.LeaderModel</node>
+    <node x="766.2206439393938" y="1285.0">Controller.Game</node>
+    <node x="2067.220643939394" y="1505.0">Model.Client</node>
+    <node x="743.0312499999999" y="3341.0">Server.MainServer</node>
+    <node x="1693.1770833333333" y="257.0">Model.Player</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Controller.Game" target="Controller.Referee">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Server.Server" target="Model.ClientThread">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Controller.Game" target="Model.Player">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Controller.Game" target="Model.ClientThread">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Model.Client" target="Model.Player">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Controller.Game" target="Model.Message">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Server.Server" target="Controller.Game">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Controller.Referee" target="Model.Card">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Server.MainServer" target="Server.Server">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="1929.9999999999989" y="911.6666666666662" />
+  <SelectedNodes>
+    <node>Controller.Referee</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Client</OriginalElement>
+  <nodes>
+    <node x="2264.323661527255" y="1605.354619400267">GUI.Services.BoardService</node>
+    <node x="447.3084860993083" y="-690.9765691392489">GUI.ViewController.BoardPopupController</node>
+    <node x="1886.4786936991622" y="2986.545951195824">GUI.Services.ConnectToServerService</node>
+    <node x="2748.0" y="3487.0">GUI.ViewController.SettingsController</node>
+    <node x="771.12662377079" y="3720.105135364817">GUI.ViewController.JoinController</node>
+    <node x="2874.9737768605078" y="3237.366274128931">Model.LeaderModel</node>
+    <node x="1190.6573995386673" y="3254.4881631662015">GUI.Services.WaitingRoomService</node>
+    <node x="1043.852859050625" y="3021.9763263324026">GUI.Services.HostService</node>
+    <node x="-429.5932985310186" y="2145.575937841447">Model.Player</node>
+    <node x="2742.8528590506253" y="2734.6059244870703">GUI.ViewController.LeaderBoardController</node>
+    <node x="1959.7426247420176" y="2809.3940755129297">GUI.ViewController.ConnectToServerController</node>
+    <node x="1215.6289911375502" y="-606.8294281898744">Utilities.Animations.CardAnimations</node>
+    <node x="1929.5670753915256" y="3409.496054388734">GUI.ViewController.HelpController</node>
+    <node x="2299.569624863421" y="3097.8591720286513">Utilities.UIButtonActions.GeneralButtonActions</node>
+    <node x="218.69624863421154" y="3514.1660798834528">GUI.ViewController.HostController</node>
+    <node x="2007.8591720286513" y="2032.6416170936022">GUI.ViewController.StartupController</node>
+    <node x="567.6514507709118" y="3040.284812431711">GUI.ViewController.WaitingRoomController</node>
+    <node x="2279.0940876532723" y="1843.9163530411554">Utilities.MediaControllers.MediaPlayerController</node>
+    <node x="1006.0" y="2057.0">Model.Client</node>
+    <node x="2627.907126380964" y="1536.1149690421266">Utilities.Animations.MenuButtonAnimations</node>
+    <node x="2535.0" y="3487.0">Utilities.Constances.Constance</node>
+    <node x="3033.5917202865126" y="2393.680466189147">Model.Card</node>
+    <node x="2901.471409493747" y="2605.6694184776015">Utilities.Constances.DBConfig</node>
+    <node x="3468.0" y="3058.0">Model.Message</node>
+    <node x="0.0" y="0.0">GUI.ViewController.BoardController</node>
+    <node x="1574.0" y="3396.2096637125164">Client.GUIThread</node>
+    <node x="1866.9905305329612" y="3578.4678887944638">Model.ClientThread</node>
+    <node x="1311.1408279713487" y="3504.715187568289">GUI.Services.JoinService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="GUI.ViewController.StartupController" target="GUI.ViewController.HostController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.StartupController" target="Utilities.MediaControllers.MediaPlayerController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardPopupController" target="Utilities.Animations.CardAnimations">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.WaitingRoomController" target="GUI.ViewController.BoardController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.JoinService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.BoardService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.LeaderBoardController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="GUI.Services.BoardService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.StartupController" target="Utilities.Animations.MenuButtonAnimations">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.StartupController" target="GUI.ViewController.LeaderBoardController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.JoinController" target="GUI.ViewController.WaitingRoomController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="Utilities.Animations.CardAnimations">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HostController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.LeaderBoardController" target="Model.LeaderModel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HelpController" target="GUI.ViewController.JoinController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="Utilities.UIButtonActions.GeneralButtonActions">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.ConnectToServerController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="Utilities.Animations.MenuButtonAnimations">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.JoinController" target="GUI.Services.JoinService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.HostService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.LeaderBoardController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HostController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.JoinController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.JoinController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="Model.Player">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.ConnectToServerService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Utilities.UIButtonActions.GeneralButtonActions" target="GUI.ViewController.HelpController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.StartupController" target="GUI.ViewController.JoinController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.StartupController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.WaitingRoomController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="GUI.ViewController.BoardPopupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.ConnectToServerController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.ConnectToServerController" target="GUI.Services.ConnectToServerService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Model.Client" target="Model.Player">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.JoinService" target="Model.ClientThread">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HostController" target="GUI.Services.HostService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.LeaderBoardController" target="Utilities.Constances.DBConfig">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.WaitingRoomService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.StartupController" target="Utilities.UIButtonActions.GeneralButtonActions">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HostController" target="GUI.ViewController.WaitingRoomController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.WaitingRoomController" target="GUI.Services.WaitingRoomService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4515899122807018" x="2088.3526769454897" y="2765.281170329003" />
+  <SelectedNodes>
+    <node>Utilities.UIButtonActions.GeneralButtonActions</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

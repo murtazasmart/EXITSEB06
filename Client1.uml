@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Client</OriginalElement>
+  <nodes>
+    <node x="1009.6666666666674" y="2164.6666666666674">GUI.Services.BoardService</node>
+    <node x="-699.9999999999997" y="1394.6666666666677">GUI.ViewController.BoardPopupController</node>
+    <node x="2019.6666666666656" y="1984.6666666666672">GUI.ViewController.HostController</node>
+    <node x="2064.6666666666665" y="1130.3333333333335">GUI.ViewController.StartupController</node>
+    <node x="2608.999999999999" y="3020.3333333333344">GUI.Services.ConnectToServerService</node>
+    <node x="2212.666666666667" y="2758.0">GUI.ViewController.WaitingRoomController</node>
+    <node x="2408.9999999999995" y="3646.9999999999995">GUI.ViewController.SettingsController</node>
+    <node x="2586.6666666666656" y="2398.0000000000005">GUI.ViewController.JoinController</node>
+    <node x="3304.6666666666656" y="1864.6666666666674">Model.LeaderModel</node>
+    <node x="1226.6666666666663" y="3630.3333333333335">GUI.Services.WaitingRoomService</node>
+    <node x="1449.6666666666663" y="3630.3333333333335">GUI.Services.HostService</node>
+    <node x="229.33333333333394" y="2513.6666666666674">Model.Client</node>
+    <node x="-929.9999999999995" y="2107.0000000000005">Model.Player</node>
+    <node x="3183.6666666666665" y="1237.0000000000005">GUI.ViewController.LeaderBoardController</node>
+    <node x="3602.999999999999" y="2881.3333333333335">GUI.ViewController.ConnectToServerController</node>
+    <node x="2049.3333333333335" y="3121.3333333333335">Model.Card</node>
+    <node x="2669.0" y="3058.0">Model.Message</node>
+    <node x="0.0" y="0.0">GUI.ViewController.BoardController</node>
+    <node x="1895.6666666666663" y="3630.3333333333335">Client.GUIThread</node>
+    <node x="2053.0" y="0.0">Model.ClientThread</node>
+    <node x="3066.0" y="2511.333333333333">GUI.ViewController.HelpController</node>
+    <node x="2982.6666666666656" y="2270.3333333333344">GUI.Services.JoinService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="GUI.ViewController.StartupController" target="GUI.ViewController.HostController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.WaitingRoomController" target="GUI.ViewController.BoardController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.JoinService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.BoardService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="GUI.Services.BoardService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.LeaderBoardController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.StartupController" target="GUI.ViewController.LeaderBoardController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.JoinController" target="GUI.ViewController.WaitingRoomController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HostController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.LeaderBoardController" target="Model.LeaderModel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HelpController" target="GUI.ViewController.JoinController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.JoinController" target="GUI.Services.JoinService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.ConnectToServerController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.HostService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.LeaderBoardController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HostController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.JoinController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.JoinController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="Model.Player">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.ConnectToServerService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.StartupController" target="GUI.ViewController.JoinController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.WaitingRoomController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.StartupController" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.BoardController" target="GUI.ViewController.BoardPopupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.ConnectToServerController" target="GUI.ViewController.StartupController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.ConnectToServerController" target="GUI.Services.ConnectToServerService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Model.Client" target="Model.Player">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HostController" target="GUI.Services.HostService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.JoinService" target="Model.ClientThread">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.Services.WaitingRoomService" target="Model.Client">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.HostController" target="GUI.ViewController.WaitingRoomController">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GUI.ViewController.WaitingRoomController" target="GUI.Services.WaitingRoomService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="3393.999999999999" y="2625.666666666666" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
