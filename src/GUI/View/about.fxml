@@ -13,12 +13,12 @@
          <children>
             <ImageView fitHeight="640.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Resources/Images/Backgrounds/about.jpg" />
+                  <Image url="@/Resources/Images/Backgrounds/about.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="323.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Resources/Images/Backgrounds/exitpoker_logo.png" />
+                  <Image url="@/Resources/Images/Backgrounds/exitpoker_logo.png" />
                </image>
             </ImageView>
             <Label layoutX="286.0" layoutY="90.0" prefHeight="72.0" prefWidth="229.0" text="ABOUT EIXITPOKER" textFill="WHITE">

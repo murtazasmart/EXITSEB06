@@ -155,13 +155,6 @@ public class Game  extends Thread implements Serializable {
         return newPlayers;
     }
 
-//    public void gameMainLogic(){
-//        //THIS IS WHERE THE SYNCHRONISED CALLS COME IN
-//        while(true){
-//            round();
-//        }
-//    }
-
     public int getKickedPlayerId(Player[] players){
         for(int i =0;i<players.length;i++){
             if(players[i].isKicked()==true)
@@ -213,24 +206,6 @@ public class Game  extends Thread implements Serializable {
 
         System.out.println("round ended, now noOfPlayers is "+noOfPlayers);
 
-        // REMOVE PLAYER referee
-
-
-//        message.setText("Enter number: ");
-//        for(int i =0; i < noOfPlayers;i++){
-//            clientThreadThreads[i].sendMessageObjectToClient(message);
-//        }
-//        for(int i =0; i < noOfPlayers;i++){
-//            //ClientThread ct;
-//            Player player;
-//            object = clientThreadThreads[i].readObjectFromClient();
-//            player = (Player) object;
-//            totalScore = totalScore + player.getScore();
-//        }
-//        message.setText("total score is "+totalScore);
-//        for(int i =0; i < noOfPlayers;i++){
-//            clientThreadThreads[i].sendMessageObjectToClient(message);
-//        }
     }
 
 

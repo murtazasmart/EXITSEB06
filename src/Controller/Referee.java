@@ -103,22 +103,6 @@ public class Referee {
         return players;
     }
 
-    public Player[] playerKick(int playerKickedId, Player[] players){
-        players[playerKickedId] = null;
-        Player[] playersNew = new Player[playerscount-1];
-        int count = 0;
-        for(int i = 0; i<playerscount;i++){
-            if(players[i]==null){
-                continue;
-            }
-            playersNew[count] = players[i];
-            count++;
-        }
-
-        return playersNew;
-
-    }
-
     public Player[] calculateScoreRoundA(Player[] players){
         int valueScore=0, typeScore=0, totalScoreNew=0, totalScoreOld, risk=0, alpha;
         String [][] playerCardHand;
