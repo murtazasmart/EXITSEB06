@@ -10,17 +10,17 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="483.0" maxWidth="879.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="800.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ViewController.ConnectToServerController">
-   <ImageView fitHeight="483.0" fitWidth="800.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="467.0" fitWidth="800.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@/Resources/Images/Backgrounds/startscreen.png" />
+         <Image url="@../../Resources/Images/Backgrounds/startscreen.png" />
       </image>
    </ImageView>
-<JFXButton fx:id="connectToServerButton" layoutX="318.0" layoutY="289.0" onAction="#connectToServerButtonClicked" prefHeight="33.0" prefWidth="164.0" style="-fx-background-color: GREEN;" text="START" textFill="#fffefe">
+<JFXButton fx:id="connectToServerButton" alignment="CENTER" layoutX="66.0" layoutY="293.0" onAction="#connectToServerButtonClicked" prefHeight="166.0" prefWidth="328.0" style="-fx-background-color: TRANSPARENT;" text="LAN" textFill="#fffefe">
       <font>
          <Font size="22.0" />
       </font>
       <tooltip>
-         <Tooltip text="Start Game Here">
+         <Tooltip text="PLAY IN A LAN">
             <font>
                <Font name="System Bold" size="22.0" />
             </font>
@@ -28,8 +28,42 @@
       </tooltip>
       <cursor>
          <Cursor fx:constant="HAND" />
-      </cursor></JFXButton>
-   <Label alignment="CENTER" layoutX="177.0" layoutY="242.0" prefWidth="447.0" text="WELCOME TO EXIT FOKER" textFill="#eeeeee">
+      </cursor>
+      <graphic>
+         <ImageView fitHeight="114.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../Resources/Images/Icons/ButtonIcons/map-location.png" />
+            </image>
+         </ImageView>
+      </graphic></JFXButton>
+   <Label alignment="CENTER" layoutX="305.0" layoutY="98.0" prefHeight="32.0" prefWidth="306.0" text="WELCOME TO EXIT FOKER" textFill="#eeeeee">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
+   </Label>
+   <JFXButton fx:id="connectToServerButton1" alignment="CENTER" layoutX="447.0" layoutY="293.0" onAction="#connectToServerButtonClicked" prefHeight="166.0" prefWidth="328.0" style="-fx-background-color: TRANSPARENT;" text="INTERNET" textFill="#fffefe">
+      <font>
+         <Font size="22.0" />
+      </font>
+      <tooltip>
+         <Tooltip text="PLAY OVER INTERNET">
+            <font>
+               <Font name="System Bold" size="22.0" />
+            </font>
+         </Tooltip>
+      </tooltip>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <graphic>
+         <ImageView fitHeight="114.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../Resources/Images/Icons/ButtonIcons/map.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </JFXButton>
+   <Label alignment="CENTER" layoutX="224.0" layoutY="163.0" prefWidth="447.0" text="PLEASE SELECT THE MODE OF YOUR GAME" textFill="#eeeeee">
       <font>
          <Font name="System Bold" size="22.0" />
       </font>
