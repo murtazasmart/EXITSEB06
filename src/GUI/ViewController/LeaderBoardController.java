@@ -1,8 +1,9 @@
 package GUI.ViewController;
 
-import Client.Client;
+import Model.Client;
 import Utilities.Constances.DBConfig;
 import Model.LeaderModel;
+import com.sun.deploy.util.SessionState;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
