@@ -1,15 +1,18 @@
 package GUI.ViewController;
 
+import Client.Client;
 import Utilities.Constances.DBConfig;
 import Model.LeaderModel;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,6 +32,7 @@ public class LeaderBoardController extends Application implements Initializable 
     private DBConfig dbConfig;
     private ObservableList<LeaderModel> list;
     private PreparedStatement preparedStatement;
+    private Client client;
     public LeaderBoardController()
     {
         leaderModel = new LeaderModel();
@@ -47,6 +51,9 @@ public class LeaderBoardController extends Application implements Initializable 
 
     @FXML
     private TableColumn<?,?> date;
+
+    @FXML
+    Button btnBack;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -90,4 +97,19 @@ public class LeaderBoardController extends Application implements Initializable 
        }
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+
+    public void btnBackClicked(ActionEvent actionEvent) {
+        Stage stage = (Stage)btnBack.getScene().getWindow();
+        StartupController startupController = new StartupController();
+        startupController.setClient(client);
+        startupController.start(stage);
+    }
 }

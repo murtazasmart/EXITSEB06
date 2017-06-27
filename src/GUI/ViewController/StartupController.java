@@ -34,7 +34,7 @@ public class StartupController extends Application{
 
 
     @FXML
-    Button btnJoin,btnQuit,btnHost;
+    Button btnJoin,btnQuit,btnHost,btnLeaderBoard;
     @FXML
     ImageView btnVolume;
 
@@ -129,4 +129,21 @@ public class StartupController extends Application{
     public void setClient(Client client) {
         this.client = client;
     }
+
+    public void btnLeaderBoardClicked()
+    {
+        try{
+            Stage stage = (Stage)btnLeaderBoard.getScene().getWindow();
+            LeaderBoardController leaderBoardController = new LeaderBoardController();
+            leaderBoardController.setClient(client);
+            leaderBoardController.start(stage);
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+
+
 }
