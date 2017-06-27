@@ -19,7 +19,7 @@ public class Card {
     ArrayBlockingQueue<String> spack= new ArrayBlockingQueue(52);
 
 
-    public String[] Shuffel()
+    public String[] shuffle()
     {
         int cardnumber[]= new int[52];
         String shfpack[]= new String[52];
@@ -97,36 +97,5 @@ public class Card {
         String part2 = parts[1];
         return part2;
     }
-    public String getCardType(String Ecard){
 
-        String[] parts = Ecard.split("-");
-        String part1 = parts[0];
-        //String part2 = parts[1];
-
-        switch (part1){
-            case "s":
-                part1="spades";
-                break;
-            case "h":
-                part1="hearts";
-                break;
-            case "d":
-                part1="diamonds";
-                break;
-            case "c":
-                part1="clubs";
-                break;
-        }
-        return part1;
-    }
-
-    public int getCardValue(String Ecard){
-        int cvalue=0;
-        return cvalue;
-    }
-
-    public int getCardRisk(String Ecard){
-        int crisk=0;
-        return crisk;
-    }
 }

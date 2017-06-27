@@ -147,10 +147,6 @@ public class BoardController extends Application{
         try{
             generalButtonActions.btnHelpClicked(btnHelp);
             cardAnimations.cardDistribute(opo_c_cd_1,764.0,197.02438354492188);
-
-            //cardAnimations.cardPackShuffle();
-
-//            this.methid1();
         }
 
         catch(Exception e)
@@ -171,23 +167,6 @@ public class BoardController extends Application{
     }
 
     public void btnShuffleClicked(ActionEvent actionEvent) throws IOException {
-//        Parent root = FXMLLoader.load(getClass().getResource("boardpopups/popup.fxml"));
-//        Stage dialog = new Stage();
-//        dialog.initStyle(StageStyle.UTILITY);
-//        dialog.initStyle(StageStyle.UNDECORATED);
-//        dialog.initModality(Modality.APPLICATION_MODAL);
-//        Scene scene = new Scene(root);
-//        dialog.setScene(scene);
-//        dialog.setResizable(false);
-//        dialog.show();
-//
-//        Timeline timeline = new Timeline(new KeyFrame(
-//                Duration.millis(3000),
-//                ae ->{
-//                    dialog.close();
-//
-//                }));
-//        timeline.play();
         if(!btnShuffleClicked)
             roundPartB();
         btnShuffleClicked = true;
@@ -195,11 +174,52 @@ public class BoardController extends Application{
 
     public String generateFileLocation(String cardHand){
         String folderName, fileName, cardFileLocation;
-        folderName = client.getCardFolderName(cardHand);
-        fileName = client.getCardFileName(cardHand);
+        folderName = getCardFolderName(cardHand);
+        fileName = getCardFileName(cardHand);
         cardFileLocation = "/Resources/Images/Cards/" + folderName + "/" + fileName + ".png";
         System.out.println(cardFileLocation);
         return cardFileLocation;
+    }
+
+    public String getCardFileName(String cardHand) {
+        String fileName, res;
+        res = getCardType(cardHand);
+        if(res.equalsIgnoreCase("H"))
+            fileName = "H";
+        else if(res.equalsIgnoreCase("D"))
+            fileName = "D";
+        else if(res.equalsIgnoreCase("S"))
+            fileName = "S";
+        else
+            fileName = "C";
+        res = getCardValue(cardHand);
+        fileName = fileName+res;
+        return fileName;
+    }
+
+    private String getCardType(String str){
+        String type=str.substring(0,str.indexOf("-"));
+        return type;
+    }
+
+    private String getCardValue(String str){
+        String value = str.substring(str.indexOf("-")+1);
+        return value;
+    }
+
+    private String getCardFolderName(String cardHand) {
+        String folderName,res;
+        res = getCardType(cardHand);
+        if(res.equalsIgnoreCase("H"))
+            folderName = "Hearts";
+        else if(res.equalsIgnoreCase("D"))
+            folderName = "Diamonds";
+        else if(res.equalsIgnoreCase("S"))
+            folderName = "Spades";
+        else
+            folderName = "Clubs";
+
+        return folderName;
     }
 
     public boolean roundPartA(){
@@ -216,17 +236,6 @@ public class BoardController extends Application{
         }
         cardHand = player.getCardHand();
         updateMainCardPack(cardHand);
-//        for(int i =0;i<cardHand.length;i++){
-//            if(i==player.getPlayerId())
-//                continue;
-//            for(int j=0;j<2;j++){
-//                folderName = client.getCardFolderName(cardHand[i][j]);
-//                fileName = client.getCardFileName(cardHand[i][j]);
-//                cardFileLocation = "Client/Images/Cards/" + folderName + "/" + fileName + ".png";
-//                System.out.println(cardFileLocation);
-//                crdPackPlayer1.add()
-//            }
-//        }
         int i = 0, j = 0;
         if(i != player.getPlayerId() && i < player.getNumberofplayers()) {
             for (ImageView imageView : crdPackPlayer1) {
@@ -272,15 +281,6 @@ public class BoardController extends Application{
         lblHints.setText("Observe your opponents cards before they disappear!");
         lblScore.setText("You have only 20 seconds.");
 
-//        int i=0, j=0;
-//        for(ImageView imageView:otherPlayersCardImages){
-//
-//            imageView.setImage(new Image());
-//        }
-//        PauseTransition pause = new PauseTransition(
-//                Duration.seconds(10)
-//                );
-//        pause.play();'
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(10000),
                 a-> {
@@ -304,275 +304,10 @@ public class BoardController extends Application{
 
     public boolean roundPartB(){
 //        //UPDATE SWAP OPTION CODE HAS TO BE INSERTED
-//        player.setSwapCards(arrSwapCards);
-//        boardService.sendPlayerToServer(player);
-//        player = boardService.getPlayerFromServer();
-//
-//        cardHand = player.getCardHand();
-//        updateMainCardPack(cardHand);
-//        lblHints.setText("This is your updated hand.");
-//
-//        lblScore.setText(String.valueOf(player.getScore()));
-//        lblHints.setText("Your final score.");
-//        //hideOtherCardPacks();
-//        //UPDATE BOARD CODE HAS TO BE INSERTED
-//
-//        if(player.isKicked() == true){
-//            System.out.println("You've been kicked");
-//            if(player.getAllUsernames().length >1){
-//                for(int i =0;i<player.getAllUsernames().length;i++){
-//                    System.out.print(player.getAllUsernames()[i]+" ");
-//                }
-//                //HANDLE IF WRONG PLAYER NAME INCLUDED
-//                if(player.getNumberofplayers() > 2){
-//                    List<String> choices = new ArrayList<>();
-//                    for(int i =0;i<player.getNumberofplayers();i++){
-//                        if(i!=player.getPlayerId())
-//                            choices.add(player.getAllUsernames()[i]);
-//                    }
-//                    stage = (Stage) btnShuffle.getScene().getWindow();
-//                    ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
-//                    dialog.setTitle("You LOSE!!");
-//                    dialog.setHeaderText("Donate your points");
-//                    dialog.setContentText("Choose a person to donate quarter of your points::");
-//                    Optional<String> result = dialog.showAndWait();
-//                    System.out.println(result.get());
-//                    for(int i =0;i<player.getAllUsernames().length;i++){
-//                        if(player.getAllUsernames()[i].equalsIgnoreCase(result.get()))
-//                            player.setPlayerIdToDonatePoints(i);
-//                    }
-//                }
-//            }
-//        }
-//
-//                lblWaitingForPlayers.setText("Waiting other players...");
-//            System.out.println("about to send");
-//
-//            boardService.sendPlayerToServer(player);
-//
-//            System.out.println("about to receive");
-//
-//            boardService.getPlayerFromServer();
-//
-//            Message message = boardService.getMessageFromServer();
-//
-//        lblWaitingForPlayers.setText("");
-//
-//        if(player.getNumberofplayers()<2){
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("Points Update");
-//                    alert.setHeaderText("Points Update");
-//                    alert.setContentText(message.getText());
-//
-//                    alert.showAndWait();
-//                }
-//
-//                if(player.isKicked() != true && player.getNumberofplayers() <= 2){
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("You Won");
-//                    alert.setHeaderText("You WON!!");
-//                    alert.setContentText("Congratulations you WON IN FOKER");
-//
-//                    alert.showAndWait();
-//                }
-//
-//                if(player.isKicked()){
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("You LOSE");
-//                    alert.setHeaderText("You LOSE!!");
-//                    alert.setContentText("You had the lowest score. You've been kicked from the game. You lose! Better luck next time. ");
-//
-//                    alert.showAndWait();
-//                }
-//
-//                if(player.getNumberofplayers() == 2){
-//                    gameEnd = true;
-//                }
-//
-//                if(player.isKicked()){
-//                    stage = (Stage)btnShuffle.getScene().getWindow();
-//                    StartupController startupController = new StartupController();
-//                    startupController.setClient(client);
-//                    startupController.start(stage);
-//                }
-//
-//                if(!gameEnd && !player.isKicked()){
-//                    try {
-//                        Thread.sleep(5000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("Next round is starting");
-//                    alert.setHeaderText("Next round is starting!!");
-//                    alert.setContentText("Concentrate. You are moving to the next round ");
-//                    alert.show();
-//
-//                    Stage stage = (Stage)btnShuffle.getScene().getWindow();
-//                    BoardController boardController = new BoardController();
-//                    boardController.setClient(client);
-//                    try {
-//                        boardController.start(stage);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-
-
-        // Lambda Runnable
-        Runnable task2 = () -> {
-//
-//            Platform.runLater(() -> {
-//                player.setSwapCards(arrSwapCards);
-//                boardService.sendPlayerToServer(player);
-//                lblWaitingForPlayers.setText("Waiting other players...");
-//                player = boardService.getPlayerFromServer();
-//                lblWaitingForPlayers.setText("");
-//
-//                cardHand = player.getCardHand();
-//                updateMainCardPack(cardHand);
-//                lblHints.setText("This is your updated hand.");
-//
-//                lblScore.setText(String.valueOf(player.getScore()));
-//                lblHints.setText("Your final score.");
-//
-//                if(player.isKicked() == true){
-//                    System.out.println("You've been kicked");
-//                    if(player.getAllUsernames().length >1){
-//                        for(int i =0;i<player.getAllUsernames().length;i++){
-//                            System.out.print(player.getAllUsernames()[i]+" ");
-//                        }
-//                        //HANDLE IF WRONG PLAYER NAME INCLUDED
-//                        if(player.getNumberofplayers() > 2){
-//                            List<String> choices = new ArrayList<>();
-//                            for(int i =0;i<player.getNumberofplayers();i++){
-//                                if(i!=player.getPlayerId())
-//                                    choices.add(player.getAllUsernames()[i]);
-//                            }
-//                            stage = (Stage) btnShuffle.getScene().getWindow();
-//                            ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
-//                            dialog.setTitle("You LOSE!!");
-//                            dialog.setHeaderText("Donate your points");
-//                            dialog.setContentText("Choose a person to donate quarter of your points::");
-//                            Optional<String> result = dialog.showAndWait();
-//                            System.out.println(result.get());
-//                            for(int i =0;i<player.getAllUsernames().length;i++){
-//                                if(player.getAllUsernames()[i].equalsIgnoreCase(result.get()))
-//                                    player.setPlayerIdToDonatePoints(i);
-//                            }
-//                        }
-//                    }
-//                }
-//            });
-//
-//            Platform.runLater( ()-> {
-//                lblWaitingForPlayers.setText("Waiting other players...");
-//            });
-//
-//            System.out.println("about to send");
-//
-//            boardService.sendPlayerToServer(player);
-//
-////            if(!player.isKicked()){
-////                try {
-////                    System.out.println("waiting in thread for 15secs");
-////                    Thread.sleep(25000);
-////                } catch (InterruptedException e) {
-////                    e.printStackTrace();
-////                }
-////            }
-//
-//            System.out.println("about to receive");
-//
-//            boardService.getPlayerFromServer();
-//
-//            Platform.runLater(()->{
-//                lblWaitingForPlayers.setText("");
-//            });
-//
-//            Message message = boardService.getMessageFromServer();
-//
-//
-//            Platform.runLater(() -> {
-//                //CHECKED KICK CODE
-//
-//                if(player.getNumberofplayers()<2){
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("Points Update");
-//                    alert.setHeaderText("Points Update");
-//                    alert.setContentText(message.getText());
-//
-//                    alert.showAndWait();
-//                }
-//
-//                try {
-//                    Thread.sleep(5000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                if(player.isKicked() != true && player.getNumberofplayers() <= 2){
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("You Won");
-//                    alert.setHeaderText("You WON!!");
-//                    alert.setContentText("Congratulations you WON IN FOKER");
-//
-//                    alert.showAndWait();
-//                }
-//
-//                if(player.isKicked()){
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("You LOSE");
-//                    alert.setHeaderText("You LOSE!!");
-//                    alert.setContentText("You had the lowest score. You've been kicked from the game. You lose! Better luck next time. ");
-//
-//                    alert.showAndWait();
-//                }
-//
-//                if(player.getNumberofplayers() == 2){
-//                    gameEnd = true;
-//                }
-//
-//                if(player.isKicked()){
-//                    stage = (Stage)btnShuffle.getScene().getWindow();
-//                    StartupController startupController = new StartupController();
-//                    startupController.setClient(client);
-//                    startupController.start(stage);
-//                }
-//
-//                if(!gameEnd && !player.isKicked()){
-//                    try {
-//                        Thread.sleep(5000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("Next round is starting");
-//                    alert.setHeaderText("Next round is starting!!");
-//                    alert.setContentText("Concentrate. You are moving to the next round ");
-//                    alert.show();
-//
-//                    Stage stage = (Stage)btnShuffle.getScene().getWindow();
-//                    BoardController boardController = new BoardController();
-//                    boardController.setClient(client);
-//                    try {
-//                        boardController.start(stage);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-        };
-
-        // start the thread
-        new Thread(task2).start();
-
-
-
+        lblWaitingForPlayers.setText("Waiting other players...");
         // Lambda Runnable
         Runnable t1 = () -> {
             //UPDATE SWAP OPTION CODE HAS TO BE INSERTED
-            lblWaitingForPlayers.setText("Waiting other players...");
             player.setSwapCards(arrSwapCards);
             boardService.sendPlayerToServer(player);
             player = boardService.getPlayerFromServer();
@@ -705,17 +440,6 @@ public class BoardController extends Application{
             });
         };
         new Thread(t1).start();
-
-
-
-
-
-
-
-
-
-
-
 
         //DONATE POINTS CODE
 

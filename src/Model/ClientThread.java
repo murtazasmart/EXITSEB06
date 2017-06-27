@@ -9,16 +9,16 @@ import java.net.Socket;
  */
 public class ClientThread extends Thread implements Serializable {
 
-    Socket clientSocket;
-    PrintWriter writeToServer;
-    BufferedReader readFromServer;
-    ObjectOutputStream sendObjectToClient;
-    ObjectInputStream receiveObjectFromClient;
-    InetAddress ipAddress;
-    String username;
-    int score, gameID;
-    String gameName;
-    Object object;
+    private Socket clientSocket;
+    private PrintWriter writeToServer;
+    private BufferedReader readFromServer;
+    private ObjectOutputStream sendObjectToClient;
+    private ObjectInputStream receiveObjectFromClient;
+    private InetAddress ipAddress;
+    private String username;
+    private int score, gameID;
+    private String gameName;
+    private Object object;
     boolean isDisconnected;
 
     public ClientThread(Socket clientSocket) {
@@ -206,4 +206,6 @@ public class ClientThread extends Thread implements Serializable {
     public void setDisconnected(boolean disconnected) {
         isDisconnected = disconnected;
     }
+
+
 }

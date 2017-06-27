@@ -24,7 +24,7 @@ public class Player implements Serializable {
     }
 
     public Player(ClientThread clientThread){
-        username = clientThread.username;
+        username = clientThread.getUsername();
 
     }
 
@@ -67,17 +67,6 @@ public class Player implements Serializable {
         this.Score=Score;
     }
 
-    //change card hand
-//    private String[] ChangeHand=new String[5];//private String[][] ChangeHand=new String[numberofplayers][5];
-//
-//    public String[] getChangeHand(){//public String[][] getChangeHand(){
-//        return ChangeHand;
-//    }
-//
-//    public void setChangeHand(String[] ChangeHand){//public void setChangeHand(String[][] ChangeHand){
-//        this.ChangeHand=ChangeHand;
-//    }
-
     public String getUsername() {
         return username;
     }
@@ -86,7 +75,7 @@ public class Player implements Serializable {
         this.username = username;
     }
 
-    void getObjectReady(int playerscount) {
+    public void getObjectReady(int playerscount) {
         swapCards = new boolean[5];
     }
 

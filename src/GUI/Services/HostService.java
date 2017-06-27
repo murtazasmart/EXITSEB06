@@ -1,7 +1,7 @@
 package GUI.Services;
 
 import Model.Client;
-import Model.Game;
+import Controller.Game;
 
 import java.io.IOException;
 import java.util.Scanner;

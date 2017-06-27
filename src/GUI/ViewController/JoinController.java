@@ -55,14 +55,11 @@ public class JoinController extends Application{
         if(serverIPAddress != null)
             System.out.println("ip not null");
         Server server = new Server();
-       /* t1 = new Thread(server);
-        server.run();*/
 
         new Thread(() -> {
             mainClientThread = new Thread(server);
             server.run();
         }).start();
-        //stage.close();
 
     }
 
@@ -86,20 +83,6 @@ public class JoinController extends Application{
         stage.setScene(new Scene(root, 1470, 1000));
         stage.show();
     }
-
-    /*public static void main(String[] args) {
-        launch();
-    }
-
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("join.fxml"));
-        primaryStage.setTitle("EXIT-POKER");
-        primaryStage.setScene(new Scene(root, 1470, 1000));
-        primaryStage.setMaximized(true);
-        primaryStage.show();
-    }*/
 
     public Client getClient() {
         return client;

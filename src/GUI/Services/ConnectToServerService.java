@@ -17,9 +17,6 @@ public class ConnectToServerService {
     public Client connectToServer(){
         try {
             Client client = new Client();
-            //System.out.println("Enter IP of host followed:");
-            //scan = new Scanner(System.in);
-            //ipAddress = InetAddress.getByName(scan.nextLine());
             InetAddress ipAddress = InetAddress.getByName("169.254.51.167");
             Socket clientSocket = new Socket(ipAddress, 4445);
             System.out.println("connected?");

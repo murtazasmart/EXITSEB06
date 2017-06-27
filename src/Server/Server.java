@@ -1,7 +1,7 @@
 package Server;
 
 import Model.ClientThread;
-import Model.Game;
+import Controller.Game;
 
 import java.io.*;
 import java.net.InetAddress;

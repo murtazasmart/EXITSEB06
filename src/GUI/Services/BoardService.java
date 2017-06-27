@@ -47,40 +47,6 @@ public class BoardService {
         return false;
     }
 
-//    public Player getPlayerFromServerRoundB(){
-//        Player player = null;
-//        try {
-//            player = (Player) client.getReceiveObjectFromServer().readObject();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return player;
-//    }
-//
-//    public boolean sendPlayerToServerRoundB(Player player){
-//        try {
-//            client.getSendObjectToServer().writeObject(player);
-//            return true;
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return false;
-//    }
-//
-//    public Player getPlayerFromServerFinalRound(){
-//        Player player = null;
-//        try {
-//            player = (Player) client.getReceiveObjectFromServer().readObject();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return player;
-//    }
-
     public boolean sendMessageToServer(Message message){
         try {
             client.getSendObjectToServer().writeObject(message);
@@ -90,7 +56,6 @@ public class BoardService {
         }
         return false;
     }
-    //getmessage
 
     public Client getClient() {
         return client;
