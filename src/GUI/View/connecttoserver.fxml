@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="483.0" maxWidth="879.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="800.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ViewController.ConnectToServerController">
+<AnchorPane maxHeight="483.0" maxWidth="879.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="800.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ViewController.ConnectToServerController">
    <ImageView fitHeight="467.0" fitWidth="800.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../../Resources/Images/Backgrounds/startscreen.png" />
@@ -41,7 +41,7 @@
          <Font name="System Bold" size="22.0" />
       </font>
    </Label>
-   <JFXButton fx:id="connectToServerButton1" alignment="CENTER" layoutX="447.0" layoutY="293.0" onAction="#connectToServerButtonClicked" prefHeight="166.0" prefWidth="328.0" style="-fx-background-color: TRANSPARENT;" text="INTERNET" textFill="#fffefe">
+   <JFXButton fx:id="connectToGlobalServerButton" alignment="CENTER" layoutX="447.0" layoutY="293.0" onAction="#connectToGlobalServerButtonClicked" prefHeight="166.0" prefWidth="328.0" style="-fx-background-color: TRANSPARENT;" text="INTERNET" textFill="#fffefe">
       <font>
          <Font size="22.0" />
       </font>

@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="483.0" maxWidth="879.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="800.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ViewController.ConnectToServerController">
-   <ImageView fitHeight="483.0" fitWidth="800.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="467.0" fitWidth="800.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@/Resources/Images/Backgrounds/startscreen.png" />
+         <Image url="@../../Resources/Images/Backgrounds/startscreen.png" />
       </image>
    </ImageView>
 <JFXButton fx:id="connectToServerButton" alignment="CENTER" layoutX="66.0" layoutY="293.0" onAction="#connectToServerButtonClicked" prefHeight="166.0" prefWidth="328.0" style="-fx-background-color: TRANSPARENT;" text="LAN" textFill="#fffefe">
@@ -20,7 +20,7 @@
          <Font size="22.0" />
       </font>
       <tooltip>
-         <Tooltip text="Start Game Here">
+         <Tooltip text="PLAY IN A LAN">
             <font>
                <Font name="System Bold" size="22.0" />
             </font>
@@ -41,12 +41,12 @@
          <Font name="System Bold" size="22.0" />
       </font>
    </Label>
-   <JFXButton fx:id="connectToServerButton1" alignment="CENTER" layoutX="447.0" layoutY="293.0" onAction="#connectToServerButtonClicked" prefHeight="166.0" prefWidth="328.0" style="-fx-background-color: TRANSPARENT;" text="INTERNET" textFill="#fffefe">
+   <JFXButton fx:id="connectToGlobalServerButton" alignment="CENTER" layoutX="447.0" layoutY="293.0" onAction="#connectToGlobalServerButtonClicked" prefHeight="166.0" prefWidth="328.0" style="-fx-background-color: TRANSPARENT;" text="INTERNET" textFill="#fffefe">
       <font>
          <Font size="22.0" />
       </font>
       <tooltip>
-         <Tooltip text="Start Game Here">
+         <Tooltip text="PLAY OVER INTERNET">
             <font>
                <Font name="System Bold" size="22.0" />
             </font>
