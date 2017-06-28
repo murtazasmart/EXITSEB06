@@ -19,7 +19,7 @@
                   <Image url="@../../Resources/Images/Backgrounds/SETTINGS1.jpg" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="82.0" layoutY="84.0" prefHeight="67.0" prefWidth="320.0" text="SETTINGS">
+            <Label alignment="CENTER" layoutX="82.0" layoutY="84.0" prefHeight="67.0" prefWidth="320.0" text="SETTINGS" textFill="#eec911">
                <font>
                   <Font name="Century" size="36.0" />
                </font>
