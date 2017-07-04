@@ -128,7 +128,7 @@ public class Referee {
     }
 
     public Player[] calculateScoreRoundB(Player[] players){
-        int valueScore=0, typeScore=0, beta=0, alpha=0, sigma=1, totalScore;
+        int valueScore=0, typeScore=0, beta=0, alpha=0, sigma=1, totalScore, newRisk =0 ;
         String [][] playerCardHand;
         int[] allScores = new int[playerscount];
         for(int i = 0;i<playerscount;i++){
@@ -137,13 +137,14 @@ public class Referee {
             playerCardHand = players[i].getCardHand();
             typeScore = getTypeScore(i, playerCardHand);
             valueScore = getValueScore(i, playerCardHand);
+//            newRisk = getRiskValue(i, playerCardHand);
             beta = valueScore + typeScore;
             if(alpha<beta){
                 sigma = 1;
-                totalScore = (alpha-beta)+sigma*players[i].getRisk();
+                totalScore = (beta-alpha)+sigma*players[i].getRisk();
             }else{
                 sigma = -1;
-                totalScore = (beta-alpha)+sigma*players[i].getRisk();
+                totalScore = (alpha-beta)+sigma*players[i].getRisk();
             }
             players[i].setScore(totalScore);
             allScores[i] = totalScore;
@@ -194,22 +195,18 @@ public class Referee {
 
                 case "s":
                     typeScore+=5;
-                    //sum+=point;
                     break;
 
                 case "d":
                     typeScore+=4;
-                    //sum+=point;
                     break;
 
                 case "c":
                     typeScore+=3;
-                    //sum+=point;
                     break;
 
                 case "h":
                     typeScore+=2;
-                    //sum+=point;
                     break;
 
             }
@@ -259,57 +256,44 @@ public class Referee {
 
                 case "A":
                     valueScore+=15;
-                    //sum+=point;
                     break;
                 case "K":
                     valueScore+=14;
-                    //sum+=point;
                     break;
                 case "Q":
                     valueScore+=13;
-                    //sum+=point;
                     break;
                 case "J":
                     valueScore+=12;
-                    //sum+=point;
                     break;
                 case "10":
                     valueScore+=11;
-                    //sum+=point;
                     break;
                 case "9":
                     valueScore+=10;
-                    //sum+=point;
                     break;
                 case "8":
                     valueScore+=9;
-                    //sum+=point;
                     break;
                 case "7":
                     valueScore+=8;
-                    //sum+=point;
                     break;
                 case "6":
                     valueScore+=7;
-                    //sum+=point;
                     break;
                 case "5":
                     valueScore+=6;
-                    //sum+=point;
                     break;
                 case "4":
                     valueScore+=5;
-                    //sum+=point;
                     break;
 
                 case "3":
                     valueScore+=4;
-                    //sum+=point;
                     break;
 
                 case "2":
                     valueScore+=3;
-                    //sum+=point;
                     break;
             }
 
@@ -343,28 +327,23 @@ public class Referee {
 
                 type = playerCardHand[playerId][i].substring(0, playerCardHand[playerId][i].indexOf("-"));
                 value=playerCardHand[playerId][i].substring(0, playerCardHand[playerId][i].indexOf("-")+1);
-                //System.out.println("user " + j + " card type= " + type);
 
                 switch (type) {
 
                     case "s":
                         riskValue += 4;
-                        //sum+=point;
                         break;
 
                     case "d":
                         riskValue += 3;
-                        //sum+=point;
                         break;
 
                     case "c":
                         riskValue += 2;
-                        //sum+=point;
                         break;
 
                     case "h":
                         riskValue += 1;
-                        //sum+=point;
                         break;
 
                 }

@@ -25,13 +25,6 @@ public class Client {
     Player player;
     int playerId;
 
-    //getValueCard
-    /*
-    public boolean sendObjectToServer(){
-
-    }
-*/
-
     public Client(){
 
     }

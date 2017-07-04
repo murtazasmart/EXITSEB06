@@ -21,7 +21,7 @@ public class HostController extends Application {
     Client client;
 
     @FXML
-    TextField hostGameName, hostNoPlayers;
+    TextField hostGameName, hostNoPlayers, txtYourName;
     @FXML
     Button btnHostGame, btnHostGameBack;
 
@@ -40,7 +40,7 @@ public class HostController extends Application {
         if(client==null)System.out.println("game is null");else System.out.println("client not null");
         client.setGameName(hostGameName.getText());
         client.setNumberOfPlayers(Integer.parseInt(hostNoPlayers.getText()));
-        client.setUsername("murtaza");
+        client.setUsername(txtYourName.getText());
         HostService hostService = new HostService();
         hostService.setClient(client);
         boolean gameHosted = hostService.hostGame();

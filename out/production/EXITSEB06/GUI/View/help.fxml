@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane prefHeight="640.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
@@ -17,12 +17,12 @@
                   <Image url="@../../Resources/Images/Backgrounds/help.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="358.0" layoutY="159.0" prefHeight="55.0" prefWidth="110.0" text="HELP" textFill="WHITE">
+            <Label layoutX="237.0" layoutY="101.0" prefHeight="55.0" prefWidth="110.0" text="HELP" textFill="#afd4ee">
                <font>
                   <Font name="System Bold" size="38.0" />
                </font>
             </Label>
-            <WebView layoutX="176.0" layoutY="240.0" prefHeight="282.0" prefWidth="434.0" />
+            <WebView layoutX="126.0" layoutY="197.0" prefHeight="325.0" prefWidth="345.0" />
          </children>
       </AnchorPane>
    </center>

@@ -15,8 +15,8 @@ public class JoinService {
     public boolean joinGame(){
         ClientThread clientThread = new ClientThread();
         clientThread.setGameName(client.getGameName());
-        Scanner scan = new Scanner(System.in);
-        clientThread.setUsername(scan.next());
+//        Scanner scan = new Scanner(System.in);
+        clientThread.setUsername(client.getUsername());
         try {
             client.getSendObjectToServer().writeObject(clientThread);
             client.getSendObjectToServer().flush();

@@ -29,7 +29,7 @@ public class ConnectToServerController extends Application{
         ConnectToServerService connectToServerService = new ConnectToServerService();
 
         Runnable task2 = () -> {
-            client = connectToServerService.connectToServer();
+            client = connectToServerService.connectToServerLocalServer();
             Platform.runLater(() -> {
                 if(client != null){
                     Stage stage = (Stage)connectToServerButton.getScene().getWindow();
@@ -47,6 +47,29 @@ public class ConnectToServerController extends Application{
         // start the thread
         new Thread(task2).start();
 
+    }
+
+    public void connectToGlobalServerButtonClicked(){
+        ConnectToServerService connectToServerService = new ConnectToServerService();
+
+        Runnable task2 = () -> {
+            client = connectToServerService.connectToServerGlobalServer();
+            Platform.runLater(() -> {
+                if(client != null){
+                    Stage stage = (Stage)connectToServerButton.getScene().getWindow();
+                    StartupController startupController = new StartupController();
+                    startupController.setClient(client);
+                    try {
+                        startupController.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        };
+
+        // start the thread
+        new Thread(task2).start();
     }
 
     @Override

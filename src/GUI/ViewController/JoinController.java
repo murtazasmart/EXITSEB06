@@ -21,7 +21,7 @@ public class JoinController extends Application{
     @FXML
     Button btnJoin, btnJoinBack;
     @FXML
-    TextField joinTextField;
+    TextField joinTextField, joinPlayerNameTextField;
 
     private String serverIPAddress;
     Client client;
@@ -31,7 +31,7 @@ public class JoinController extends Application{
     public void btnJoinClicked(){
         client.setGameName(joinTextField.getText());
         JoinService joinService = new JoinService();
-        client.setUsername("mustafa");
+        client.setUsername(joinPlayerNameTextField.getText());
         joinService.setClient(client);
         boolean gameJoined = joinService.joinGame();
         if(gameJoined){

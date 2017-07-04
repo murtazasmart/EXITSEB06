@@ -18,8 +18,8 @@ public class HostService {
         try {
                 Game game = new Game();
                 game.setGameName(client.getGameName());
-            Scanner scan = new Scanner(System.in);
-                game.setGameCreatorName(scan.next());
+//            Scanner scan = new Scanner(System.in);
+                game.setGameCreatorName(client.getUsername());
                 game.setMaxClientsCount(client.getNumberOfPlayers());
                 client.getSendObjectToServer().writeObject(game);
                 client.getSendObjectToServer().flush();

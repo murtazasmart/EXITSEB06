@@ -14,7 +14,31 @@ import java.net.UnknownHostException;
  */
 public class ConnectToServerService {
 
-    public Client connectToServer(){
+    public Client connectToServerLocalServer(){
+        try {
+            Client client = new Client();
+            InetAddress ipAddress = InetAddress.getByName("169.254.51.167");
+            Socket clientSocket = new Socket(ipAddress, 4445);
+            System.out.println("connected?");
+            ObjectOutputStream sendObjectToServer = new ObjectOutputStream(clientSocket.getOutputStream());
+            ObjectInputStream receiveObjectFromServer = new ObjectInputStream(clientSocket.getInputStream());
+            System.out.println("streams?");
+            client.setIpAddress(ipAddress);
+            client.setClientSocket(clientSocket);
+            client.setSendObjectToServer(sendObjectToServer);
+            client.setReceiveObjectFromServer(receiveObjectFromServer);
+            return client;
+        } catch (UnknownHostException e) {
+            System.err.println("Don't know about host ");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Couldn't get I/O for the connection to ");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Client connectToServerGlobalServer() {
         try {
             Client client = new Client();
             InetAddress ipAddress = InetAddress.getByName("169.254.51.167");

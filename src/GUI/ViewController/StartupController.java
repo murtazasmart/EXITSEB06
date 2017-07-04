@@ -52,8 +52,6 @@ public class StartupController extends Application{
         generalButtonActions= new GeneralButtonActions();
         joinController= new JoinController();
         hostController= new HostController();
-//        ClientSide obj = new ClientSide();
-//        obj.method1();
     }
 
     @Override
