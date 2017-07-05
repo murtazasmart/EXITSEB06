@@ -6,7 +6,7 @@ package Server;
 public class MainServer {
     public static void main(String[] args) {
         //only for testingtt
-        Server server = new Server("169.254.51.167",4445);
+        Server server = new Server("169.254.51.167",4444);
         server.start();
 //        HostController hostController = new HostController();
 //        hostController.startView();

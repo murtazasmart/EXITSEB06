@@ -9,7 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
 
 /**
  * Created by MA_Laptop on 6/21/2017.
@@ -26,7 +31,26 @@ public class ConnectToServerController extends Application{
     Button connectToServerButton;
 
     public void connectToServerButtonClicked(){
+        client = new Client();
+        InetAddress ipAddress = null;
+        TextInputDialog dialog = new TextInputDialog("Enter local server IP");
+        dialog.setTitle("Local server IP");
+        dialog.setHeaderText("Local server IP");
+        dialog.setContentText("Enter local server IP");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            System.out.println("Local IP: " + result.get());
+        }
+
+        try {
+            ipAddress = InetAddress.getByName(result.get());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
         ConnectToServerService connectToServerService = new ConnectToServerService();
+        client.setIpAddress(ipAddress);
+        connectToServerService.setClient(client);
 
         Runnable task2 = () -> {
             client = connectToServerService.connectToServerLocalServer();

@@ -82,8 +82,7 @@ public class BoardController extends Application{
         loader.setController(this);
         Parent root = loader.load();
         primaryStage.setTitle("EXIT-POKER");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setMaximized(true);
+        primaryStage.setScene(new Scene(root,1470,1000));
         primaryStage.show();
         //crdMArr = new ImageView[]{crdMain1,crdMain2,crdMain3,crdMain4,crdMain5};
         boardService = new BoardService();
