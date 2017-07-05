@@ -6,6 +6,7 @@ import Utilities.MediaControllers.MediaPlayerController;
 import Utilities.UIButtonActions.GeneralButtonActions;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +15,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
+
+import static javafx.scene.media.AudioClip.INDEFINITE;
 
 /**
  * Created by Bhagya Rathnayake on 5/29/2017.
@@ -98,12 +105,14 @@ public class StartupController extends Application{
     public void btnMouseEntered(MouseEvent mouseEvent) {
         Button btn = (Button) mouseEvent.getSource();
         menuButtonAnimations.btnMouseEnteredFade(btn);
+        mediaPlayerController.sfxMouseOver();
 
     }
 
     public void btnMouseExited(MouseEvent mouseEvent) {
         Button btn = (Button) mouseEvent.getSource();
         menuButtonAnimations.btnMouseExitedFade(btn);
+        mediaPlayerController.sfxMouseLeave();
     }
 
     public void btnVolumeClicked(ActionEvent actionEvent) {
