@@ -15,8 +15,6 @@ public class DBConfig {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://mysql5018.mywindowshosting.com:3306/db_a278aa_pokerdb", "a278aa_pokerdb", "teamexit123");
-            command = connection.createStatement();
-            command.execute("INSERT INTO highscore(`PlayerName`,`Score`) VALUES ('Shan','123')");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

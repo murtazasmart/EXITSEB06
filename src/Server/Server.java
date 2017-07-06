@@ -183,7 +183,7 @@ public class Server extends Thread{
         Statement command = null;
         try {
             command = connection.createStatement();
-            command.execute("INSERT INTO waitinggames(`GameName`) VALUES ("+gameName+")");
+            command.execute("INSERT INTO waitinggames(`GameName`,`MaxPlayerCount`,`CurrentPlayerCount`) VALUES ('"+gameName+"',0,0)");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

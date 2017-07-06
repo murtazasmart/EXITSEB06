@@ -78,14 +78,15 @@ public class LeaderBoardController extends Application implements Initializable 
     {
         ResultSet resultSet;
        try{
-           preparedStatement = dbConfig.getConnection().prepareStatement("SELECT * FROM tbl_leaderboard ORDER BY SCORE DESC");
+           preparedStatement = dbConfig.getConnection().prepareStatement("SELECT * FROM highscore ORDER BY Score DESC");
            resultSet=preparedStatement.executeQuery();
            while (resultSet.next())
            {
                LeaderModel leaders = new LeaderModel();
-               leaders.setGameDate(resultSet.getDate("DATE").toString());
-               leaders.setUserName(resultSet.getString("USERNAME"));
-               leaders.setScore(resultSet.getInt("SCORE"));
+//               leaders.setGameDate(resultSet.getDate("DATE").toString());
+               leaders.setGameDate("12/12/12");
+               leaders.setUserName(resultSet.getString("PlayerName"));
+               leaders.setScore(resultSet.getInt("Score"));
                list.add(leaders);
            tblLeaderBoard.setItems(list);
            }

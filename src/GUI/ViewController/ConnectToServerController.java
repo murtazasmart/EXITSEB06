@@ -8,9 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
+import org.apache.commons.validator.routines.InetAddressValidator;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -43,34 +45,44 @@ public class ConnectToServerController extends Application{
             System.out.println("Local IP: " + result.get());
         }
 
-        try {
-            ipAddress = InetAddress.getByName(result.get());
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-        ConnectToServerService connectToServerService = new ConnectToServerService();
-        client.setIpAddress(ipAddress);
-        connectToServerService.setClient(client);
+        InetAddressValidator inetAddressValidator = new InetAddressValidator();
+        boolean res = inetAddressValidator.isValid(result.get());
+        if(res) {
+            try {
+                ipAddress = InetAddress.getByName(result.get());
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+            ConnectToServerService connectToServerService = new ConnectToServerService();
+            client.setIpAddress(ipAddress);
+            connectToServerService.setClient(client);
 
-        Runnable task2 = () -> {
-            client = connectToServerService.connectToServerLocalServer();
-            Platform.runLater(() -> {
-                if(client != null){
-                    Stage stage = (Stage)connectToServerButton.getScene().getWindow();
-                    StartupController startupController = new StartupController();
-                    startupController.setClient(client);
-                    try {
-                        startupController.start(stage);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+            Runnable task2 = () -> {
+                client = connectToServerService.connectToServerLocalServer();
+                Platform.runLater(() -> {
+                    if (client != null) {
+                        Stage stage = (Stage) connectToServerButton.getScene().getWindow();
+                        StartupController startupController = new StartupController();
+                        startupController.setClient(client);
+                        try {
+                            startupController.start(stage);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-            });
-        };
+                });
+            };
 
-        // start the thread
-        new Thread(task2).start();
+            // start the thread
+            new Thread(task2).start();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid IP");
+            alert.setContentText("Try enter IP again!");
 
+            alert.showAndWait();
+        }
     }
 
     public void connectToGlobalServerButtonClicked(){

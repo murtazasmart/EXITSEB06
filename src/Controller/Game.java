@@ -62,6 +62,14 @@ public class Game  extends Thread implements Serializable {
         }
         System.out.println("Game has ended");
         System.out.println("highest score is "+players[0].getUsername()+" "+players[0].getScore());
+        Connection connection = dbConfig.getConnection();
+        Statement command = null;
+        try {
+            command = connection.createStatement();
+            command.execute("INSERT INTO highscore(`PlayerName`,`Score`) VALUES('"+players[0].getUsername()+"',"+players[0].getScore()+")");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         //CLEAN UP CODE, CLOSE CONNECTIONS AND REMOVE GAME FROM Db
         isEnded = true;
 
