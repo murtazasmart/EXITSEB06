@@ -3,11 +3,15 @@ package Controller;
 import Model.ClientThread;
 import Model.Message;
 import Model.Player;
+import Utilities.Constances.DBConfig;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 /**
@@ -27,7 +31,7 @@ public class Game  extends Thread implements Serializable {
     int noOfPlayers;
     Object object;
     Referee referee;
-
+    DBConfig dbConfig;
 
 
     boolean isEnded;
@@ -45,6 +49,7 @@ public class Game  extends Thread implements Serializable {
         scan = new Scanner(System.in);
         message = new Message();
         referee = new Referee();
+        dbConfig = new DBConfig();
     }
 
     @Override
@@ -56,6 +61,7 @@ public class Game  extends Thread implements Serializable {
                 break;
         }
         System.out.println("Game has ended");
+        System.out.println("highest score is "+players[0].getUsername()+" "+players[0].getScore());
         //CLEAN UP CODE, CLOSE CONNECTIONS AND REMOVE GAME FROM Db
         isEnded = true;
 
@@ -130,6 +136,14 @@ public class Game  extends Thread implements Serializable {
         message.setText("Game is starting");
         for(int i =0; i < noOfPlayers;i++){
             clientThreadThreads[i].sendMessageObjectToClient(message);
+        }
+        Connection connection = dbConfig.getConnection();
+        Statement command = null;
+        try {
+            command = connection.createStatement();
+            command.execute("DELETE FROM waitinggames WHERE GameName = '"+gameName+"'");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

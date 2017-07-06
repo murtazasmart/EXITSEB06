@@ -2,12 +2,16 @@ package Server;
 
 import Model.ClientThread;
 import Controller.Game;
+import Utilities.Constances.DBConfig;
 
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +35,7 @@ public class Server extends Thread{
     Scanner scan;
     Game[] activeGames;
     boolean serverStarted;
+    DBConfig dbConfig;
 
     public Server(String serverIPAddress, int port) {
 
@@ -93,6 +98,7 @@ public class Server extends Thread{
             clientThreadThreads = new ClientThread[maxClientsCount];
             maxGamesCount = 20;
             activeGames =  new Game[maxGamesCount];
+            dbConfig = new DBConfig();
             return true;
 
         } catch (IOException e) {
@@ -164,11 +170,25 @@ public class Server extends Thread{
                 //GameID will be same as active array val
                 //CANNOT START GAME UNTIL EVERYONE IS OKAY
                 activeGames[i] = gameObject;
+                addGameToDB(gameObject.getGameName());
                 currentGamesCount++;
                 //activeGames[i].start();
                 break;
             }
         }
+    }
+
+    public boolean addGameToDB(String gameName){
+        Connection connection = dbConfig.getConnection();
+        Statement command = null;
+        try {
+            command = connection.createStatement();
+            command.execute("INSERT INTO waitinggames(`GameName`) VALUES ("+gameName+")");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void identifyAction(ObjectInputStream receiveObjectFromClient){

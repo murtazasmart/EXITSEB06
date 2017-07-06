@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/commons-validator-1.61.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javafx-dialogs-0.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
