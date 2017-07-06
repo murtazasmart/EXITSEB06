@@ -41,8 +41,6 @@ public class StartupController extends Application{
     private Stage stage;
     private Client client;
 
-
-
     @FXML
     Button btnJoin,btnQuit,btnHost,btnLeaderBoard,btnSettings,btnHelp,btnAbout;
 

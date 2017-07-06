@@ -16,11 +16,9 @@ import java.io.IOException;
  * Created by Bhagya Rathnayake on 6/13/2017.
  */
 public class HelpController extends Application{
-
     Client client;
     @FXML
     Button btnHome;
-
 
     public void btnHomeClicked(ActionEvent actionEvent) {
         Stage stage = (Stage)btnHome.getScene().getWindow();

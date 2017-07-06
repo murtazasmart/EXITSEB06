@@ -136,7 +136,7 @@
    <top>
       <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="1179.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#btnVolumeClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="71.0" prefWidth="90.0" style="-fx-background-color: BLACK;">
+            <Button mnemonicParsing="false"  onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="71.0" prefWidth="90.0" style="-fx-background-color: BLACK;">
                <graphic>
                   <ImageView fx:id="btnVolume" fitHeight="59.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>

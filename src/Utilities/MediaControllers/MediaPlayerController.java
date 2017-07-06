@@ -21,7 +21,7 @@ public class MediaPlayerController {
     ImageView btnVolume;
     private final MediaPlayer mediaPlayer;
     private final MediaPlayer sfxPlayer;
-    String bip=new File("src/Resources/music/theme1.mp3").toURI().toString();
+    String bip=new File("src/Resources/music/theme.mp3").toURI().toString();
     String mouseOver=new File("src/Resources/music/sfx1.mp3").toURI().toString();
     Media hit = new Media(bip);
     Media sfxMO = new Media(mouseOver);
@@ -43,14 +43,11 @@ public class MediaPlayerController {
     public void sfxMouseOver()
     {
         sfxPlayer.play();
-
     }
 
     public void sfxMouseLeave()
     {
         sfxPlayer.stop();
-
-
     }
 
     public int muteAll()

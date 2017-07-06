@@ -28,8 +28,6 @@ import java.util.ResourceBundle;
  */
 public class SettingsController extends Application {
 
-
-
     Client client;
     @FXML
     Button btnHome;
