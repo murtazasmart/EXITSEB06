@@ -16,7 +16,7 @@
    <left>
       <VBox prefHeight="435.0" prefWidth="0.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#btnSettingsClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="74.0" prefWidth="105.0" style="-fx-background-color: Black;">
+            <Button fx:id="btnSettings" mnemonicParsing="false" onAction="#btnSettingsClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="74.0" prefWidth="105.0" style="-fx-background-color: Black;">
                <graphic>
                   <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,7 +28,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onAction="#btnHelpClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="73.0" prefWidth="112.0" style="-fx-background-color: Black;">
+            <Button fx:id="btnHelp" mnemonicParsing="false" onAction="#btnHelpClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="73.0" prefWidth="112.0" style="-fx-background-color: Black;">
                <graphic>
                   <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -40,7 +40,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onAction="#btnInfoClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: Black;">
+            <Button fx:id="btnAbout" mnemonicParsing="false" onAction="#btnInfoClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="73.0" prefWidth="107.0" style="-fx-background-color: Black;">
                <graphic>
                   <ImageView fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -52,7 +52,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnLeaderBoard" alignment="CENTER" mnemonicParsing="false" onAction="#btnLeaderBoardClicked" prefHeight="76.0" prefWidth="91.0" style="-fx-background-color: BLACK;">
+            <Button fx:id="btnLeaderBoard" alignment="CENTER" mnemonicParsing="false" onAction="#btnLeaderBoardClicked" onMouseEntered="#btnMouseEntered" onMouseExited="#btnMouseExited" prefHeight="76.0" prefWidth="91.0" style="-fx-background-color: BLACK;">
                <graphic>
                   <ImageView fitHeight="68.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>

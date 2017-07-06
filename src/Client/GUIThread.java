@@ -1,5 +1,6 @@
 package Client;
 
+import Utilities.MediaControllers.MediaPlayerController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +13,7 @@ import javafx.stage.StageStyle;
  */
 public class GUIThread extends Application {
 
+    MediaPlayerController mediaPlayerController = new MediaPlayerController();
     public static void main(String[] args) {
         launch();
     }
@@ -24,7 +26,12 @@ public class GUIThread extends Application {
         primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
+        mediaPlayerController.playMusic();
+
     }
+
+
+
 
     public void getStage(){
 

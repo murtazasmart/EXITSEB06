@@ -35,15 +35,16 @@ public class StartupController extends Application{
     private GeneralButtonActions generalButtonActions;
     private JoinController joinController;
     private HostController hostController;
+    private SettingsController settingsController;
+    private HelpController helpController;
+    private AboutController aboutController;
     private Stage stage;
     private Client client;
 
 
 
     @FXML
-    Button btnJoin,btnQuit,btnHost,btnLeaderBoard;
-    @FXML
-    ImageView btnVolume;
+    Button btnJoin,btnQuit,btnHost,btnLeaderBoard,btnSettings,btnHelp,btnAbout;
 
     public StartupController()
     {
@@ -52,6 +53,9 @@ public class StartupController extends Application{
         generalButtonActions= new GeneralButtonActions();
         joinController= new JoinController();
         hostController= new HostController();
+        settingsController = new SettingsController();
+        helpController= new HelpController();
+        aboutController = new AboutController();
     }
 
     @Override
@@ -88,16 +92,28 @@ public class StartupController extends Application{
 
     }
 
-    public void btnSettingsClicked(ActionEvent actionEvent) {
+    public void btnSettingsClicked(ActionEvent actionEvent) throws Exception {
+        stage = (Stage) btnSettings.getScene().getWindow();
+        try{
+            settingsController.start(stage);
+        }
+
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
 
     }
 
-    public void btnHelpClicked(ActionEvent actionEvent) {
-
+    public void btnHelpClicked(ActionEvent actionEvent) throws Exception {
+        System.out.println("HELPPPPPP");
+        stage = (Stage) btnHelp.getScene().getWindow();
+        helpController.start(stage);
     }
 
-    public void btnInfoClicked(ActionEvent actionEvent) {
-
+    public void btnInfoClicked(ActionEvent actionEvent) throws Exception{
+        stage = (Stage) btnAbout.getScene().getWindow();
+        aboutController.start(stage);
     }
 
     public void btnMouseEntered(MouseEvent mouseEvent) {
@@ -113,11 +129,6 @@ public class StartupController extends Application{
         mediaPlayerController.sfxMouseLeave();
     }
 
-    public void btnVolumeClicked(ActionEvent actionEvent) {
-        mediaPlayerController.btnVolumeClicked(btnVolume);
-
-    }
-
     public void btnHostClicked(ActionEvent actionEvent){
         stage = (Stage) btnHost.getScene().getWindow();
         if(client==null) System.out.println("startupp controller client null");
@@ -127,14 +138,6 @@ public class StartupController extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public void btnLeaderBoardClicked()
@@ -151,6 +154,14 @@ public class StartupController extends Application{
             System.out.println(e);
         }
     }
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
 
 
 }
