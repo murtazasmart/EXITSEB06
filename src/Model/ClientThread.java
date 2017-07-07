@@ -122,9 +122,6 @@ public class ClientThread extends Thread implements Serializable {
         }
     }
 
-
-
-
     //GETTERS SETTERS
 
     public Socket getClientSocket() {

@@ -61,6 +61,7 @@ public class Game  extends Thread implements Serializable {
                 break;
         }
         System.out.println("Game has ended");
+        //CLEAN UP CODE, CLOSE CONNECTIONS AND REMOVE GAME FROM Db
         System.out.println("highest score is "+players[0].getUsername()+" "+players[0].getScore());
         Connection connection = dbConfig.getConnection();
         Statement command = null;
@@ -70,11 +71,11 @@ public class Game  extends Thread implements Serializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //CLEAN UP CODE, CLOSE CONNECTIONS AND REMOVE GAME FROM Db
         isEnded = true;
 
     }
 
+    //ADD NEW PLAYER TO GAME
     public void addPlayer(ClientThread clientThread, Socket clientSocket, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream){
         for(int i = 0; i < maxClientsCount; i++){
             if(clientThreadThreads[i]==null){
@@ -82,7 +83,6 @@ public class Game  extends Thread implements Serializable {
                 clientThread.setClientSocket(clientSocket);
                 clientThread.setReceiveObjectFromClient(objectInputStream);
                 clientThread.setSendObjectToClient(objectOutputStream);
-                //Thread t = new Thread clientThread();
                 (clientThreadThreads[i] = clientThread).start();
                 players[i] = new Player(clientThread);
                 players[i].setPlayerId(i);;
@@ -92,12 +92,12 @@ public class Game  extends Thread implements Serializable {
                 break;
             }
         }
-        //informAllPlayers("player added");
         for(int i = 0; i < noOfPlayers ; i++){
             clientThreadThreads[i].sendMessageObjectToClient(new Message("player added"));
         }
     }
 
+    //ADD PLAYER WHO CREATED GAME
     public void addPlayer(Socket clientSocket, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream, Game clientGameObject) {
         for(int i = 0; i < maxClientsCount; i++){
             System.out.println("clientthreads no "+i+" is "+clientThreadThreads[i]);
@@ -108,7 +108,6 @@ public class Game  extends Thread implements Serializable {
                 clientThread.setReceiveObjectFromClient(objectInputStream);
                 clientThread.setSendObjectToClient(objectOutputStream);
                 System.out.println("client added 1");
-                //Thread t = new Thread clientThread();
                 (clientThreadThreads[i] = clientThread).start();
                 System.out.println("client added part 2");
                 players[i] = new Player(clientThread);
@@ -125,12 +124,14 @@ public class Game  extends Thread implements Serializable {
         informAllPlayers("Game created");
     }
 
+    //GENERAL FUNCTION TO SEND BROADCAST MESSAGE TO ALL CONNECTED CLIENTS
     public void informAllPlayers(String messageToBeBroadcast){
         for(int i = 0; i < noOfPlayers ; i++){
             clientThreadThreads[i].sendMessageObjectToClient(new Message(messageToBeBroadcast));
         }
     }
 
+    //GENERAL FUNCTION TO SEND PLAYER OBJECTS TO RELEVANT CLIENTS
     public void informAllPlayers(Player[] players){
         for(int i = 0; i < noOfPlayers ; i++){
             System.out.println("thread sent to no "+i);
@@ -138,6 +139,7 @@ public class Game  extends Thread implements Serializable {
         }
     }
 
+    //SSTART GAME FUNCTION TO INFORM ALL PLAYERS AND HANDLE DB
     public void startGame(){
         System.out.println("start game method");
         System.out.println("no of players "+noOfPlayers);
@@ -155,6 +157,7 @@ public class Game  extends Thread implements Serializable {
         }
     }
 
+    //WHEN PLAYER KICKED THE CLIENT THREAD AND SOCKETS ARE HANDLED IN THISS FUNCTION
     public Player[] handleKickedPlayers(Player[] players){
         int currentNoOfPlayers = noOfPlayers;
         String[] allUsernames = players[0].getAllUsernames();
@@ -185,6 +188,7 @@ public class Game  extends Thread implements Serializable {
         return 0;
     }
 
+    //IS THE ENTIRE A ROUND EACH GAME CAN HAVE FROM THE DISTRIBUTION OF CARDS TO IDENTIFYING WHO HAS BEEN KICKED AND CALCULATING OVERALL SCORES
     public void round(){
         System.out.println("before start game");
         players = referee.startGame(players);
@@ -197,7 +201,7 @@ public class Game  extends Thread implements Serializable {
             players[i] = (Player)clientThreadThreads[i].readObjectFromClient();
         }
 
-        players = referee.CardExchange(players);
+        players = referee.cardExchange(players);
 
         players = referee.calculateScoreRoundB(players);
 
@@ -229,16 +233,6 @@ public class Game  extends Thread implements Serializable {
         System.out.println("round ended, now noOfPlayers is "+noOfPlayers);
 
     }
-
-
-    public void endGame(){
-
-    }
-
-    public void checkPlayersDisconnected(){
-        //check if disconnected, if so clean up
-    }
-
 
     //GETTERS AND SETTERS
 

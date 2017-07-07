@@ -61,11 +61,6 @@ public class Card {
 
             System.out.print(pack[xx]+",");
         }
-        for (int yy=0; yy<52;yy++){
-
-            //System.out.print(shfpack[yy]+",");
-        }
-        //System.out.println("");
         return shfpack;
     }
 
@@ -93,7 +88,6 @@ public class Card {
 
     public String getCardNumber (String Ecard){
         String[] parts = Ecard.split("-");
-        //String part1 = parts[0];
         String part2 = parts[1];
         return part2;
     }

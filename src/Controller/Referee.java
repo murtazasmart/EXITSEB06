@@ -14,26 +14,18 @@ public class Referee {
     String[][] playerCarray;
     int playerscount;
 
+    //INITIATES THE CARD VALUES PLAYER OBJECTS ETC. ACCORDING TO NUMBER OF PLAYERS
     public Player[] startGame(Player[] players){
         playerscount = players.length;
-        //Player[] players = new Player[5];
         System.out.println("Game Started (refereee)");
         c = new Card();
         cardpackc = c.shuffle();
         System.out.println("cards shuffled (refereee)");
         System.out.println("cards=");
-        /*for (int i = 0; i < cardpackc.length; i++) {
-            System.out.print(cardpackc[i]+",");
-        }*/
         c.pushCard(cardpackc);
         System.out.println("pushed");
 
-
-        //int playesrscout=4;// nede to send the players
-
-
-
-        playerCarray = DistributeCard(playerscount);
+        playerCarray = distributeCard(playerscount);
 
         String[] usernames = storeUsernames(players);
 
@@ -45,7 +37,6 @@ public class Referee {
         }
 
         playerCarray = null;
-        //FROM THIS POINT ON playerCarray will not be used, use the player object GetHand cards
 
         players = calculateScoreRoundA(players);
 
@@ -62,19 +53,14 @@ public class Referee {
 
 
 
-    public String[][] DistributeCard(int playerscount){
-        //System.out.println("then"+c.pullcard());
+    public String[][] distributeCard(int playerscount){
         playerCarray = new String [playerscount][5];
-
         if (playerscount*5<=52) {
-
             for (int i=0;i<5;i++) {
-
                 for(int j=0;j<playerscount;j++){
                     playerCarray[j][i]=c.pullcard();
                 }
             }
-
         }
         return playerCarray;
     }
@@ -84,10 +70,7 @@ public class Referee {
         return c.pullcard();
     }
 
-    public Player[] CardExchange(Player[] players){
-
-
-
+    public Player[] cardExchange(Player[] players){
         for(int i = 0; i< playerscount;i++){
             for(int j =0;j<5;j++){
                 if(players[i].getSwapCards()[j] ==true){
@@ -95,8 +78,6 @@ public class Referee {
                     currentCard = swapPlayerCards(currentCard);
                     players[i].setIndividualCardHand(i, j, currentCard);
                 }
-
-
             }
         }
         //NOTE INDIVDUAL GET HAND ON EACH PLAYER ISN'T ACCURATE
@@ -178,39 +159,25 @@ public class Referee {
     }
 
     public int getTypeScore(int playerId, String[][] playerCardHand){
-
-
         String type = null;
-//
-        //String[][] array=playerCarray;
-//       // array=displayHand();
         int typeScore = 0;
         for(int i=0;i<5;i++){
-//
             type = playerCardHand[playerId][i].substring(0,playerCardHand[playerId][i].indexOf("-"));
-//
             System.out.println("user "+ playerId+" card type= "+type);
-
             switch(type){
-
                 case "s":
                     typeScore+=5;
                     break;
-
                 case "d":
                     typeScore+=4;
                     break;
-
                 case "c":
                     typeScore+=3;
                     break;
-
                 case "h":
                     typeScore+=2;
                     break;
-
             }
-
         }
         String firstcard = playerCardHand[playerId][0].substring(0, 1);
         String secondcard = playerCardHand[playerId][1].substring(0, 1);
@@ -241,19 +208,12 @@ public class Referee {
     }
 
     public int getValueScore(int playerId, String[][] playerCardHand){
-
-
         String value=null;
-        // String[][] array = playerCarray;
         int valueScore = 0;
         for(int i=0;i<5;i++){
-
             value=playerCardHand[playerId][i].substring(playerCardHand[playerId][i].indexOf("-")+1);
-
             System.out.println("user "+ playerId+ " card value= "+value);
-
             switch(value){
-
                 case "A":
                     valueScore+=15;
                     break;
@@ -287,16 +247,13 @@ public class Referee {
                 case "4":
                     valueScore+=5;
                     break;
-
                 case "3":
                     valueScore+=4;
                     break;
-
                 case "2":
                     valueScore+=3;
                     break;
             }
-
             if (value.equals("A") & value.equals("K") & value.equals("Q") & value.equals("J")) {
                 valueScore += 8;
             } else if (value.equals("10") & value.equals("9") & value.equals("8") & value.equals("8")) {
@@ -308,23 +265,17 @@ public class Referee {
                 valueScore += 4;
             } else if (value.equals("10") | value.equals("9") | value.equals("8")) {
                 valueScore += 2;
-
             }
-
         }
-
         return valueScore;
-
     }
 
-    //Risk calculation befire change hand
+    //Risk calculation before change hand
     public int getRiskValue(int playerId, String[][] playerCardHand) {
         String type = null;
         String value=null;
         int riskValue = 0;
             for (int i = 0; i < 5; i++) {
-//
-
                 type = playerCardHand[playerId][i].substring(0, playerCardHand[playerId][i].indexOf("-"));
                 value=playerCardHand[playerId][i].substring(0, playerCardHand[playerId][i].indexOf("-")+1);
 
@@ -345,15 +296,9 @@ public class Referee {
                     case "h":
                         riskValue += 1;
                         break;
-
                 }
             }
-
-
             System.out.println("The Risk of user" +playerId+ " for Hand: " + riskValue);
-
-
-
         return riskValue;
     }
 }

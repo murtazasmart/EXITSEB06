@@ -30,9 +30,6 @@ public class GUIThread extends Application {
 
     }
 
-
-
-
     public void getStage(){
 
     }
@@ -40,13 +37,5 @@ public class GUIThread extends Application {
     public void startView() {
         launch();
     }
-    /*
-    public void changeScene(Scene scene){
-        stage = (Stage) btnJoin.getScene().getWindow();
-        joinController.start(stage);
-    }
 
-    public void startJoinController(Stage){
-
-    }*/
 }
