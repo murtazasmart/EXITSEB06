@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class MainServer {
     public static void main(String[] args) {
         //only for testingtt
-        Server server = new Server("169.254.51.167",4444);
+        Server server = new Server("169.254.51.167",4445);
         server.start();
 //        Connection connection;
 //        Statement command = null;

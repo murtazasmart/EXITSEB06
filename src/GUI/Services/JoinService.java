@@ -25,7 +25,7 @@ public class JoinService {
         ResultSet resultSet = null;
         try {
             command = connection.createStatement();
-            resultSet = command.executeQuery("SELECT * FROM waitnggames WHERE GameName='"+client.getGameName()+"'");
+            resultSet = command.executeQuery("SELECT * FROM waitinggames WHERE GameName='"+client.getGameName()+"'");
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -20,7 +20,7 @@ public class ConnectToServerService {
         try {
             //Client client = new Client();
             //InetAddress ipAddress = InetAddress.getByName("169.254.51.167");
-            Socket clientSocket = new Socket(client.getIpAddress(), 4444);
+            Socket clientSocket = new Socket(client.getIpAddress(), 4445);
             System.out.println("connected?");
             ObjectOutputStream sendObjectToServer = new ObjectOutputStream(clientSocket.getOutputStream());
             ObjectInputStream receiveObjectFromServer = new ObjectInputStream(clientSocket.getInputStream());

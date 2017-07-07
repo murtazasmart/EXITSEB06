@@ -84,7 +84,7 @@ public class LeaderBoardController extends Application implements Initializable 
            {
                LeaderModel leaders = new LeaderModel();
 //               leaders.setGameDate(resultSet.getDate("DATE").toString());
-//               leaders.setGameDate("12/12/12");
+               leaders.setGameDate("-");
                leaders.setUserName(resultSet.getString("PlayerName"));
                leaders.setScore(resultSet.getInt("Score"));
                list.add(leaders);
