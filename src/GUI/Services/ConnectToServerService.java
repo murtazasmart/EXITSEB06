@@ -43,7 +43,7 @@ public class ConnectToServerService {
     public Client connectToServerGlobalServer() {
         try {
             Client client = new Client();
-            InetAddress ipAddress = InetAddress.getByName("139.59.168.234");
+            InetAddress ipAddress = InetAddress.getByName("178.62.6.95");
             Socket clientSocket = new Socket(ipAddress, 4445);
             System.out.println("connected?");
             ObjectOutputStream sendObjectToServer = new ObjectOutputStream(clientSocket.getOutputStream());

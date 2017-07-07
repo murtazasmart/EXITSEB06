@@ -99,6 +99,11 @@ public class LeaderBoardController extends Application implements Initializable 
        }
     }
 
+    public void clearLeaderBoardRecords(){
+        list = FXCollections.observableArrayList();
+        tblLeaderBoard.setItems(list);
+    }
+
     public Client getClient() {
         return client;
     }

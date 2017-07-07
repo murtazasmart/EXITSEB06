@@ -29,14 +29,18 @@ public class JoinService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if(resultSet==null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Game Name");
-            alert.setHeaderText("Such game hasn't been hosted");
-            alert.setContentText("Go to host game to make a new game!?");
+        try {
+            if(resultSet==null || !resultSet.next()){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Game Name");
+                alert.setHeaderText("Such game hasn't been hosted");
+                alert.setContentText("Go to host game to make a new game!?");
 
-            alert.showAndWait();
-            return false;
+                alert.showAndWait();
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         ClientThread clientThread = new ClientThread();
