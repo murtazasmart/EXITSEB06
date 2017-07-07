@@ -26,7 +26,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="21.0" layoutY="289.0" prefHeight="234.0" prefWidth="636.0" text="This is a creation of &quot;EXIT&quot;. &quot;Exit&quot; is a group which combination of six amazing game developers.&quot;EXITPoker&quot; game built for only gaming purposes and no actual betting or gambling included. The whole purpose of this game is providing a freely and enjoyable experience of playing new type of poker game online. This product is intent for use only those 16 and older.By using this product you agree to the all terms in licenses agreement and ExitPoker policy and terms of services." textFill="#fff97d" wrapText="true">
+            <Label layoutX="21.0" layoutY="289.0" prefHeight="234.0" prefWidth="656.0" text="This is a creation of &quot;EXIT&quot;. &quot;EXIT&quot; is a group of six amazing game developers.&quot;EXITPoker&quot; game is built for only gaming purposes and no actual betting or gambling is included. The whole purpose of this game is providing a free and enjoyable experience of playing new type of poker game online. This product is intent for use only those 16 and older. By using this product you agree to the all terms in licenses agreement and ExitPoker policy and terms of services." textFill="#fff97d" wrapText="true">
                <font>
                   <Font size="22.0" />
                </font></Label>
