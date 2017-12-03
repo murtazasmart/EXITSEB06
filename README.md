@@ -4,11 +4,11 @@ This was our 3rd year Software Engineering Project for UCD CS Program.
 The main aim of this project is to develop a multiply poker game with a Graphical User Interface which can support all the poker players, around the world. They can play the game from any location using multiple platforms ends with a good user experience.
 
 ### Note worthy contributors
-@MashiG
-@mekalarashmika
-@lalendra94
-@BhagyaR94
-@namalkaS
+ * MashiG - https://github.com/MashiG
+ * mekalarashmika - https://github.com/mekalarashmika
+ * lalendra94 - https://github.com/lalendra94
+ * BhagyaR94 - https://github.com/BhagyaR94
+ * namalkaS - https://github.com/namalkaS
 
 ## Things to keep in mind:
 1. Use Intellij IDE to run this project.
