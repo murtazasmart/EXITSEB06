@@ -6,10 +6,24 @@ The main aim of this project is to develop a multiply poker game with a Graphica
 ## Things to keep in mind:
 1. Use Intellij IDE to run this project.
 2. Build the project to obtain the out and jars. Due to space constraints they haven't been added.
-3. Entry points for Client is Client.GUIThread class.
-4. Entry point for Server is Server.MainServer class.
+3. There are two parts in this project the code which runs on the Server and on the Client
+ 1. Entry points for Client is Client.GUIThread class.
+ 2. Entry point for Server is Server.MainServer class.
+ 
+## Folder structure explained
+* src
+  * Client - Entry point for the client GUI
+  * Controller - Files used by the Server to control the games characteristics
+  * GUI
+    * Services - Contains services which have to be run in the background (and not in the controller) so as to not hang the UI. e.g. socket connections e.t.c.
+    * View - Contains the JavaFX fxml files (UI related)
+    * Controller - The java classes which control the UI
+  * Model - Used by server and clients
+  * Resources - Self explantory
+  * Server - Entry point for the server
+  * Utilities - Self explantory
 
-## Introduction
+## Description
  
 Foker is a multi-player version of poker which is developed by Team EXIT as 3rd year software engineering project. This game is developed based on java language using
 
@@ -41,4 +55,4 @@ We designed our own algorithms according to make our game unique. We have used q
 ## Future enhancement
   * Group Chat
   * Tournaments
-  * Users allow to add notes about game while playing.
+  * Users allow to add notes about game while playing. 
